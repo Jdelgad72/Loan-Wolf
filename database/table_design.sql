@@ -7,10 +7,11 @@ dateOfBirth DATE NOT NULL,
 streetAddress VARCHAR(128) NOT NULL,
 zipAddress INT(5) NOT NULL,
 stateAddress VARCHAR(32) NOT NULL,
-accountPayPal,
-accountGoogle,
+accountPayPal VARCHAR(1024),
+accountPayPalAuthentication VARCHAR(1024),
+accountGoogle VARCHAR(1024) NOT NULL,
 gender VARCHAR(16) NOT NULL,
-email VARCHAR(64) NOT NULL
+email VARCHAR(64) NOT NULL,
 PRIMARY KEY (userID)
 )
 ENGINE=InnoDB;
@@ -18,7 +19,7 @@ ENGINE=InnoDB;
 CREATE TABLE userPhone (
 userID INT(10) NOT NULL,
 phone INT(11) NOT NULL,
-FOREIGN KEY userID REFERENCES user(userID)
+FOREIGN KEY (userID) REFERENCES user(userID)
 )
 ENGINE=InnoDB;
 
@@ -30,8 +31,8 @@ reviewTime TIME NOT NULL,
 reviewDate DATE NOT NULL,
 starRating INT(1) NOT NUll,
 comment VARCHAR(256),
-FOREIGN KEY userReviewing REFERENCES user(userID),
-FOREIGN KEY userReviewer REFERENCES user(userID),
+FOREIGN KEY (userReviewing) REFERENCES user(userID),
+FOREIGN KEY (userReviewer) REFERENCES user(userID),
 PRIMARY KEY (ReviewID)
 )
 ENGINE=InnoDB;
@@ -54,7 +55,7 @@ notificationTime TIME NOT NULL,
 notificationDate DATE NOT NULL,
 notificationType VARCHAR(128) NOT NULL,
 notificationContent VARCHAR(256) NOT NULL,
-FOREIGN KEY userID REFERENCES user(userID),
+FOREIGN KEY (userID) REFERENCES user(userID),
 PRIMARY KEY (notificationID)
 )
 ENGINE=InnoDB;
@@ -96,7 +97,7 @@ paymentTime TIME NOT NULL,
 paymentDate DATE NOT NULL,
 paymentAmount INT(6) NOT NULL,
 paymentStatus VARCHAR(16),
-FOREIGN KEY loanID REFERENCES loan(loanID),
+FOREIGN KEY (loanID) REFERENCES loan(loanID),
 PRIMARY KEY (paymentID)
 )
 ENGINE=InnoDB;
@@ -107,9 +108,9 @@ CREATE TABLE reportForm (
 userReporting INT(10) NOT NULL,
 userReported INT(10) NOT NULL,
 reportID INT(10) NOT NULL,
-FOREIGN KEY userReporting REFERENCES user(userID),
-FOREIGN KEY userReported REFERENCES user(userID),
-FOREIGN KEY reportID REFERENCES report(reportID)
+FOREIGN KEY (userReporting) REFERENCES user(userID),
+FOREIGN KEY (userReported) REFERENCES user(userID),
+FOREIGN KEY (reportID) REFERENCES report(reportID)
 )
 ENGINE=InnoDB;
 
@@ -117,9 +118,9 @@ CREATE TABLE userMessage (
 userSent INT(10) NOT NULL,
 userRecieve INT(10) NOT NULL,
 messageID INT(10) NOT NULL,
-FOREIGN KEY userSent REFERENCES user(userID),
-FOREIGN KEY userRecieve REFERENCES user(userID),
-FOREIGN KEY messageID REFERENCES message(messageID)
+FOREIGN KEY (userSent) REFERENCES user(userID),
+FOREIGN KEY (userRecieve) REFERENCES user(userID),
+FOREIGN KEY (messageID) REFERENCES message(messageID)
 )
 ENGINE=InnoDB;
 
@@ -127,9 +128,9 @@ CREATE TABLE userPayment (
 userTo INT(10) NOT NULL,
 userFrom INT(10) NOT NULL,
 paymentID INT(10) NOT NULL,
-FOREIGN KEY userTo REFERENCES user(userID),
-FOREIGN KEY userFrom REFERENCES user(userID),
-FOREIGN KEY paymentID REFERENCES payment(paymentID)
+FOREIGN KEY (userTo) REFERENCES user(userID),
+FOREIGN KEY (userFrom) REFERENCES user(userID),
+FOREIGN KEY (paymentID) REFERENCES payment(paymentID)
 )
 ENGINE=InnoDB;
 
@@ -137,8 +138,8 @@ CREATE TABLE userLoan (
 userSender INT(10) NOT NULL,
 userReciever INT(10) NOT NULL,
 loanID INT(10) NOT NULL,
-FOREIGN KEY userSender REFERENCES user(userID),
-FOREIGN KEY userReciever REFERENCES user(userID),
-FOREIGN KEY loanID REFERENCES loan(loanID)
+FOREIGN KEY (userSender) REFERENCES user(userID),
+FOREIGN KEY (userReciever) REFERENCES user(userID),
+FOREIGN KEY (loanID) REFERENCES loan(loanID)
 )
 ENGINE=InnoDB;
