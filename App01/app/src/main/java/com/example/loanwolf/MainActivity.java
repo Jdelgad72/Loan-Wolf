@@ -138,13 +138,16 @@ public class MainActivity extends AppCompatActivity implements
     }
     // [END revokeAccess]
 
-    @SuppressLint("StringFormatInvalid")
+   // @SuppressLint("StringFormatInvalid")
     private void updateUI(@Nullable GoogleSignInAccount account) {
         if (account != null) {
-            mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+            Intent i = new Intent(MainActivity.this, Paypal.class);
+            startActivity(i);
+
+        /*    mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE); */
         } else {
             mStatusTextView.setText(R.string.signed_out);
 
