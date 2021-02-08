@@ -3,11 +3,9 @@ package com.example.loanwolf;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -19,12 +17,21 @@ import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
 public class MainActivity extends AppCompatActivity implements
-        View.OnClickListener {private static final String TAG = "SignInActivity";
+        View.OnClickListener {
+
+    private static final String TAG = "SignInActivity";
     private static final int RC_SIGN_IN = 9001;
 
     private GoogleSignInClient mGoogleSignInClient;
     private TextView mStatusTextView;
+    private TextView mIdTokenTextView;
+    private Button mRefreshButton;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,16 +40,22 @@ public class MainActivity extends AppCompatActivity implements
 
         // Views
         mStatusTextView = findViewById(R.id.status);
+        mIdTokenTextView = findViewById(R.id.detail);
+        mRefreshButton = findViewById(R.id.button_optional_action);
+        mRefreshButton.setText(R.string.refresh_token);
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
+        mRefreshButton.setOnClickListener(this);
 
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
+        // Token ID is used to authenticate to  backend server.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestIdToken(getString(R.string.server_client_id))
                 .requestEmail()
                 .build();
         // [END configure_signin]
@@ -72,6 +85,23 @@ public class MainActivity extends AppCompatActivity implements
         // [END on_start_sign_in]
     }
 
+    private void refreshIdToken() {
+        // Attempt to silently refresh the GoogleSignInAccount. If the GoogleSignInAccount
+        // already has a valid token this method may complete immediately.
+        //
+        // If the user has not previously signed in on this device or the sign-in has expired,
+        // this asynchronous branch will attempt to sign in the user silently and get a valid
+        // ID token. Cross-device single sign on will occur in this branch.
+        mGoogleSignInClient.silentSignIn()
+                .addOnCompleteListener(this, new OnCompleteListener<GoogleSignInAccount>() {
+                    @Override
+                    public void onComplete(@NonNull Task<GoogleSignInAccount> task) {
+                        handleSignInResult(task);
+                    }
+                });
+    }
+
+
     // [START onActivityResult]
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -91,7 +121,53 @@ public class MainActivity extends AppCompatActivity implements
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+            String idToken = account.getIdToken();
+/*
+            // TODO(developer): send ID Token to server and validate
+                // TODO(developer): Edit URL to authenticate.
+            String postUrl = "";
+            RequestQueue requestQueue = Volley.newRequestQueue(this);
 
+            JSONObject postData = new JSONObject();
+            try {
+                postData.put("idToken", idToken);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+                @Override
+                public void onResponse(JSONObject response) {
+                    System.out.println(response);
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    error.printStackTrace();
+                }
+            });
+
+            requestQueue.add(jsonObjectRequest);
+
+
+            HttpClient httpClient = new DefaultHttpClient();
+            HttpPost httpPost = new HttpPost("https://yourbackend.example.com/tokensignin");
+
+            try {
+                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
+                nameValuePairs.add(new BasicNameValuePair("idToken", idToken));
+                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
+
+                HttpResponse response = httpClient.execute(httpPost);
+                int statusCode = response.getStatusLine().getStatusCode();
+                final String responseBody = EntityUtils.toString(response.getEntity());
+                Log.i(TAG, "Signed in as: " + responseBody);
+            } catch (ClientProtocolException e) {
+                Log.e(TAG, "Error sending ID token to backend.", e);
+            } catch (IOException e) {
+                Log.e(TAG, "Error sending ID token to backend.", e);
+            }
+*/
             // Signed in successfully, show authenticated UI.
             updateUI(account);
         } catch (ApiException e) {
@@ -141,21 +217,29 @@ public class MainActivity extends AppCompatActivity implements
    // @SuppressLint("StringFormatInvalid")
     private void updateUI(@Nullable GoogleSignInAccount account) {
         if (account != null) {
-            Intent i = new Intent(MainActivity.this, Paypal.class);
-            startActivity(i);
+            ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
 
-        /*    mStatusTextView.setText(getString(R.string.signed_in_fmt, account.getDisplayName()));
+            String idToken = account.getIdToken();
+            mIdTokenTextView.setText(getString(R.string.id_token_fmt, idToken));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
-            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE); */
+            findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+            mRefreshButton.setVisibility(View.VISIBLE);/*
+            //Sends to PayPal screen to link their PayPal
+            Intent i = new Intent(MainActivity.this, Paypal.class);
+            startActivity(i);*/
         } else {
+            ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
             mStatusTextView.setText(R.string.signed_out);
+            mIdTokenTextView.setText(getString(R.string.id_token_fmt, "null"));
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
+            mRefreshButton.setVisibility(View.GONE);
         }
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
@@ -167,6 +251,9 @@ public class MainActivity extends AppCompatActivity implements
                 break;
             case R.id.disconnect_button:
                 revokeAccess();
+                break;
+            case R.id.button_optional_action:
+                refreshIdToken();
                 break;
         }
     }
