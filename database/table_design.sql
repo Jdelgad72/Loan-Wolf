@@ -3,15 +3,15 @@ CREATE TABLE user (
 userID INT(10) AUTO_INCREMENT,
 firstName VARCHAR(64) NOT NULL,
 lastName VARCHAR(64) NOT NULL,
-dateOfBirth DATE NOT NULL,
-streetAddress VARCHAR(128) NOT NULL,
-zipAddress INT(5) NOT NULL,
-stateAddress VARCHAR(32) NOT NULL,
+email VARCHAR(64) NOT NULL,
+accountGoogle VARCHAR(1024) NOT NULL,
 accountPayPal VARCHAR(1024),
 accountPayPalAuthentication VARCHAR(1024),
-accountGoogle VARCHAR(1024) NOT NULL,
-gender VARCHAR(16) NOT NULL,
-email VARCHAR(64) NOT NULL,
+dateOfBirth DATE,
+streetAddress VARCHAR(128),
+zipAddress INT(5),
+stateAddress VARCHAR(32),
+gender VARCHAR(16),
 PRIMARY KEY (userID)
 )
 ENGINE=InnoDB;

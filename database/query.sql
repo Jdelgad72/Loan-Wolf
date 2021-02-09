@@ -1,0 +1,1 @@
+/*Where we store queries used to communicate between our backend and database.*/
