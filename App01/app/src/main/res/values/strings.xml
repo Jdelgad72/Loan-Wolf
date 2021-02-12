@@ -53,10 +53,4 @@
     <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
          from https://console.developers.google.com/ -->
     <string name="server_client_id">381871578603-rmsoihrgeh35qvk2jasghdsrc6uk65fd.apps.googleusercontent.com</string>
-    <string name="title_activity_deposit_withdraw">depositWithdraw</string>
-    <!--
-    This string is used for square devices and overridden by hello_world in
-    values-round/strings.xml for round devices.
-    -->
-    <string name="hello_world">Hello Square World!</string>
 </resources>
