@@ -159,8 +159,7 @@
                 android:id="@+id/buttonBlank01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background=""
-                android:text=""
+                android:text="23"
                 android:textColor="@android:color/white" />
 
             <Button
@@ -168,15 +167,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
-                android:text="."
+                android:text="23"
                 android:textColor="@color/main_green" />
 
             <Button
                 android:id="@+id/buttonBlank02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background=""
-                android:text=""
+                android:text="23"
                 android:textColor="@android:color/white" />
 
 
