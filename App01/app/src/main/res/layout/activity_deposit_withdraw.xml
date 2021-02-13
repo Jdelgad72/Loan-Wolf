@@ -159,8 +159,12 @@
                 android:id="@+id/buttonBlank01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:background="@android:color/white"
                 android:text=""
+=======
+                android:text="23"
+>>>>>>> 4757266e654da99cbd4c649e61aaedf3d8767a7d
                 android:textColor="@android:color/white" />
 
             <Button
@@ -168,16 +172,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
-                android:text="."
+                android:text="23"
                 android:textColor="@color/main_green" />
 
             <Button
                 android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
+                android:text="23"
+                android:textColor="@android:color/white" />
+=======
                 android:background="@color/main_gray"
                 android:text="Clear"
                 android:textColor="@color/main_green" />
+>>>>>>> d978d263e3815c54555dd05ecd4c63f50b4889c0
 
 
         </TableRow>

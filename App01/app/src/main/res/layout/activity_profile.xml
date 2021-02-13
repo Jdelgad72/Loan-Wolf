@@ -96,7 +96,11 @@
         android:layout_height="54dp"
         android:text="Profile"
         android:textAlignment="center"
+<<<<<<< HEAD
         android:textSize="36sp"
+=======
+        android:textSize="45dp"
+>>>>>>> 4757266e654da99cbd4c649e61aaedf3d8767a7d
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
