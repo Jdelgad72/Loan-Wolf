@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity implements
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
         // Token ID is used to authenticate to  backend server.
         GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                .requestIdToken(getString(R.string.server_client_id))
+                .requestIdToken("381871578603-kq43dlf32e1boghdcja60rh92umulg2m.apps.googleusercontent.com")
                 .requestEmail()
                 .build();
         // [END configure_signin]
@@ -121,11 +121,11 @@ public class MainActivity extends AppCompatActivity implements
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            String idToken = account.getIdToken();
-/*
+            //String idToken = account.getIdToken();
+            /*
             // TODO(developer): send ID Token to server and validate
                 // TODO(developer): Edit URL to authenticate.
-            String postUrl = "";
+            String postUrl = "http://cgi.sice.indiana.edu/~team21/team-21/backend/authenticate.php";
             RequestQueue requestQueue = Volley.newRequestQueue(this);
 
             JSONObject postData = new JSONObject();
@@ -135,38 +135,21 @@ public class MainActivity extends AppCompatActivity implements
                 e.printStackTrace();
             }
 
-            JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
                 @Override
                 public void onResponse(JSONObject response) {
                     System.out.println(response);
+                    Log.d("RESPONSE", String.valueOf(response));
                 }
             }, new Response.ErrorListener() {
                 @Override
                 public void onErrorResponse(VolleyError error) {
                     error.printStackTrace();
+                    Log.d("RESPONSE", String.valueOf(error));
                 }
             });
 
             requestQueue.add(jsonObjectRequest);
-
-
-            HttpClient httpClient = new DefaultHttpClient();
-            HttpPost httpPost = new HttpPost("https://yourbackend.example.com/tokensignin");
-
-            try {
-                List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
-                nameValuePairs.add(new BasicNameValuePair("idToken", idToken));
-                httpPost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
-                HttpResponse response = httpClient.execute(httpPost);
-                int statusCode = response.getStatusLine().getStatusCode();
-                final String responseBody = EntityUtils.toString(response.getEntity());
-                Log.i(TAG, "Signed in as: " + responseBody);
-            } catch (ClientProtocolException e) {
-                Log.e(TAG, "Error sending ID token to backend.", e);
-            } catch (IOException e) {
-                Log.e(TAG, "Error sending ID token to backend.", e);
-            }
 */
             // Signed in successfully, show authenticated UI.
             updateUI(account);
