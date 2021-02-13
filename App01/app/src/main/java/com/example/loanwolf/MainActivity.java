@@ -179,7 +179,7 @@ public class MainActivity extends AppCompatActivity implements
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                          /*  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();*/
                             Log.d("RESPONSE1", String.valueOf(error));
                         }
                     }) {
@@ -243,17 +243,17 @@ public class MainActivity extends AppCompatActivity implements
    // @SuppressLint("StringFormatInvalid")
     private void updateUI(@Nullable GoogleSignInAccount account) {
         if (account != null) {
-            ((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
+            /*((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
 
             String idToken = account.getIdToken();
             mIdTokenTextView.setText(getString(R.string.id_token_fmt, idToken));
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-            mRefreshButton.setVisibility(View.VISIBLE);/*
+            mRefreshButton.setVisibility(View.VISIBLE);*/
             //Sends to PayPal screen to link their PayPal
-            Intent i = new Intent(MainActivity.this, Paypal.class);
-            startActivity(i);*/
+            Intent i = new Intent(MainActivity.this, Profile.class);
+            startActivity(i);
         } else {
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
             mStatusTextView.setText(R.string.signed_out);
