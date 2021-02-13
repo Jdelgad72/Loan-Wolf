@@ -46,7 +46,7 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/button03"
+                android:id="@+id/button02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -54,7 +54,7 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/buttonadd"
+                android:id="@+id/button03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -67,7 +67,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button05"
+                android:id="@+id/button04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -75,7 +75,7 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/button07"
+                android:id="@+id/button05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -83,7 +83,7 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/buttondivide"
+                android:id="@+id/button06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -96,7 +96,7 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/button09"
+                android:id="@+id/button07"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -104,7 +104,7 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/buttonclear"
+                android:id="@+id/button08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -112,7 +112,7 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/buttonequal"
+                android:id="@+id/button09"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
@@ -171,11 +171,17 @@
                 android:textColor="@color/main_green" />
 
             <Button
-                android:id="@+id/buttonBlank02"
+                android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+<<<<<<< HEAD
                 android:text="23"
                 android:textColor="@android:color/white" />
+=======
+                android:background="@color/main_gray"
+                android:text="Clear"
+                android:textColor="@color/main_green" />
+>>>>>>> d978d263e3815c54555dd05ecd4c63f50b4889c0
 
 
         </TableRow>
@@ -198,7 +204,7 @@
         app:layout_constraintVertical_bias="0.471" />
 
     <TextView
-        android:id="@+id/result"
+        android:id="@+id/message"
         android:layout_width="135dp"
         android:layout_height="30dp"
         android:textAlignment="textEnd"
