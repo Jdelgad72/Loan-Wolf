@@ -11,7 +11,6 @@
         android:id="@+id/textView2"
         android:layout_width="353dp"
         android:layout_height="37dp"
-        android:background="@color/main_gray"
         android:text="Transaction"
         android:textAlignment="center"
         android:textColor="@color/main_green"
@@ -156,18 +155,18 @@
             android:layout_height="match_parent">
 
             <Button
-                android:id="@+id/buttonBlank01"
+                android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@android:color/white"
-                android:text="."
-                android:textColor="@android:color/white" />
+                android:background="@color/main_gray"
+                android:text="back"
+                android:textColor="@color/main_green" />
             <Button
                 android:id="@+id/buttonPeriod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:background="@color/main_gray"
-                android:text="23"
+                android:text="."
                 android:textColor="@color/main_green" />
 
             <Button
