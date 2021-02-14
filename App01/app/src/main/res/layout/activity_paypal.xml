@@ -13,14 +13,14 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <EditText
+        <TextView
             android:id="@+id/edtAmount"
             android:hint="Enter Amount"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
         <Button
-            android:id="@+id/btnPayNow"
+            android:id="@+id/order"
             android:text="Pay Now"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
