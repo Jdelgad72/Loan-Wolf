@@ -7,12 +7,10 @@ import android.content.SharedPreferences;
 public class SharedPrefManager {
 
     private static final String SHARED_PREF_NAME = "volleyregisterlogin";
-    private static final String KEY_USERNAME = "keyusername";
     private static final String KEY_EMAIL = "keyemail";
     private static final String KEY_ID = "keyid";
     private static final String KEY_FIRSTNAME = "keyfirstname";
     private static final String KEY_LASTNAME = "keylastname";
-    private static final String KEY_GOOGLEID = "keygoogleid";
     @SuppressLint("StaticFieldLeak")
     private static SharedPrefManager mInstance;
     @SuppressLint("StaticFieldLeak")
@@ -33,18 +31,16 @@ public class SharedPrefManager {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt(KEY_ID, user.getId());
-        editor.putString(KEY_USERNAME, user.getUsername());
         editor.putString(KEY_EMAIL, user.getEmail());
         editor.putString(KEY_FIRSTNAME, user.getFirstName());
         editor.putString(KEY_LASTNAME, user.getLastName());
-        editor.putString(KEY_GOOGLEID, user.getGoogleID());
         editor.apply();
     }
 
     //this method will checker whether user is already logged in or not
     public boolean isLoggedIn() {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
-        return sharedPreferences.getString(KEY_USERNAME, null) != null;
+        return sharedPreferences.getString(KEY_EMAIL, null) != null;
     }
 
     //this method will logout the user
