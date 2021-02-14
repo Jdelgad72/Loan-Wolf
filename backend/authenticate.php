@@ -7,8 +7,7 @@ $CLIENT_ID = "381871578603-kq43dlf32e1boghdcja60rh92umulg2m.apps.googleuserconte
 
 $response = array();
 if(isset($_POST['idToken'])){
-$response['Check'] = "Money";
-$response['number'] = "2";
+
   // Get $id_token via HTTPS POST.
   $id_token = $_POST['idToken']; 
   $client = new Google_Client(['client_id' => $CLIENT_ID]);  // Specify the CLIENT_ID of the app that accesses the backend
