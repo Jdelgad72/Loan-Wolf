@@ -7,7 +7,12 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
@@ -16,6 +21,12 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -49,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
         mRefreshButton.setOnClickListener(this);
+
+        //Checks to see if it is logged in if so then go to the main activity.
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            Intent i = new Intent(MainActivity.this, Home.class);
+            startActivity(i);
+        }
 
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
@@ -121,36 +138,70 @@ public class MainActivity extends AppCompatActivity implements
     private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
-            //String idToken = account.getIdToken();
-            /*
-            // TODO(developer): send ID Token to server and validate
-                // TODO(developer): Edit URL to authenticate.
-            String postUrl = "http://cgi.sice.indiana.edu/~team21/team-21/backend/authenticate.php";
-            RequestQueue requestQueue = Volley.newRequestQueue(this);
+            final String idToken = account.getIdToken();
 
-            JSONObject postData = new JSONObject();
-            try {
-                postData.put("idToken", idToken);
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            final JsonObjectRequest jsonObjectRequest = new JsonObjectRequest(Request.Method.POST, postUrl, postData, new Response.Listener<JSONObject>() {
+            // send ID Token to server and validates
+            String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/authenticate.php";
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                 @Override
-                public void onResponse(JSONObject response) {
-                    System.out.println(response);
-                    Log.d("RESPONSE", String.valueOf(response));
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    error.printStackTrace();
-                    Log.d("RESPONSE", String.valueOf(error));
-                }
-            });
+                public void onResponse(String response) {
 
-            requestQueue.add(jsonObjectRequest);
-*/
+                    try {
+                        //converting response to json object
+                        JSONObject obj = new JSONObject(response);
+
+                        //if no error in response
+                        if (!obj.getBoolean("error")) {
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                            //getting the user from the response
+                            JSONObject userJson = obj.getJSONObject("user");
+
+                            //creating a new user object
+                            User user = new User(
+                                    userJson.getInt("id"),
+                                    userJson.getString("email"),
+                                    userJson.getString("firstName"),
+                                    userJson.getString("lastName")
+                            );
+
+                            //storing the user in shared preferences
+                            SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+
+                            // Checking if a new user. If so send to Paypal and if not send to home screen.
+                            finish();
+                            Intent i;
+                            if(obj.getBoolean("newUser")) {
+                                i = new Intent(MainActivity.this, Paypal.class);
+                            }else{
+                                i = new Intent(MainActivity.this, Home.class);
+                            }
+                            startActivity(i);
+                        } else {
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.d("RESPONSE1", String.valueOf(e));
+                    }
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("VolleyError", String.valueOf(error));
+                        }
+                    }) {
+                //ID Token Sent
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("idToken", idToken);
+                    return params;
+                }
+            };
+            VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
             // Signed in successfully, show authenticated UI.
             updateUI(account);
         } catch (ApiException e) {
@@ -207,10 +258,10 @@ public class MainActivity extends AppCompatActivity implements
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
-            mRefreshButton.setVisibility(View.VISIBLE);/*
-            //Sends to PayPal screen to link their PayPal
-            Intent i = new Intent(MainActivity.this, Paypal.class);
-            startActivity(i);*/
+
+            mRefreshButton.setVisibility(View.VISIBLE);
+            mRefreshButton.setVisibility(View.VISIBLE);
+
         } else {
             ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
             mStatusTextView.setText(R.string.signed_out);
