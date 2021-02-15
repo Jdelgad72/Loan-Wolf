@@ -47,7 +47,7 @@ public class depositWithdraw extends AppCompatActivity {
         buttonClear = findViewById(R.id.buttonClear);
         message = findViewById(R.id.message);
         workspace = findViewById(R.id.workspace);
-        /*Buttons to let user input/edit values they want to withdraw or deposit.*/
+        /*Buttons to let user input/edit values they want to withdraw or deposit from 0 to 9 along with a decimal.*/
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -118,6 +118,7 @@ public class depositWithdraw extends AppCompatActivity {
                 workspace.setText(add + "9");
             }
         });
+        /* decimal for cents' amount*/
         buttonPeriod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -125,6 +126,7 @@ public class depositWithdraw extends AppCompatActivity {
                 workspace.setText(add + ".");
             }
         });
+        /*3 buttons below are for the user to clear or make a withdraw or deposit */
         buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -160,8 +162,8 @@ public class depositWithdraw extends AppCompatActivity {
         private void depositWithdraw(final String type) {
 
 
-        /* Connection from between app and paypal*/
-            String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/authenticate.php";
+        /* Connection from between app and the user's Paypal from a php transaction file.*/
+            String postUrl = "";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
