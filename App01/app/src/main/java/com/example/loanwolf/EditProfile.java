@@ -2,6 +2,7 @@ package com.example.loanwolf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -19,6 +20,7 @@ public class EditProfile extends AppCompatActivity {
     private EditText Gender;
     private EditText Email;
     private Button Submit;
+    private Button Return;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,15 @@ public class EditProfile extends AppCompatActivity {
         Gender = (EditText) findViewById(R.id.editTextGender);
         Email = (EditText) findViewById(R.id.editTextEmail);
         Submit = (Button) findViewById(R.id.btnSubmit);
+        Return = (Button) findViewById(R.id.btnReturn);
 
+        //return to the profile page without changing anything
+        Return.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(EditProfile.this, Profile.class));
+            }
+        });
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
