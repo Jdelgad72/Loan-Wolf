@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -33,17 +34,20 @@ public class EditProfile extends AppCompatActivity {
         Gender = (EditText) findViewById(R.id.editTextGender);
         Email = (EditText) findViewById(R.id.editTextEmail);
         Submit = (Button) findViewById(R.id.btnSubmit);
-        
+
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                //in case a user tries to update a field and doesn't add a new one
                 if(First.getText().toString().trim().length()==0|| Last.getText().toString().trim().length()==0)
                     DOB.getText().toString().trim().length()==0 || Address.getText().toString().trim().length()==0)
                     || ZIP.getText().toString().trim().length()==0) || State.getText().toString().trim().length()==0)
                     || Gender.getText().toString().trim().length()==0) || Email.getText().toString().trim().length()==0)
                 {
-                    showMessage("Error", "Please do not leave any blank Fields");
+                    //the message saying that you need to fill out the fields
+                    Toast toast = Toast.makeText(getApplicationContext(), "Please fill out all text fields before saving", Toast.LENGTH_SHORT);
+                    toast.show();
                     return;
                 }
             }
