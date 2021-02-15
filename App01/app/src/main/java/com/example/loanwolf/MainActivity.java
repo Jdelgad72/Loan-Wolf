@@ -5,8 +5,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -39,9 +37,8 @@ public class MainActivity extends AppCompatActivity implements
     private static final int RC_SIGN_IN = 9001;
 
     private GoogleSignInClient mGoogleSignInClient;
-    private TextView mStatusTextView;
-    private TextView mIdTokenTextView;
-    private Button mRefreshButton;
+    /*private TextView mStatusTextView;
+    private Button mRefreshButton;*/
 
 
     @Override
@@ -50,16 +47,21 @@ public class MainActivity extends AppCompatActivity implements
         setContentView(R.layout.activity_main);
 
         // Views
-        mStatusTextView = findViewById(R.id.status);
-        mIdTokenTextView = findViewById(R.id.detail);
+        /*mStatusTextView = findViewById(R.id.status);
         mRefreshButton = findViewById(R.id.button_optional_action);
         mRefreshButton.setText(R.string.refresh_token);
+        mRefreshButton.setOnClickListener(this);*/
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
         findViewById(R.id.sign_out_button).setOnClickListener(this);
         findViewById(R.id.disconnect_button).setOnClickListener(this);
-        mRefreshButton.setOnClickListener(this);
+
+        //Checks to see if it is logged in if so then go to the main activity.
+        if (SharedPrefManager.getInstance(this).isLoggedIn()) {
+            Intent i = new Intent(MainActivity.this, Home.class);
+            startActivity(i);
+        }
 
         // [START configure_signin]
         // Configure sign-in to request the user's ID, email address, and basic
@@ -95,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements
         updateUI(account);
         // [END on_start_sign_in]
     }
-
+/*
     private void refreshIdToken() {
         // Attempt to silently refresh the GoogleSignInAccount. If the GoogleSignInAccount
         // already has a valid token this method may complete immediately.
@@ -110,7 +112,7 @@ public class MainActivity extends AppCompatActivity implements
                         handleSignInResult(task);
                     }
                 });
-    }
+    }*/
 
 
     // [START onActivityResult]
@@ -133,9 +135,8 @@ public class MainActivity extends AppCompatActivity implements
         try {
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
             final String idToken = account.getIdToken();
-            Log.d("RESPONSE", idToken);
 
-            // send ID Token to server and validate
+            // send ID Token to server and validates
             String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/authenticate.php";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                 @Override
@@ -144,7 +145,7 @@ public class MainActivity extends AppCompatActivity implements
                     try {
                         //converting response to json object
                         JSONObject obj = new JSONObject(response);
-                        Log.d("RESPONSE1", String.valueOf(obj));
+
                         //if no error in response
                         if (!obj.getBoolean("error")) {
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
@@ -155,18 +156,23 @@ public class MainActivity extends AppCompatActivity implements
                             //creating a new user object
                             User user = new User(
                                     userJson.getInt("id"),
-                                    userJson.getString("username"),
                                     userJson.getString("email"),
-                                    userJson.getString("firstname"),
-                                    userJson.getString("lastname"),
-                                    userJson.getString("googleId")
+                                    userJson.getString("firstName"),
+                                    userJson.getString("lastName")
                             );
 
                             //storing the user in shared preferences
                             SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
-                            //starting the profile activity and taking you to the main activity.
+
+                            // Checking if a new user. If so send to Paypal and if not send to home screen.
                             finish();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+                            Intent i;
+                            if(obj.getBoolean("newUser")) {
+                                i = new Intent(MainActivity.this, Paypal.class);
+                            }else{
+                                i = new Intent(MainActivity.this, Home.class);
+                            }
+                            startActivity(i);
                         } else {
                             Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                         }
@@ -179,8 +185,7 @@ public class MainActivity extends AppCompatActivity implements
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                          /*  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();*/
-                            Log.d("RESPONSE1", String.valueOf(error));
+                            Log.d("VolleyError", String.valueOf(error));
                         }
                     }) {
                 //ID Token Sent
@@ -191,7 +196,6 @@ public class MainActivity extends AppCompatActivity implements
                     return params;
                 }
             };
-
             VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
             // Signed in successfully, show authenticated UI.
@@ -243,25 +247,21 @@ public class MainActivity extends AppCompatActivity implements
    // @SuppressLint("StringFormatInvalid")
     private void updateUI(@Nullable GoogleSignInAccount account) {
         if (account != null) {
-            /*((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
-
-            String idToken = account.getIdToken();
-            mIdTokenTextView.setText(getString(R.string.id_token_fmt, idToken));
+            //((TextView) findViewById(R.id.status)).setText(R.string.signed_in);
 
             findViewById(R.id.sign_in_button).setVisibility(View.GONE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.VISIBLE);
+
+            /*mRefreshButton.setVisibility(View.VISIBLE);
             mRefreshButton.setVisibility(View.VISIBLE);*/
-            //Sends to PayPal screen to link their PayPal
-            Intent i = new Intent(MainActivity.this, Profile.class);
-            startActivity(i);
+
         } else {
-            ((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
-            mStatusTextView.setText(R.string.signed_out);
-            mIdTokenTextView.setText(getString(R.string.id_token_fmt, "null"));
+            //((TextView) findViewById(R.id.status)).setText(R.string.signed_out);
+            //mStatusTextView.setText(R.string.signed_out);
 
             findViewById(R.id.sign_in_button).setVisibility(View.VISIBLE);
             findViewById(R.id.sign_out_and_disconnect).setVisibility(View.GONE);
-            mRefreshButton.setVisibility(View.GONE);
+            //mRefreshButton.setVisibility(View.GONE);
         }
     }
 
@@ -278,9 +278,9 @@ public class MainActivity extends AppCompatActivity implements
             case R.id.disconnect_button:
                 revokeAccess();
                 break;
-            case R.id.button_optional_action:
+                /*case R.id.button_optional_action:
                 refreshIdToken();
-                break;
+                break;*/
         }
     }
 }
