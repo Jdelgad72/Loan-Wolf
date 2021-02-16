@@ -7,22 +7,39 @@
     tools:context=".MainActivity">
 
 
-    <Button
-        android:id="@+id/profileSharingBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginTop="345dp"
-        android:layout_marginBottom="338dp"
-        android:text="Profile Sharing Consent" />
-
     <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textAppearance="?android:attr/textAppearanceSmall"
-            android:text=""
-            android:id="@+id/txtResult" />
+        android:id="@+id/txtResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="118dp"
+        android:layout_marginTop="200dp"
+        android:layout_marginEnd="99dp"
+        android:layout_marginBottom="512dp"
+        android:text="Choose your payment method: "
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        tools:ignore="HardcodedText" />
+
+    <Button
+        android:id="@+id/Button2"
+        android:layout_width="118dp"
+        android:layout_height="77dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginStart="154dp"
+        android:layout_marginTop="263dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginBottom="391dp"
+        android:backgroundTint="#2196F3"
+        android:text="Connect With Paypal"
+        android:textColor="#FFFFFF"
+        app:srcCompat="@drawable/cio_paypal_logo"
+        tools:ignore="HardcodedText" />
 
 
 </RelativeLayout>

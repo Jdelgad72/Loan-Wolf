@@ -1,111 +1,62 @@
 package com.example.loanwolf;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.content.Context;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.paypal.android.sdk.payments.PayPalAuthorization;
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.paypal.android.sdk.payments.PayPalOAuthScopes;
-import com.paypal.android.sdk.payments.PayPalProfileSharingActivity;
-import com.paypal.android.sdk.payments.PayPalService;
-
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 public class Paypal extends AppCompatActivity {
 
-    private static final int REQUEST_CODE_PROFILE_SHARING = 7171;
-    private static PayPalConfiguration config = new PayPalConfiguration()
-
-            // Start with mock environment.  When ready, switch to sandbox (ENVIRONMENT_SANDBOX)
-            // or live (ENVIRONMENT_PRODUCTION)
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
-
-            .clientId("AYXBDSgbIoe0KNpb_YnIOOYhmqnEOoGQfo2aj1TNDq_0BSK3CofUdoPJXxNssjvOz5Md-mJq1pkcx30L")
-
-            // Minimally, you will need to set three merchant information properties.
-            // These should be the same values that you provided to PayPal when you registered your app.
-            .merchantName("LoanWolf");
-
-
+    final Context context = this;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_paypal);
 
 
 
-        Intent intent = new Intent(this, PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
-
-        startService(intent);
-        Button btnSharingProfile = findViewById(R.id.profileSharingBtn);
-        btnSharingProfile.setOnClickListener(new View.OnClickListener() {
+        Button test = findViewById(R.id.Button2);
+        test.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Paypal.this, PayPalProfileSharingActivity.class);
+                final TextView textView = (TextView) findViewById(R.id.txtResult);
+// ...
 
-                // send the same configuration for restart resiliency
-                intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, config);
+// Instantiate the RequestQueue.
+                RequestQueue queue = Volley.newRequestQueue(context);
+                String url ="https://www.sandbox.paypal.com/connect?flowEntry=static&client_id=AYXBDSgbIoe0KNpb_YnIOOYhmqnEOoGQfo2aj1TNDq_0BSK3CofUdoPJXxNssjvOz5Md-mJq1pkcx30L&scope=openid profile email address&redirect_uri=https%3A%2F%2Fwww.myreturnurl.com&state=123456";
 
-                intent.putExtra(PayPalProfileSharingActivity.EXTRA_REQUESTED_SCOPES, getOauthScopes());
+// Request a string response from the provided URL.
+                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+                        new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+                                // Display the first 500 characters of the response string.
+                                textView.setText("Response is: "+ response.substring(0,500));
+                            }
+                        }, new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        textView.setText("That didn't work!");
+                    }
+                });
 
-                startActivityForResult(intent, REQUEST_CODE_PROFILE_SHARING);
+// Add the request to the RequestQueue.
+                queue.add(stringRequest);
+
             }
         });
     }
 
-    @Override
-    public void onDestroy() {
-        stopService(new Intent(this, PayPalService.class));
-        super.onDestroy();
-    }
-
-
-    private PayPalOAuthScopes getOauthScopes() {
-        /* create the set of required scopes
-         * Note: see https://developer.paypal.com/docs/integration/direct/identity/attributes/ for mapping between the
-         * attributes you select for this app in the PayPal developer portal and the scopes required here.
-         */
-        Set<String> scopes = new HashSet<String>(
-                Arrays.asList(PayPalOAuthScopes.PAYPAL_SCOPE_EMAIL, PayPalOAuthScopes.PAYPAL_SCOPE_ADDRESS) );
-        return new PayPalOAuthScopes(scopes);
-    }
-    @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == Activity.RESULT_OK) {
-            PayPalAuthorization auth = data
-                    .getParcelableExtra(PayPalProfileSharingActivity.EXTRA_RESULT_AUTHORIZATION);
-            if (auth != null) {
-                String authorization_code = auth.getAuthorizationCode();
-
-                sendAuthorizationToServer(auth);
-
-            }
-        } else if (resultCode == Activity.RESULT_CANCELED) {
-            Log.i("ProfileSharingExample", "The user canceled.");
-        } else if (resultCode == PayPalProfileSharingActivity.RESULT_EXTRAS_INVALID) {
-            Log.i("ProfileSharingExample",
-                    "Probably the attempt to previously start the PayPalService had an invalid PayPalConfiguration. Please see the docs.");
-        }
-    }
-    private void sendAuthorizationToServer(PayPalAuthorization authorization) {
-
-        // TODO:
-        // Send the authorization response to your server, where it can exchange the authorization code
-        // for OAuth access and refresh tokens.
-        //
-        // Your server must then store these tokens, so that your server code can use it
-        // for getting user profile data in the future.
-
-    }
 }

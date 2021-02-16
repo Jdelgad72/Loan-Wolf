@@ -14,10 +14,15 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
+import com.paypal.android.sdk.payments.PayPalConfiguration;
+import com.paypal.android.sdk.payments.PayPalPayment;
+import com.paypal.android.sdk.payments.PayPalService;
+import com.paypal.android.sdk.payments.PaymentActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -25,6 +30,14 @@ public class depositWithdraw extends AppCompatActivity {
     Button button0, button01, button02, button03, button04, button05, button06, button07, button08, button09, buttonDeposit, buttonWithdraw, buttonPeriod, buttonClear, buttonBack;
     TextView workspace, message;
     String add;
+
+    private Button getButtonWithdraw;
+
+    private int PAYPAL_REQ_CODE = 12;
+
+    private static PayPalConfiguration paypalConfig = new PayPalConfiguration()
+            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX)
+            .clientId(PaypalCID.PAYPAL_CLIENT_ID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -142,7 +155,7 @@ public class depositWithdraw extends AppCompatActivity {
         buttonWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                depositWithdraw("withdraw");
+                PaypalPaymentsMethod();
             }
         });
     /*Button for user to go back to the profile screen*/
@@ -158,6 +171,16 @@ public class depositWithdraw extends AppCompatActivity {
             }
         });
 
+    }
+    private void PaypalPaymentsMethod() {
+        PayPalPayment payment = new PayPalPayment(new BigDecimal(50),"USD"
+        , "Test Payment", PayPalPayment.PAYMENT_INTENT_SALE);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfig);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+
+        
     }
         private void depositWithdraw(final String type) {
 
