@@ -1,13 +1,10 @@
 package com.example.loanwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -26,7 +23,7 @@ public class EditProfile extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_profile);
-
+/*
         First = (EditText) findViewById(R.id.editTextFirstName);
         Last = (EditText) findViewById(R.id.editTextLastName);
         DOB = (EditText) findViewById(R.id.editTextDOB);
@@ -61,6 +58,6 @@ public class EditProfile extends AppCompatActivity {
                     return;
                 }
             }
-        });
+        });*/
     }
 }
