@@ -1,6 +1,7 @@
 package com.example.loanwolf;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,6 +24,14 @@ public class Home extends AppCompatActivity {
                 SharedPrefManager.getInstance(context).logout();
             }
         });
-
+        Button test = findViewById(R.id.button2);
+        test.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(Home.this, Paypal.class);
+                startActivity(i);
+            }
+        });
     }
+
 }

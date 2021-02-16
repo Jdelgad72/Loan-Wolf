@@ -7,23 +7,22 @@
     tools:context=".MainActivity">
 
 
-    <LinearLayout
-        android:orientation="vertical"
-        android:layout_centerInParent="true"
+    <Button
+        android:id="@+id/profileSharingBtn"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="345dp"
+        android:layout_marginBottom="338dp"
+        android:text="Profile Sharing Consent" />
 
-        <TextView
-            android:id="@+id/edtAmount"
-            android:hint="Enter Amount"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:text=""
+            android:id="@+id/txtResult" />
 
-        <Button
-            android:id="@+id/order"
-            android:text="Pay Now"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
 
 </RelativeLayout>
