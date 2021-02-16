@@ -50,8 +50,8 @@ public class EditProfile extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //in case a user tries to update a field and doesn't add a new one
-                if(First.getText().toString().trim().length()==0|| Last.getText().toString().trim().length()==0)
-                    DOB.getText().toString().trim().length()==0 || Address.getText().toString().trim().length()==0)
+                if(First.getText().toString().trim().length()==0 || Last.getText().toString().trim().length()==0)
+                    || DOB.getText().toString().trim().length()==0 || Address.getText().toString().trim().length()==0)
                     || ZIP.getText().toString().trim().length()==0) || State.getText().toString().trim().length()==0)
                     || Gender.getText().toString().trim().length()==0) || Email.getText().toString().trim().length()==0)
                 {
