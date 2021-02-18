@@ -155,7 +155,7 @@ public class MainActivity extends AppCompatActivity implements
 
                             //creating a new user object
                             User user = new User(
-                                    userJson.getInt("id"),
+                                    userJson.getString("id"),
                                     userJson.getString("email"),
                                     userJson.getString("firstName"),
                                     userJson.getString("lastName")
