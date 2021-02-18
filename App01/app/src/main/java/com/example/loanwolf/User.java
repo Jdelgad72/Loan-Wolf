@@ -2,17 +2,16 @@ package com.example.loanwolf;
 
 //Creates a user class so that it can store the necessary info id, name, email, and gender
 public class User {
-    private int id;
-    private String email, firstName, lastName;
+    private String id, email, firstName, lastName;
 
-    public User(int id, String email, String firstName, String lastName) {
+    public User(String id, String email, String firstName, String lastName) {
         this.id = id;
         this.email = email;
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 

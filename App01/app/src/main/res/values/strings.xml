@@ -49,10 +49,23 @@
     <string name="connections_fmt">Connections: %1$s</string>
     <string name="msg_contacts_failed">Get contacts failed.</string>
 
-    <!-- TODO(user): replace with your real server client ID -->
     <!-- Server Client ID.  This should be a valid Web OAuth 2.0 Client ID obtained
          from https://console.developers.google.com/ -->
     <string name="server_client_id">793977192632-uj0c7lrpbgid0lestsb84fq11r1uj91a.apps.googleusercontent.com</string>
     <string name="welcome_message">Welcome to Loan Wolf! Sign-In with a gmail account to use our app.</string>
     <string name="home">Home</string>
+    <string name="title_activity_test">Test</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="drawer_open">Open navigation drawer</string>
+    <string name="drawer_close">Close navigation drawer</string>
 </resources>
