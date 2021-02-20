@@ -24,39 +24,6 @@ public class Paypal extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paypal);
 
-
-
-        Button test = findViewById(R.id.Button2);
-        test.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                final TextView textView = (TextView) findViewById(R.id.txtResult);
-// ...
-
-// Instantiate the RequestQueue.
-                RequestQueue queue = Volley.newRequestQueue(context);
-                String url ="https://www.sandbox.paypal.com/connect?flowEntry=static&client_id=AYXBDSgbIoe0KNpb_YnIOOYhmqnEOoGQfo2aj1TNDq_0BSK3CofUdoPJXxNssjvOz5Md-mJq1pkcx30L&scope=openid profile email address&redirect_uri=https%3A%2F%2Fwww.myreturnurl.com&state=123456";
-
-// Request a string response from the provided URL.
-                StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
-                        new Response.Listener<String>() {
-                            @Override
-                            public void onResponse(String response) {
-                                // Display the first 500 characters of the response string.
-                                textView.setText("Response is: "+ response.substring(0,500));
-                            }
-                        }, new Response.ErrorListener() {
-                    @Override
-                    public void onErrorResponse(VolleyError error) {
-                        textView.setText("That didn't work!");
-                    }
-                });
-
-// Add the request to the RequestQueue.
-                queue.add(stringRequest);
-
-            }
-        });
     }
 
 }
