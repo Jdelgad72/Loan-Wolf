@@ -26,9 +26,8 @@ public class Home extends AppCompatActivity {
         TextView nameTextView = findViewById(R.id.drawerName);
         TextView emailTextView = findViewById(R.id.drawerEmail);
 
-        //Sets textviews specific to user
+        //Sets textviews specific to user details
         titleTextView.setText("Home");
-
         User user = SharedPrefManager.getInfo();
         emailTextView.setText(user.getEmail());
         nameTextView.setText(user.getFirstName() + ' ' + user.getLastName());
@@ -61,18 +60,23 @@ public class Home extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
-
+/*
     public void ClickHome(View view){
         //Recreate activity
         recreate();
     }
+*/
 
-    public void ClickDashboard(View view){
+    public void ClickSearch(View view){
+        redirectActivity(this, Search.class);
+    }
+
+    public void ClickViewPayments(View view){
         //redirect activity to dashboard
         redirectActivity(this, Home.class);
     }
 
-    public void ClickAboutUs(View view){
+    public void ClickViewPortfolio(View view){
         //redirect activity to about us
         redirectActivity(this, Home.class);
     }
