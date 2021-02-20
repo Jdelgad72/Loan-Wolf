@@ -8,8 +8,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
@@ -20,6 +18,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class EditProfile extends AppCompatActivity {
 
@@ -53,6 +53,7 @@ public class EditProfile extends AppCompatActivity {
         //get ID
         User user = SharedPrefManager.getInfo();
         final String id = user.getId();
+        final String email = user.getEmail();
 
         //return to the profile page without changing anything
         Return.setOnClickListener(new View.OnClickListener() {
@@ -67,15 +68,24 @@ public class EditProfile extends AppCompatActivity {
             public void onClick(View v) {
                 //in case a user tries to update a field and doesn't add a new one
                 if(First.getText().toString().trim().length()==0 || Last.getText().toString().trim().length()==0
-                    || DOB.getText().toString().trim().length()==0 || Address.getText().toString().trim().length()==0
-                    || ZIP.getText().toString().trim().length()==0 || State.getText().toString().trim().length()==0
-                    || Gender.getText().toString().trim().length()==0)
-                {
+                        || DOB.getText().toString().trim().length()==0  || Address.getText().toString().trim().length()==0
+                        || ZIP.getText().toString().trim().length()==0  || State.getText().toString().trim().length()==0
+                        || Gender.getText().toString().trim().length()==0){
                     //the message saying that you need to fill out the fields
                     Toast toast = Toast.makeText(getApplicationContext(), "Please fill out all text fields before saving", Toast.LENGTH_SHORT);
                     toast.show();
                     return;
                 }
+                User user = new User(
+                        id,
+                        email,
+                        First.getText().toString().trim(),
+                        Last.getText().toString().trim()
+                );
+
+                //storing the user in shared preferences
+                SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
+
                 // send the updated info to server and validates
                 String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/updateUser.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
@@ -89,8 +99,10 @@ public class EditProfile extends AppCompatActivity {
                             //if no error in response
                             if (!obj.getBoolean("error")) {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                Log.d("RESPONSE1", obj.getString("message"));
                             } else {
                                 Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                Log.d("RESPONSE2", obj.getString("message"));
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -119,6 +131,8 @@ public class EditProfile extends AppCompatActivity {
                         return params;
                     }
                 };
+                VolleySingleton.getInstance(EditProfile.this).addToRequestQueue(stringRequest);
+
             }
         });
     }

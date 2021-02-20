@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements
                             finish();
                             Intent i;
                             if(obj.getBoolean("newUser")) {
-                                i = new Intent(MainActivity.this, Paypal.class);
+                                i = new Intent(MainActivity.this, Home.class);
                             }else{
                                 i = new Intent(MainActivity.this, Home.class);
                             }
