@@ -106,4 +106,8 @@ public class Home extends AppCompatActivity {
         redirectActivity(this, test01.class);
 
     }
+
+    public void editprofile(View view) {
+        startActivity(new Intent(Home.this, EditProfile.class));
+    }
 }
