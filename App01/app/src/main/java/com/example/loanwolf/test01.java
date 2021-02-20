@@ -110,15 +110,20 @@ public class test01 extends AppCompatActivity {
             activityRef = new WeakReference<>(activity);
         }
         @Override
-        public void onFailure(@NonNull Call call, @NonNull IOException e) {
+        public void onFailure(@NonNull Call call, @NonNull final IOException e) {
             final test01 activity = activityRef.get();
             if (activity == null) {
                 return;
             }
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
                     Toast.makeText(
                             activity, "Error: " + e.toString(), Toast.LENGTH_LONG
                     ).show();
-                    }
+                }
+            });
+        }
         @Override
         public void onResponse(@NonNull Call call, @NonNull final Response response)
                 throws IOException {
@@ -127,9 +132,14 @@ public class test01 extends AppCompatActivity {
                 return;
             }
             if (!response.isSuccessful()) {
+                activity.runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
                         Toast.makeText(
                                 activity, "Error: " + response.toString(), Toast.LENGTH_LONG
                         ).show();
+                    }
+                });
             } else {
                 activity.onPaymentSuccess(response);
             }

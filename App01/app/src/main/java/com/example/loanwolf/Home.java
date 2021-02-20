@@ -98,8 +98,8 @@ public class Home extends AppCompatActivity {
         closeDrawer(drawerLayout);
     }
 
-    public void Buttonclick () {
+    public void Buttonclick(View view) {
         redirectActivity(this, test01.class);
-    }
 
+    }
 }
