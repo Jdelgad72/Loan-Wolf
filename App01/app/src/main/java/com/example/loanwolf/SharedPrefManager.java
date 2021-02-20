@@ -50,9 +50,10 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        ctx.startActivity(new Intent(ctx, MainActivity.class));
+        ctx.startActivity(new Intent(ctx, MainActivity.class).putExtra("info", "logout"));
     }
 
+    //Retrieves info stored in sharedpreferences.
     public static User getInfo(){
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         User user = new User(
