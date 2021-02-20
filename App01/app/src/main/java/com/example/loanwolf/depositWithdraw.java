@@ -14,15 +14,6 @@ import com.android.volley.Request;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
-import com.braintreepayments.api.BraintreeFragment;
-import com.braintreepayments.api.exceptions.BraintreeError;
-import com.braintreepayments.api.exceptions.ErrorWithResponse;
-import com.braintreepayments.api.exceptions.InvalidArgumentException;
-import com.braintreepayments.api.models.PaymentMethodNonce;
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.paypal.android.sdk.payments.PayPalPayment;
-import com.paypal.android.sdk.payments.PayPalService;
-import com.paypal.android.sdk.payments.PaymentActivity;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -36,21 +27,10 @@ public class depositWithdraw extends AppCompatActivity {
     TextView workspace, message;
     String add;
 
-    private Button getButtonWithdraw;
-
-    String mAuthorization;
-    PaymentMethodNonce paymentMethodNonce;
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        try {
-            BraintreeFragment mBraintreeFragment = BraintreeFragment.newInstance(depositWithdraw.this, mAuthorization);
-            // mBraintreeFragment is ready to use!
-        } catch (InvalidArgumentException e) {
-            // There was an issue with your authorization string.
-        }
 
         setContentView(R.layout.activity_deposit_withdraw);
 
@@ -164,6 +144,7 @@ public class depositWithdraw extends AppCompatActivity {
         buttonWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
             }
         });
         /*Button for user to go back to the profile screen*/
@@ -182,35 +163,10 @@ public class depositWithdraw extends AppCompatActivity {
 
     }
 
-    public void onPaymentMethodNonceCreated(PaymentMethodNonce paymentMethodNonce) {
-        // Send this nonce to your server
-        String nonce = paymentMethodNonce.getNonce();
-    }
-
     public void onCancel(int requestCode) {
         // Use this to handle a canceled activity, if the given requestCode is important.
         // You may want to use this callback to hide loading indicators, and prepare your UI for input
     }
-
-    public void onError(Exception error) {
-        if (error instanceof ErrorWithResponse) {
-            ErrorWithResponse errorWithResponse = (ErrorWithResponse) error;
-            BraintreeError cardErrors = errorWithResponse.errorFor("creditCard");
-            if (cardErrors != null) {
-                // There is an issue with the credit card.
-                BraintreeError expirationMonthError = cardErrors.errorFor("expirationMonth");
-                if (expirationMonthError != null) {
-                    // There is an issue with the expiration month.
-                    setErrorMessage(expirationMonthError.getMessage());
-                }
-            }
-        }
-    }
-
-    private void setErrorMessage(String message) {
-        
-    }
-
 
     /*
     @Override
@@ -239,7 +195,7 @@ public class depositWithdraw extends AppCompatActivity {
 
 
         /* Connection from between app and the user's Paypal from a php transaction file.*/
-            /* String postUrl = "";
+            /* String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/transaction.php";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
