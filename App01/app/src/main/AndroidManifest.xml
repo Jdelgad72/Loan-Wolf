@@ -11,14 +11,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-
-=======
-        <activity android:name=".EditProfile"></activity>
+        <activity android:name=".LoanAgreement"></activity>
+        <activity android:name=".EditProfile" />
         <activity android:name=".Home" />
         <activity android:name=".depositWithdraw" />
->>>>>>> c638e42b8057b451798a5481835d264213bbf05f
         <activity android:name=".Profile" />
-        <activity android:name=".Paypal" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
