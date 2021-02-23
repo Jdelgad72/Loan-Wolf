@@ -18,6 +18,7 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -27,8 +28,10 @@ public class depositWithdraw extends AppCompatActivity {
     String add;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         setContentView(R.layout.activity_deposit_withdraw);
 
         button0 = findViewById(R.id.button0);
@@ -136,19 +139,19 @@ public class depositWithdraw extends AppCompatActivity {
         buttonDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                depositWithdraw("deposit");
             }
         });
         buttonWithdraw.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                depositWithdraw("withdraw");
+
             }
         });
-    /*Button for user to go back to the profile screen*/
+        /*Button for user to go back to the profile screen*/
         backButton();
     }
-        private void backButton(){
+
+    private void backButton() {
         buttonBack = findViewById(R.id.buttonBack);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -159,11 +162,40 @@ public class depositWithdraw extends AppCompatActivity {
         });
 
     }
+
+    public void onCancel(int requestCode) {
+        // Use this to handle a canceled activity, if the given requestCode is important.
+        // You may want to use this callback to hide loading indicators, and prepare your UI for input
+    }
+
+    /*
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        try {
+            mBraintreeFragment = BraintreeFragment.newInstance(this, mAuthorization);
+            // mBraintreeFragment is ready to use!
+        } catch (InvalidArgumentException e) {
+            // There was an issue with your authorization string.
+        }
+    }
+
+    private void PaypalPaymentsMethod() {
+        PayPalPayment payment = new PayPalPayment(new BigDecimal(50),"USD"
+        , "Test Payment", PayPalPayment.PAYMENT_INTENT_SALE);
+
+        Intent intent = new Intent(this, PaymentActivity.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, paypalConfig);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payment);
+
+        
+    }
         private void depositWithdraw(final String type) {
 
 
         /* Connection from between app and the user's Paypal from a php transaction file.*/
-            String postUrl = "";
+            /* String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/transaction.php";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -189,7 +221,7 @@ public class depositWithdraw extends AppCompatActivity {
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             /*  Toast.makeText(getApplicationContext(), error.getMessage(), Toast.LENGTH_SHORT).show();*/
-                            Log.d("RESPONSE1", String.valueOf(error));
+                        /*    Log.d("RESPONSE1", String.valueOf(error));
                         }
                     }) {
                 //ID Token Sent
@@ -205,5 +237,5 @@ public class depositWithdraw extends AppCompatActivity {
             VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
 
-    }
+    } */
 }

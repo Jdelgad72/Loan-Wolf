@@ -1,4 +1,5 @@
 package com.example.loanwolf;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
@@ -30,7 +31,7 @@ public class SharedPrefManager {
     public void userLogin(User user) {
         SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt(KEY_ID, user.getId());
+        editor.putString(KEY_ID, user.getId());
         editor.putString(KEY_EMAIL, user.getEmail());
         editor.putString(KEY_FIRSTNAME, user.getFirstName());
         editor.putString(KEY_LASTNAME, user.getLastName());
@@ -49,6 +50,18 @@ public class SharedPrefManager {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.apply();
-        ctx.startActivity(new Intent(ctx, MainActivity.class));
+        ctx.startActivity(new Intent(ctx, MainActivity.class).putExtra("info", "logout"));
+    }
+
+    //Retrieves info stored in sharedpreferences.
+    public static User getInfo(){
+        SharedPreferences sharedPreferences = ctx.getSharedPreferences(SHARED_PREF_NAME, Context.MODE_PRIVATE);
+        User user = new User(
+                sharedPreferences.getString(KEY_ID, "No Id"),
+                sharedPreferences.getString(KEY_EMAIL, "No email."),
+                sharedPreferences.getString(KEY_FIRSTNAME, "No First Name."),
+                sharedPreferences.getString(KEY_LASTNAME, "No Last Name.")
+        );
+        return user;
     }
 }

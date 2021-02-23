@@ -54,8 +54,8 @@ public class MainActivity extends AppCompatActivity implements
 
         // Button listeners
         findViewById(R.id.sign_in_button).setOnClickListener(this);
-        findViewById(R.id.sign_out_button).setOnClickListener(this);
-        findViewById(R.id.disconnect_button).setOnClickListener(this);
+        //findViewById(R.id.sign_out_button).setOnClickListener(this);
+        //findViewById(R.id.disconnect_button).setOnClickListener(this);
 
         //Checks to see if it is logged in if so then go to the main activity.
         if (SharedPrefManager.getInstance(this).isLoggedIn()) {
@@ -77,6 +77,14 @@ public class MainActivity extends AppCompatActivity implements
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
         // [END build_client]
+
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String value = extras.getString("info");
+            if (value.equals("logout")){
+                signOut();
+            }
+        }
 
         // [START customize_button]
         // Set the dimensions of the sign-in button.
@@ -155,7 +163,7 @@ public class MainActivity extends AppCompatActivity implements
 
                             //creating a new user object
                             User user = new User(
-                                    userJson.getInt("id"),
+                                    userJson.getString("id"),
                                     userJson.getString("email"),
                                     userJson.getString("firstName"),
                                     userJson.getString("lastName")
@@ -168,7 +176,7 @@ public class MainActivity extends AppCompatActivity implements
                             finish();
                             Intent i;
                             if(obj.getBoolean("newUser")) {
-                                i = new Intent(MainActivity.this, Paypal.class);
+                                i = new Intent(MainActivity.this, Home.class);
                             }else{
                                 i = new Intent(MainActivity.this, Home.class);
                             }
@@ -198,8 +206,7 @@ public class MainActivity extends AppCompatActivity implements
             };
             VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-            // Signed in successfully, show authenticated UI.
-            updateUI(account);
+            findViewById(R.id.sign_in_button).setVisibility(View.GONE);
         } catch (ApiException e) {
             // The ApiException status code indicates the detailed failure reason.
             // Please refer to the GoogleSignInStatusCodes class reference for more information.
@@ -223,7 +230,7 @@ public class MainActivity extends AppCompatActivity implements
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // [START_EXCLUDE]
-                        updateUI(null);
+                        Log.d("Status", "Successfully logged out");
                         // [END_EXCLUDE]
                     }
                 });
@@ -237,7 +244,7 @@ public class MainActivity extends AppCompatActivity implements
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         // [START_EXCLUDE]
-                        updateUI(null);
+                        Log.d("Status", "Successfully revoked out");
                         // [END_EXCLUDE]
                     }
                 });
