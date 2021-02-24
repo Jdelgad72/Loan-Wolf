@@ -17,6 +17,7 @@
             android:layout_height="wrap_content"
             android:contentDescription="Back Button"
             android:onClick="ClickHome"
+
             android:src="@drawable/ic_back" />
 
         <SearchView

@@ -5,76 +5,96 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
 
-public class ListViewAdapter extends BaseAdapter {
+import java.util.ArrayList;
+
+public class ListViewAdapter extends BaseAdapter implements Filterable {
 
     // Declare Variables
     Context mContext;
-    LayoutInflater inflater;
-    private List<UserNames> userNamesList;
-    private ArrayList<UserNames> arraylist;
+    ArrayList<UserNames> userNames;
+    CustomFilter filter;
+    ArrayList<UserNames> filterList;
 
-    public ListViewAdapter(Context context, ArrayList<UserNames> userNamesList) {
+    public ListViewAdapter(Context context, ArrayList<UserNames> userNames) {
         mContext = context;
-        this.userNamesList = userNamesList;
-        inflater = LayoutInflater.from(mContext);
-        this.arraylist = new ArrayList<UserNames>();
-        this.arraylist.addAll(userNamesList);
+        this.userNames = userNames;
+        this.filterList = userNames;
     }
 
-    public class ViewHolder {
-        TextView name;
+    // Filter Class
+    @Override
+    public Filter getFilter() {
+        if(filter == null){
+            filter=new CustomFilter();
+        }
+
+        return filter;
     }
 
     @Override
     public int getCount() {
-        return userNamesList.size();
+        return userNames.size();
     }
 
     @Override
-    public UserNames getItem(int position) {
-        return userNamesList.get(position);
+    public Object getItem(int position) {
+        return userNames.get(position);
     }
 
     @Override
     public long getItemId(int position) {
-        return position;
+        return userNames.indexOf(getItem(position));
     }
 
     public View getView(final int position, View view, ViewGroup parent) {
-        final ViewHolder holder;
-        if (view == null) {
-            holder = new ViewHolder();
+        LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+
+        if(view==null){
             view = inflater.inflate(R.layout.list_view_items, null);
-            // Locate the TextViews in listview_item.xml
-            holder.name = (TextView) view.findViewById(R.id.TextView2);
-            view.setTag(holder);
-        } else {
-            holder = (ViewHolder) view.getTag();
         }
+
+        TextView nameTxt = view.findViewById(R.id.TextView2);
+        TextView emailTxt = view.findViewById(R.id.email);
+
         // Set the results into TextViews
-        holder.name.setText(userNamesList.get(position).getUserName());
+        nameTxt.setText(userNames.get(position).getUserName());
+        emailTxt.setText(userNames.get(position).getEmail());
         return view;
     }
 
-    // Filter Class
-    public void filter(String charText) {
-        charText = charText.toLowerCase(Locale.getDefault());
-        userNamesList.clear();
-        if (charText.length() == 0) {
-            userNamesList.addAll(arraylist);
-        } else {
-            for (UserNames wp : arraylist) {
-                if (wp.getUserName().toLowerCase(Locale.getDefault()).contains(charText)) {
-                    userNamesList.add(wp);
-                }
-            }
-        }
-        notifyDataSetChanged();
-    }
+    class CustomFilter extends Filter{
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint){
 
+            FilterResults results = new FilterResults();
+
+            if(constraint!= null && constraint.length()>0){
+                constraint = constraint.toString().toUpperCase();
+                ArrayList<UserNames> filters = new ArrayList<UserNames>();
+
+                for(int i=0;i<filterList.size();i++){
+                    if(filterList.get(i).getUserName().toUpperCase().contains(constraint)){
+                        UserNames p = new UserNames(filterList.get(i).getUserName(), filterList.get(i).getEmail());
+                        filters.add(p);
+                    }
+                }
+                results.count=filters.size();
+                results.values=filters;
+            }else{
+                results.count=filterList.size();
+                results.values=filterList;
+            }
+            return results;
+        }
+
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results){
+            userNames = (ArrayList<UserNames>) results.values;
+            notifyDataSetChanged();
+        }
+    }
 }
