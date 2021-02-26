@@ -23,6 +23,7 @@ public class LoanAgreement extends AppCompatActivity {
         });
     }
     public void openDialog() {
-        
+        ExampleDialog exampleDialog = new ExampleDialog();
+        exampleDialog.show(getSupportFragmentManager(), "Example Dialog");
     }
 }
