@@ -53,6 +53,10 @@ public class ViewProfile extends AppCompatActivity {
         final TextView reviewerNameTxtView = findViewById(R.id.reviewerName);
         final TextView recentRatingTxtView = findViewById(R.id.recentRatingTxtView);
         final TextView commentTxtView = findViewById(R.id.commentTxtView);
+        final TextView defaultRateTxtView = findViewById(R.id.numberStat);
+        final TextView numberPaymentTxtView = findViewById(R.id.numberLoans);
+
+
 
         nameTxtView.setText(name);
 
@@ -79,6 +83,10 @@ public class ViewProfile extends AppCompatActivity {
                         reviewerNameTxtView.setText(obj.getString("recentReviewer"));
                         recentRatingTxtView.setText(obj.getString("recentStarRating"));
                         commentTxtView.setText(obj.getString("recentComment"));
+                        if(!obj.getString("defaultRate").equals("null")) {
+                            defaultRateTxtView.setText(String.valueOf(Float.valueOf(obj.getString("defaultRate")) * 100));
+                        }
+                        numberPaymentTxtView.setText(obj.getString("numOfPayments"));
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -108,6 +116,10 @@ public class ViewProfile extends AppCompatActivity {
 
     public void ClickSearch(View view) {
         redirectActivity(this, Search.class);
+    }
+
+    public void ClickProfileResume(View view) {
+        redirectActivity(this, ProfileResume.class);
     }
 
     private static void redirectActivity(Activity activity, Class aClass){
