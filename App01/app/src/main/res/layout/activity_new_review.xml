@@ -19,4 +19,26 @@
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="0dp" />
 
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:background="#25E65B"
+        android:text="Write a Review"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEditProfile"
+        tools:layout_editor_absoluteX="49dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#25E65B"
+        android:text="Rate the User"
+        app:layout_constraintTop_toBottomOf="@+id/editReview"
+        tools:layout_editor_absoluteX="49dp"
+        tools:ignore="MissingConstraints" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
