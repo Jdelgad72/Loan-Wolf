@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Scroller;
+import android.widget.Toast;
 
 public class NewReview extends AppCompatActivity {
 
@@ -50,6 +51,23 @@ public class NewReview extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NewReview.this, Profile.class));
+            }
+        });
+        //Code for a submit button
+        Submit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                /*//get which radio button is selected
+                public void checkButton(View v){
+                    int radioID = RadioGroup.getCheckedRadioButtonId();
+                    selectedRadioButton = findViewById(radioID);
+                }*/
+                if (Review.getText().toString().trim().length() == 0) {
+                    //the message saying that you need to fill out the fields
+                    Toast toast = Toast.makeText(getApplicationContext(), "Please fill out a Review before saving", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
             }
         });
     }
