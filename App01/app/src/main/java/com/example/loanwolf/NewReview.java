@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.Scroller;
 
 public class NewReview extends AppCompatActivity {
 
@@ -35,5 +36,11 @@ public class NewReview extends AppCompatActivity {
         Five = (RadioButton) findViewById(R.id.radioFive);
         Return = (Button) findViewById(R.id.btnReturn);
         Submit = (Button) findViewById(R.id.btnSubmit);
+
+        //Code so the EditText can scroll
+        Review.setScroller(new Scroller(getApplicationContext()));
+        Review.setVerticalScrollBarEnabled(true);
+        Review.setMinLines(1);
+        Review.setMaxLines(6);
     }
 }
