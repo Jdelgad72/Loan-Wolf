@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewReview"
+    android:background="#525151">
+
+    <TextView
+        android:id="@+id/textViewEditProfile"
+        android:layout_width="414dp"
+        android:layout_height="67dp"
+        android:background="#25E65B"
+        android:gravity="center"
+        android:text="Leave a Review"
+        android:textSize="36sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:background="#25E65B"
+        android:text="Write a Review"
+        app:layout_constraintTop_toBottomOf="@+id/textViewEditProfile"
+        tools:layout_editor_absoluteX="49dp"
+        tools:ignore="MissingConstraints" />
+
+    <EditText
+        android:id="@+id/editReview"
+        android:layout_width="316dp"
+        android:layout_height="158dp"
+        android:layout_marginTop="25dp"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text=""
+        android:background="#DCDCDC"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:layout_editor_absoluteX="44dp"
+        tools:ignore="MissingConstraints"
+        android:minLines="1"
+        android:maxLines="6"
+        android:scrollbars="vertical"/>
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="#25E65B"
+        android:text="Rate the User"
+        app:layout_constraintTop_toBottomOf="@+id/editReview"
+        tools:layout_editor_absoluteX="49dp"
+        tools:ignore="MissingConstraints" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="333dp"
+        android:layout_height="269dp"
+        android:layout_marginTop="5dp"
+        android:background="#DCDCDC"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        tools:layout_editor_absoluteX="45dp"
+        tools:ignore="MissingConstraints">
+
+        <RadioButton
+            android:id="@+id/radioOne"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="One out of Five Stars"
+            android:checked="false"/>
+
+        <RadioButton
+            android:id="@+id/radioTwo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Two out of Five Stars"
+            android:checked="false"/>
+
+        <RadioButton
+            android:id="@+id/radioThree"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Three out of Five Stars"
+            android:checked="false"/>
+
+        <RadioButton
+            android:id="@+id/radioFour"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Four out of Five Stars" />
+
+        <RadioButton
+            android:id="@+id/radioFive"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Five out of Five Stars"
+            android:checked="false"/>
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:background="#25E65B"
+        android:text="Return To Profile"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:layout_editor_absoluteX="36dp"
+        tools:ignore="MissingConstraints" />
+
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="21dp"
+        android:background="#25E65B"
+        android:text="Submit"
+        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
+        tools:layout_editor_absoluteX="280dp"
+        tools:ignore="MissingConstraints" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
