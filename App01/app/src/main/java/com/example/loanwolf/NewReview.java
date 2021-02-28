@@ -68,7 +68,7 @@ public class NewReview extends AppCompatActivity {
                     toast.show();
                     return;
                 }
-            }
-        });
-    }
-}
+            }//end public void for onclick listener
+        });//end submit onclick listener
+    }//end on create
+}//end main
