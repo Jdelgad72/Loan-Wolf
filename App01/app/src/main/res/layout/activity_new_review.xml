@@ -42,7 +42,10 @@
         android:background="#DCDCDC"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
         tools:layout_editor_absoluteX="44dp"
-        tools:ignore="MissingConstraints"/>
+        tools:ignore="MissingConstraints"
+        android:minLines="1"
+        android:maxLines="6"
+        android:scrollbars="vertical"/>
 
     <TextView
         android:id="@+id/textView3"
