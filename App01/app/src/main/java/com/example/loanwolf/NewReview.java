@@ -24,5 +24,16 @@ public class NewReview extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_new_review);
+
+        //Get widgets from XML
+        Review = (EditText) findViewById(R.id.editReview);
+        RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
+        One = (RadioButton) findViewById(R.id.radioOne);
+        Two = (RadioButton) findViewById(R.id.radioTwo);
+        Three = (RadioButton) findViewById(R.id.radioThree);
+        Four = (RadioButton) findViewById(R.id.radioFour);
+        Five = (RadioButton) findViewById(R.id.radioFive);
+        Return = (Button) findViewById(R.id.btnReturn);
+        Submit = (Button) findViewById(R.id.btnSubmit);
     }
 }
