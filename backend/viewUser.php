@@ -30,10 +30,30 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   $stmt2->execute();
   $stmt2->bind_result($recentReviewer, $recentStarRating, $recentComment);
   $stmt2->fetch();
+  $stmt2->close();
 
   $response["recentReviewer"] = $recentReviewer;
   $response["recentStarRating"] = $recentStarRating;
   $response["recentComment"] = $recentComment;
+  
+  $stmt3 = $conn->prepare("Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID;");
+  $stmt3->bind_param("s",$searchEmail);
+  $stmt3->execute();
+  $stmt3->bind_result($numOfPayments);
+  $stmt3->fetch(); 
+  $stmt3->close();
+  
+  $response["numOfPayments"] = $numOfPayments;
+ 
+  $stmt4 = $conn->prepare("Select COUNT(p.paymentID)/(Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID) AS defaultRate FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID AND paymentStatus = 'Failed';");
+  $stmt4->bind_param("ss",$searchEmail, $searchEmail);
+  $stmt4->execute();
+  $stmt4->bind_result($defaultRate);
+  $stmt4->fetch();
+  $stmt4->close();
+
+  $response["defaultRate"] = $defaultRate;
+
   $response['error'] =false;
   $response['message'] ="Successfully ran both queries"; 
 }else{
