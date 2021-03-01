@@ -39,6 +39,21 @@ public class test01 extends AppCompatActivity {
     private OkHttpClient httpClient = new OkHttpClient();
     private String paymentIntentClientSecret;
     private Stripe stripe;
+    Button buttonBack;
+/*
+    {
+        backButton();
+    }
+    private void backButton() {
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(test01.this, depositWithdraw.class));
+            }
+        });
+
+    } */
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,6 +96,7 @@ public class test01 extends AppCompatActivity {
         });
 
     }
+
     private void displayAlert(@NonNull String title,
                               @Nullable String message) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this)
@@ -184,4 +200,17 @@ public class test01 extends AppCompatActivity {
             activity.displayAlert("Error", e.toString());
         }
     }
+    /*
+    {
+        backButton();
+    }
+    private void backButton() {
+        buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(test01.this, depositWithdraw.class));
+            }
+        });
+
+    } */
 }

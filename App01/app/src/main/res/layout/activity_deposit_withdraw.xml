@@ -9,8 +9,8 @@
 
     <TextView
         android:id="@+id/transactions"
-        android:layout_width="408dp"
-        android:layout_height="48dp"
+        android:layout_width="413dp"
+        android:layout_height="47dp"
         android:background="@color/main_gray"
         android:text="Transaction"
         android:textAlignment="center"
