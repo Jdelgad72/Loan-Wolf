@@ -33,8 +33,9 @@ public class ViewProfile extends AppCompatActivity {
         Button btnLoan = findViewById(R.id.loanBtn);
         final Button btnReport = findViewById(R.id.reportBtn);
         final Button btnMakeReview = findViewById(R.id.makeReview);
+        Button profileResumeBtn = findViewById(R.id.profileResume);
 
-        String name = getIntent().getStringExtra("USERNAME");
+        final String name = getIntent().getStringExtra("USERNAME");
         final String email = getIntent().getStringExtra("EMAIL");
         User user = SharedPrefManager.getInfo();
         final String id = user.getId();
@@ -56,11 +57,9 @@ public class ViewProfile extends AppCompatActivity {
         final TextView defaultRateTxtView = findViewById(R.id.numberStat);
         final TextView numberPaymentTxtView = findViewById(R.id.numberLoans);
 
-
-
         nameTxtView.setText(name);
 
-        // send ID Token to server and validates
+        // send Email and ID to server to communicate with database.
         String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/viewUser.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
             @Override
@@ -112,14 +111,20 @@ public class ViewProfile extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
+        profileResumeBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewProfile.this, ProfileResume.class);
+                intent.putExtra("USERNAME", name);
+                intent.putExtra("EMAIL", email);
+                startActivity(intent);
+            }
+        });
     }
 
     public void ClickSearch(View view) {
         redirectActivity(this, Search.class);
-    }
-
-    public void ClickProfileResume(View view) {
-        redirectActivity(this, ProfileResume.class);
     }
 
     private static void redirectActivity(Activity activity, Class aClass){
