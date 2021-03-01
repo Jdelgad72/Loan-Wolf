@@ -139,6 +139,7 @@ public class depositWithdraw extends AppCompatActivity {
         buttonDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(depositWithdraw.this, test01.class));
             }
         });
         buttonWithdraw.setOnClickListener(new View.OnClickListener() {
