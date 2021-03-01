@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".OpenLoans">
+    tools:context=".Conversation">
 
     <LinearLayout
         android:id="@+id/linearLayoutMenu"
@@ -21,7 +21,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Back Button"
-            android:onClick="ClickHome"
+            android:onClick="ClickMessages"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -29,7 +29,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" View Current Open Loans"
+            android:text="Person Name"
             android:textAlignment="center"
             android:textColor="#636363"
             android:textSize="24sp"
@@ -37,16 +37,23 @@
 
     </LinearLayout>
 
-    <Button
-        android:id="@+id/button8"
+    <EditText
+        android:id="@+id/editTextTextPersonName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
-        android:onClick="CreateOpenLoan"
-        android:text="Create an Open Loan"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Name"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutMenu" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="77dp"
+        android:layout_height="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_send_24" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

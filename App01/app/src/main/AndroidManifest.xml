@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Messaging"></activity>
+        <activity android:name=".Conversation"></activity>
+        <activity android:name=".Messaging" />
         <activity android:name=".OpenLoans" />
         <activity android:name=".NewReview" />
         <activity android:name=".LoanAgreement" />

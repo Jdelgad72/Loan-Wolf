@@ -6,16 +6,16 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Messaging extends AppCompatActivity {
+public class Conversation extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_messaging);
+        setContentView(R.layout.activity_conversation);
     }
 
-    public void ClickHome(View view) {
-        Intent intent = new Intent(Messaging.this, Home.class);
+    public void ClickMessages(View view) {
+        Intent intent = new Intent(Conversation.this, Messaging.class);
         startActivity(intent);
     }
 }
