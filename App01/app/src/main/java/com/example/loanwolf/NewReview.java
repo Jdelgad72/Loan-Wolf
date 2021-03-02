@@ -68,6 +68,16 @@ public class NewReview extends AppCompatActivity {
                     toast.show();
                     return;
                 }
+                if (Rating.getText().toString().trim().length() <= 0) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Rating must be greater than 0", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
+                if (Rating.getText().toString().trim().length() >= 5) {
+                    Toast toast = Toast.makeText(getApplicationContext(), "Rating must be less than or equal to 5", Toast.LENGTH_SHORT);
+                    toast.show();
+                    return;
+                }
                 User user = new User(
                         id,
                         email,
@@ -117,7 +127,7 @@ public class NewReview extends AppCompatActivity {
                         return params;
                     }
                 };
-                VolleySingleton.getInstance(EditProfile.this).addToRequestQueue(stringRequest);
+                VolleySingleton.getInstance(NewReview.this).addToRequestQueue(stringRequest);
             }//end public void for onclick listener
         });//end submit onclick listener
     }//end on create
