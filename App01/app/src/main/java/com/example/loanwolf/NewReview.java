@@ -15,12 +15,7 @@ import android.widget.Toast;
 public class NewReview extends AppCompatActivity {
 
     private EditText Review;
-    private android.widget.RadioGroup RadioGroup;
-    private RadioButton One;
-    private RadioButton Two;
-    private RadioButton Three;
-    private RadioButton Four;
-    private RadioButton Five;
+    private EditText Rating;
     private Button Return;
     private Button Submit;
 
@@ -31,12 +26,7 @@ public class NewReview extends AppCompatActivity {
 
         //Get widgets from XML
         Review = (EditText) findViewById(R.id.editReview);
-        RadioGroup = (RadioGroup) findViewById(R.id.radioGroup);
-        One = (RadioButton) findViewById(R.id.radioOne);
-        Two = (RadioButton) findViewById(R.id.radioTwo);
-        Three = (RadioButton) findViewById(R.id.radioThree);
-        Four = (RadioButton) findViewById(R.id.radioFour);
-        Five = (RadioButton) findViewById(R.id.radioFive);
+        Rating = (EditText) findViewById(R.id.editRating);
         Return = (Button) findViewById(R.id.btnReturn);
         Submit = (Button) findViewById(R.id.btnSubmit);
 
@@ -57,11 +47,6 @@ public class NewReview extends AppCompatActivity {
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*//get which radio button is selected
-                public void checkButton(View v){
-                    int radioID = RadioGroup.getCheckedRadioButtonId();
-                    selectedRadioButton = findViewById(radioID);
-                }*/
                 if (Review.getText().toString().trim().length() == 0) {
                     //the message saying that you need to fill out the fields
                     Toast toast = Toast.makeText(getApplicationContext(), "Please fill out a Review before saving", Toast.LENGTH_SHORT);

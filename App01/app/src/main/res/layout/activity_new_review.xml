@@ -58,71 +58,47 @@
         tools:layout_editor_absoluteX="49dp"
         tools:ignore="MissingConstraints" />
 
-    <RadioGroup
-        android:id="@+id/radioGroup"
-        android:layout_width="333dp"
-        android:layout_height="269dp"
-        android:layout_marginTop="5dp"
-        android:background="#DCDCDC"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
-        tools:layout_editor_absoluteX="45dp"
-        tools:ignore="MissingConstraints">
-
-        <RadioButton
-            android:id="@+id/radioOne"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="One out of Five Stars"
-            android:checked="false"/>
-
-        <RadioButton
-            android:id="@+id/radioTwo"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Two out of Five Stars"
-            android:checked="false"/>
-
-        <RadioButton
-            android:id="@+id/radioThree"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Three out of Five Stars"
-            android:checked="false"/>
-
-        <RadioButton
-            android:id="@+id/radioFour"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Four out of Five Stars" />
-
-        <RadioButton
-            android:id="@+id/radioFive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Five out of Five Stars"
-            android:checked="false"/>
-    </RadioGroup>
-
     <Button
         android:id="@+id/btnReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="245dp"
         android:background="#25E65B"
         android:text="Return To Profile"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        tools:layout_editor_absoluteX="36dp"
-        tools:ignore="MissingConstraints" />
+        app:layout_constraintTop_toBottomOf="@+id/editRating"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="36dp" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="21dp"
+        android:layout_marginTop="245dp"
         android:background="#25E65B"
         android:text="Submit"
-        app:layout_constraintTop_toBottomOf="@+id/radioGroup"
-        tools:layout_editor_absoluteX="280dp"
+        app:layout_constraintTop_toBottomOf="@+id/editRating"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteX="280dp" />
+
+    <EditText
+        android:id="@+id/editRating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#DCDCDC"
+        android:ems="10"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="49dp"
+        tools:layout_editor_absoluteY="401dp"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Please use whole numbers 1 - 5"
+        tools:layout_editor_absoluteX="48dp"
+        tools:layout_editor_absoluteY="360dp"
+        android:background="#25E65B"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
