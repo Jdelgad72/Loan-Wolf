@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WolfPack"></activity>
+        <activity android:name=".CreateWolfPack"></activity>
+        <activity android:name=".JoinWolfPack" />
+        <activity android:name=".ViewWolfPacks" />
+        <activity android:name=".WolfPack" />
         <activity android:name=".Conversation" />
         <activity android:name=".Messaging" />
         <activity android:name=".OpenLoans" />
