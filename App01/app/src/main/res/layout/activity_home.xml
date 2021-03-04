@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
+    android:background="@android:color/white"
     android:id="@+id/drawer_layout"
     tools:context=".Home">
 
@@ -22,7 +22,9 @@
             android:id="@+id/button2"
             android:layout_width="100sp"
             android:layout_height="100sp"
-            android:text="Button"
+            android:text="Profile"
+            android:background="@color/main_gray"
+            android:textColor="@color/main_green"
             app:layout_constraintVertical_bias="0.624"
             android:onClick="Buttonclick"/>
 
@@ -31,7 +33,9 @@
             android:layout_width="99dp"
             android:layout_height="wrap_content"
             android:onClick="editprofile"
-            android:text="Edit Profile" />
+            android:text="Edit Profile"
+            android:background="@color/main_gray"
+            android:textColor="@color/main_green"/>
 
     </LinearLayout>
 

@@ -7,6 +7,7 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   $searchEmail = $_POST['searchEmail'];
   $requesterID = $_POST['requesterID'];
 
+  //Gathers date joined and the Average Rating
   $stmt = $conn->prepare("select userID, dateJoined, SUM(starRating)/COUNT(starRating) AS averageRating From user, review WHERE userID = userReviewing AND email=? GROUP BY userID;");
   $stmt->bind_param("s",$searchEmail);
   $stmt->execute();
@@ -16,8 +17,9 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   
   $response['dateJoined'] = date("F Y", strtotime($dateJoined));
   $response["rating"] = $averageRating;
-
-  $sql = "select * FROM user, userLoan WHERE (userSender = $requesterID OR userReciever = $requesterID) AND email = '$searchEmail';";
+ 
+  //Checks to see if the two users have had a past interaction.
+  $sql = "select * FROM user, userLoan WHERE (userDebtor = $requesterID OR userCreditor = $requesterID) AND email = '$searchEmail';";
   $result = mysqli_query($conn, $sql);
   if (mysqli_num_rows($result) > 0){
     $response['pastCurrentInteraction'] = true;
@@ -25,6 +27,7 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
     $response['pastCurrentInteraction'] = false;
   }
 
+  //Most recent review Shown
   $stmt2 = $conn->prepare("select Concat(firstName, ' ', lastName) AS name, starRating, comment from user, review WHERE email=? and userID = userReviewing ORDER BY reviewDate DESC LIMIT 1;");
   $stmt2->bind_param("s",$searchEmail);
   $stmt2->execute();
@@ -36,7 +39,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   $response["recentStarRating"] = $recentStarRating;
   $response["recentComment"] = $recentComment;
   
-  $stmt3 = $conn->prepare("Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID;");
+  //Shows number of payments sent out as a debtor.
+  $stmt3 = $conn->prepare("Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userDebtor AND up.paymentID = p.paymentID AND up.fromTo = 1;");
   $stmt3->bind_param("s",$searchEmail);
   $stmt3->execute();
   $stmt3->bind_result($numOfPayments);
@@ -45,7 +49,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   
   $response["numOfPayments"] = $numOfPayments;
  
-  $stmt4 = $conn->prepare("Select COUNT(p.paymentID)/(Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID) AS defaultRate FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID AND paymentStatus = 'Failed';");
+  //Shows Default rate on payments. Or payments that they did not pay.
+  $stmt4 = $conn->prepare("Select COUNT(p.paymentID)/(Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userDebtor AND up.paymentID = p.paymentID AND up.fromTo = 1) AS defaultRate FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userDebtor AND up.paymentID = p.paymentID AND paymentStatus = 'Failed' AND up.fromTo = 1;");
   $stmt4->bind_param("ss",$searchEmail, $searchEmail);
   $stmt4->execute();
   $stmt4->bind_result($defaultRate);

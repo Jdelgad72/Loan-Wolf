@@ -103,7 +103,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void Buttonclick(View view) {
-        redirectActivity(this, test01.class);
+        redirectActivity(this, Profile.class);
 
     }
 

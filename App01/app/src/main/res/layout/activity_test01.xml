@@ -8,6 +8,21 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context=".test01">
 
+    <TextView
+        android:id="@+id/transactions"
+        android:layout_width="411dp"
+        android:layout_height="49dp"
+        android:background="@color/main_gray"
+        android:text="Payment"
+        android:textAlignment="center"
+        android:textColor="@color/main_green"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/cardInputWidget"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
     <com.stripe.android.view.CardInputWidget
         android:id="@+id/cardInputWidget"
         android:layout_width="match_parent"
@@ -22,11 +37,27 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Pay"
+        android:background="@color/main_gray"
+        android:textColor="@color/main_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/cardInputWidget"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="@+id/cardInputWidget"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.679" />
+
+    <Button
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/main_gray"
+        android:text="back"
+        android:textColor="@color/main_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.834" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

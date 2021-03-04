@@ -5,8 +5,7 @@ firstName VARCHAR(64) NOT NULL,
 lastName VARCHAR(64) NOT NULL,
 email VARCHAR(64) NOT NULL,
 accountGoogle VARCHAR(1024) NOT NULL,
-accountPayPal VARCHAR(1024),
-accountPayPalAuthentication VARCHAR(1024),
+amount INT(10),
 dateOfBirth DATE,
 streetAddress VARCHAR(128),
 zipAddress INT(5),
@@ -77,14 +76,17 @@ loanID INT(10) AUTO_INCREMENT,
 loanAmount INT(6) NOT NULL,
 interestRate DECIMAL(6, 6) NOT NULL,
 loanStatus VARCHAR(32) NOT NULL,
+notificationStatus VARCHAR(32),
 loanDateStart DATE NOT NULL,
+loanDateEnd DATE NOT NULL,
 paymentSchedule VARCHAR(16) NOT NULL,
+numberPayments INT(10) NOT NULL,
 dateSent DATE NOT NULL,
 timeSent TIME NOT NULL,
 dateAccepted DATE,
 timeAccepted TIME,
-senderSignature VARCHAR(128) NOT NULL,
-receiverSignature VARCHAR(128) NOT NUll,
+creditorSignature VARCHAR(128),
+debtorSignature VARCHAR(128),
 groupLoanID INT(10),
 PRIMARY KEY (loanID)
 )
@@ -97,6 +99,7 @@ paymentTime TIME NOT NULL,
 paymentDate DATE NOT NULL,
 paymentAmount INT(6) NOT NULL,
 paymentStatus VARCHAR(16),
+notificationStatus VARCHAR(32),
 FOREIGN KEY (loanID) REFERENCES loan(loanID),
 PRIMARY KEY (paymentID)
 )
@@ -125,21 +128,22 @@ FOREIGN KEY (messageID) REFERENCES message(messageID)
 ENGINE=InnoDB;
 
 CREATE TABLE userPayment (
-userTo INT(10) NOT NULL,
-userFrom INT(10) NOT NULL,
+userDebtor INT(10) NOT NULL,
+userCreditor INT(10) NOT NULL,
+fromTo INT(1),
 paymentID INT(10) NOT NULL,
-FOREIGN KEY (userTo) REFERENCES user(userID),
-FOREIGN KEY (userFrom) REFERENCES user(userID),
+FOREIGN KEY (userDebtor) REFERENCES user(userID),
+FOREIGN KEY (userCreditor) REFERENCES user(userID),
 FOREIGN KEY (paymentID) REFERENCES payment(paymentID)
 )
 ENGINE=InnoDB;
 
 CREATE TABLE userLoan (
-userSender INT(10) NOT NULL,
-userReciever INT(10) NOT NULL,
+userDebtor INT(10) NOT NULL,
+userCreditor INT(10) NOT NULL,
 loanID INT(10) NOT NULL,
-FOREIGN KEY (userSender) REFERENCES user(userID),
-FOREIGN KEY (userReciever) REFERENCES user(userID),
+FOREIGN KEY (userDebtor) REFERENCES user(userID),
+FOREIGN KEY (userCreditor) REFERENCES user(userID),
 FOREIGN KEY (loanID) REFERENCES loan(loanID)
 )
 ENGINE=InnoDB;

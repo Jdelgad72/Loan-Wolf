@@ -51,7 +51,7 @@ if(isset($_POST['idToken'])){
  
     }else{//User has not signed up before.  
 
-      $stmt = $conn->prepare("INSERT INTO user(firstName, lastName, email, accountGoogle) VALUES (?, ?, ?, ?)");  
+      $stmt = $conn->prepare("INSERT INTO user(firstName, lastName, email, accountGoogle, amount) VALUES (?, ?, ?, ?, 0)");  
       $stmt->bind_param("ssss", $firstName, $lastName, $email, $userid);  
       if($stmt->execute()){
 
