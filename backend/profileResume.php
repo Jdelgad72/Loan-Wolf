@@ -5,8 +5,9 @@ $response = array();
 if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   $searchEmail = $_POST['searchEmail'];
   $requesterID = $_POST['requesterID'];
-
-  $stmt = $conn->prepare("Select COUNT(ul.loanID) FROM user AS u, userLoan AS ul WHERE email = ? AND u.userID = ul.userSender;");
+  
+  //Retrieves number of loans Sent.
+  $stmt = $conn->prepare("Select COUNT(ul.loanID) FROM user AS u, userLoan AS ul WHERE email = ? AND u.userID = ul.userCreditor;");
   $stmt->bind_param("s",$searchEmail);
   $stmt->execute();
   $stmt->bind_result($loanSent);
@@ -15,7 +16,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
 
   $response["numOfLoanSent"] = $loanSent;
 
-  $stmt1 = $conn->prepare("select l.loanAmount from user as u, userLoan as ul, loan as l WHERE u.userID = userSender AND ul.loanID = l.loanID AND email = ?;");
+  //Retrieves amount sent as a creditor.
+  $stmt1 = $conn->prepare("select l.loanAmount from user as u, userLoan as ul, loan as l WHERE u.userID = userCreditor AND ul.loanID = l.loanID AND email = ?;");
   $stmt1->bind_param("s",$searchEmail);
   $stmt1->execute();
   $stmt1->bind_result($amountSent);
@@ -24,7 +26,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
 
   $response["amountSent"] = $amountSent;
 
-  $stmt2 = $conn->prepare("select COUNT(l.loanID)/(select COUNT(l.loanID) from loan AS l, userLoan as ul, user as u where u.userID = ul.userSender AND l.loanID = ul.loanID AND u.email = ?) AS percentAccepted from loan AS l, userLoan as ul, user as u Where l.loanID = ul.loanID AND u.userID = ul.userSender AND u.email = ? AND (loanStatus = 'Complete' OR loanStatus = 'pending');");
+  //Retrieves the number of loans accepted as a percentage.
+  $stmt2 = $conn->prepare("select COUNT(l.loanID)/(select COUNT(l.loanID) from loan AS l, userLoan as ul, user as u where u.userID = ul.userCreditor AND l.loanID = ul.loanID AND u.email = ?) AS percentAccepted from loan AS l, userLoan as ul, user as u Where l.loanID = ul.loanID AND u.userID = ul.userCreditor AND u.email = ? AND (loanStatus = 'Complete' OR loanStatus = 'pending');");
   $stmt2->bind_param("ss",$searchEmail, $searchEmail);
   $stmt2->execute();
   $stmt2->bind_result($percentLoanAccepted);
@@ -33,7 +36,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
 
   $response["percentLoanAccepted"] = $percentLoanAccepted;
 
-  $stmt3 = $conn->prepare("Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID;");
+  //Retrieves number of payments as a debtor.
+  $stmt3 = $conn->prepare("Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userDebtor AND up.paymentID = p.paymentID AND up.fromTo = 1;");
   $stmt3->bind_param("s",$searchEmail);
   $stmt3->execute();
   $stmt3->bind_result($numOfPayments);
@@ -42,7 +46,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   
   $response["numOfPayments"] = $numOfPayments;
  
-  $stmt4 = $conn->prepare("Select COUNT(p.paymentID)/(Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID) AS defaultRate FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userFrom AND up.paymentID = p.paymentID AND paymentStatus = 'Failed';");
+  //Retrieves Default rate of payments as a debtor.
+  $stmt4 = $conn->prepare("Select COUNT(p.paymentID)/(Select COUNT(p.paymentID) FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userDebtor AND up.paymentID = p.paymentID AND up.fromTo = 1) AS defaultRate FROM user AS u, userPayment AS up, payment AS p WHERE email = ? AND u.userID = up.userDebtor AND up.paymentID = p.paymentID AND paymentStatus = 'Failed' AND up.fromTo = 1;");
   $stmt4->bind_param("ss",$searchEmail, $searchEmail);
   $stmt4->execute();
   $stmt4->bind_result($defaultRate);
@@ -51,7 +56,8 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
 
   $response["defaultRate"] = $defaultRate;
 
-  $stmt5 = $conn->prepare("select l.loanAmount from user as u, userLoan as ul, loan as l WHERE u.userID = userReciever AND ul.loanID = l.loanID AND email = ?;");
+  //Retrieves Amount recieved from creditors.
+  $stmt5 = $conn->prepare("select l.loanAmount from user as u, userLoan as ul, loan as l WHERE u.userID = userDebtor AND ul.loanID = l.loanID AND email = ?;");
   $stmt5->bind_param("s",$searchEmail);
   $stmt5->execute();
   $stmt5->bind_result($amountRecieved);
