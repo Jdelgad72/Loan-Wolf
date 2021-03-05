@@ -11,7 +11,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListViewAdapter extends BaseAdapter implements Filterable {
+public class ListViewAdapterUserNames extends BaseAdapter implements Filterable {
 
     // Declare Variables
     Context mContext;
@@ -19,7 +19,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
     CustomFilter filter;
     ArrayList<UserNames> filterList;
 
-    public ListViewAdapter(Context context, ArrayList<UserNames> userNames) {
+    public ListViewAdapterUserNames(Context context, ArrayList<UserNames> userNames) {
         mContext = context;
         this.userNames = userNames;
         this.filterList = userNames;
@@ -54,7 +54,7 @@ public class ListViewAdapter extends BaseAdapter implements Filterable {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
         if(view==null){
-            view = inflater.inflate(R.layout.list_view_items, null);
+            view = inflater.inflate(R.layout.list_view_usernames, null);
         }
 
         TextView nameTxt = view.findViewById(R.id.TextView2);

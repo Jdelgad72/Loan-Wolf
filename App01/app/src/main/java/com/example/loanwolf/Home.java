@@ -110,6 +110,11 @@ public class Home extends AppCompatActivity {
         startActivity(new Intent(Home.this, WolfPack.class));
     }
 
+    public void OpenLoans(View view) {
+        startActivity(new Intent(Home.this, OpenLoans.class));
+    }
+
+
     public void editprofile(View view) {
         startActivity(new Intent(Home.this, EditProfile.class));
     }

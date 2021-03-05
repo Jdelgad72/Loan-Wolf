@@ -58,7 +58,7 @@ public class Search extends AppCompatActivity{
                         // Locate the EditText in listview_main.xml
                         editsearch = (SearchView) findViewById(R.id.search);
 
-                        final ListViewAdapter adapter = new ListViewAdapter(Search.this, getUserNames());
+                        final ListViewAdapterUserNames adapter = new ListViewAdapterUserNames(Search.this, getUserNames());
                         list.setAdapter(adapter);
 
                         editsearch.setOnQueryTextListener(new SearchView.OnQueryTextListener(){
