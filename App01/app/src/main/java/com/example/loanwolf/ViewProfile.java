@@ -121,6 +121,16 @@ public class ViewProfile extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+        btnLoan.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ViewProfile.this, ProfileResume.class);
+                intent.putExtra("USERNAME", name);
+                intent.putExtra("EMAIL", email);
+                startActivity(intent);
+            }
+        });
     }
 
     public void ClickSearch(View view) {
