@@ -34,6 +34,7 @@ public class ViewProfile extends AppCompatActivity {
         final Button btnReport = findViewById(R.id.reportBtn);
         final Button btnMakeReview = findViewById(R.id.makeReview);
         Button profileResumeBtn = findViewById(R.id.profileResume);
+        final Button viewAllReviews = findViewById(R.id.allReviewsBtn);
 
         final String name = getIntent().getStringExtra("USERNAME");
         final String email = getIntent().getStringExtra("EMAIL");
@@ -56,6 +57,9 @@ public class ViewProfile extends AppCompatActivity {
         final TextView commentTxtView = findViewById(R.id.commentTxtView);
         final TextView defaultRateTxtView = findViewById(R.id.numberStat);
         final TextView numberPaymentTxtView = findViewById(R.id.numberLoans);
+        final TextView outOfFive = findViewById(R.id.textView13);
+        final TextView outOfFive1 = findViewById(R.id.textView9);
+
 
         nameTxtView.setText(name);
 
@@ -72,19 +76,41 @@ public class ViewProfile extends AppCompatActivity {
                     //if no error in response
                     if (!obj.getBoolean("error")) {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                        //Checks to see if there was a past interaction.
                         if(!obj.getBoolean("pastCurrentInteraction")){
                             btnMessage.setVisibility(View.INVISIBLE);
                             btnReport.setVisibility(View.INVISIBLE);
                             btnMakeReview.setVisibility(View.INVISIBLE);
                         }
-                        dateTxtView.setText(obj.getString("dateJoined"));
-                        ratingTxtView.setText(obj.getString("rating"));
-                        reviewerNameTxtView.setText(obj.getString("recentReviewer"));
-                        recentRatingTxtView.setText(obj.getString("recentStarRating"));
-                        commentTxtView.setText(obj.getString("recentComment"));
+
+                        //Validates that the value is not null and if it is show relevant information.
+                        if(obj.getString("recentComment").equals("null")){
+                            reviewerNameTxtView.setVisibility(View.INVISIBLE);
+                            recentRatingTxtView.setVisibility(View.INVISIBLE);
+                            commentTxtView.setText("No Reviews have been made.");
+                            viewAllReviews.setVisibility(View.INVISIBLE);
+                            outOfFive.setVisibility(View.INVISIBLE);
+                        }else{
+                            reviewerNameTxtView.setText(obj.getString("recentReviewer"));
+                            recentRatingTxtView.setText(obj.getString("recentStarRating"));
+                            commentTxtView.setText(obj.getString("recentComment"));
+                        }
+
                         if(!obj.getString("defaultRate").equals("null")) {
                             defaultRateTxtView.setText(String.valueOf(Float.valueOf(obj.getString("defaultRate")) * 100));
+                        }else{
+                            defaultRateTxtView.setText("0");
                         }
+
+                        if(obj.getString("rating").equals("null")){
+                            ratingTxtView.setText("No Ratings.");
+                            outOfFive1.setVisibility(View.INVISIBLE);
+                        }else{
+                            ratingTxtView.setText(obj.getString("rating"));
+                        }
+
+                        dateTxtView.setText(obj.getString("dateJoined"));
                         numberPaymentTxtView.setText(obj.getString("numOfPayments"));
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
@@ -140,8 +166,6 @@ public class ViewProfile extends AppCompatActivity {
     private static void redirectActivity(Activity activity, Class aClass){
         //Initialize intent
         Intent intent = new Intent(activity, aClass);
-        //Set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         //start activity
         activity.startActivity(intent);
     }

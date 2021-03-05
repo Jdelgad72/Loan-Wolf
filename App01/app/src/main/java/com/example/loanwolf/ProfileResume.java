@@ -1,10 +1,10 @@
 package com.example.loanwolf;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -30,18 +30,17 @@ public class ProfileResume extends AppCompatActivity {
 
         User user = SharedPrefManager.getInfo();
         final String id = user.getId();
-
-        String name = getIntent().getStringExtra("USERNAME");
-
+        final String name = getIntent().getStringExtra("USERNAME");
         final String email = getIntent().getStringExtra("EMAIL");
 
-        final TextView txtView2 = findViewById(R.id.textView2);
+        TextView txtView2 = findViewById(R.id.TextView2);
         final TextView loanSentTxtView = findViewById(R.id.numLoanSent);
         final TextView amountSentTxtView = findViewById(R.id.amountSent);
         final TextView percentAcceptedTxtView = findViewById(R.id.percentAccepted);
         final TextView amountReceivedTxtView = findViewById(R.id.amountReceived);
         final TextView defaultRateTxtView = findViewById(R.id.defaultRate);
         final TextView numberPaymentTxtView = findViewById(R.id.numLoansTaken);
+        ImageView backBtn = findViewById(R.id.back_btn);
 
         txtView2.setText(name);
 
@@ -53,18 +52,38 @@ public class ProfileResume extends AppCompatActivity {
                 try {
                     //converting response to json object
                     JSONObject obj = new JSONObject(response);
-                    loanSentTxtView.setText(obj.getString("numOfLoanSent"));
-                    amountSentTxtView.setText(obj.getString("amountSent"));
-                    percentAcceptedTxtView.setText(obj.getString("percentLoanAccepted"));
+
                     //if no error in response
                     if (!obj.getBoolean("error")) {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
+                        //Value handling to check values are not null. If null then make it 0.
+                        if(obj.getString("amountSent").equals("null")){
+                            amountSentTxtView.setText("0");
+                        }else{
+                            amountSentTxtView.setText(obj.getString("amountSent"));
+                        }
+
+                        if(obj.getString("percentLoanAccepted").equals("null")){
+                            percentAcceptedTxtView.setText("0");
+                        }else{
+                            percentAcceptedTxtView.setText(String.valueOf(Float.valueOf(obj.getString("percentLoanAccepted")) * 100));
+                        }
+
                         if(!obj.getString("defaultRate").equals("null")) {
                             defaultRateTxtView.setText(String.valueOf(Float.valueOf(obj.getString("defaultRate")) * 100));
+                        }else{
+                            defaultRateTxtView.setText("0");
                         }
+
+                        if(obj.getString("amountRecieved").equals("null")){
+                            amountReceivedTxtView.setText("0");
+                        }else {
+                            amountReceivedTxtView.setText(obj.getString("amountRecieved"));
+                        }
+
+                        loanSentTxtView.setText(obj.getString("numOfLoanSent"));
                         numberPaymentTxtView.setText(obj.getString("numOfPayments"));
-                        amountReceivedTxtView.setText(obj.getString("amountRecieved"));
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -90,18 +109,15 @@ public class ProfileResume extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
-    }
 
-    public void ClickViewProfile(View view) {
-        redirectActivity(this, ViewProfile.class);
-    }
-
-    private static void redirectActivity(Activity activity, Class aClass){
-        //Initialize intent
-        Intent intent = new Intent(activity, aClass);
-        //Set flag
-        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-        //start activity
-        activity.startActivity(intent);
+        backBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(ProfileResume.this, ViewProfile.class);
+                intent.putExtra("USERNAME", name);
+                intent.putExtra("EMAIL", email);
+                startActivity(intent);
+            }
+        });
     }
 }

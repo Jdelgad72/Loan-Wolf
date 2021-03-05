@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:text="Amount Sent:"
+        android:text="Amount Sent: $"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
@@ -52,10 +52,10 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
+            android:id="@+id/back_btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="Back Button"
-            android:onClick="ClickViewProfile"
             android:src="@drawable/ic_back" />
 
         <TextView
@@ -66,7 +66,7 @@
             android:text="Person Name"
             android:textAlignment="textEnd"
             android:textColor="#636363"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
         <TextView
@@ -77,7 +77,7 @@
             android:text=" Resume"
             android:textAlignment="gravity"
             android:textColor="#636363"
-            android:textSize="24sp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
     </LinearLayout>
@@ -125,7 +125,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
-        android:text="Number of Loans taken out:"
+        android:text="Number of Loans Payments Made:"
         android:textColor="#FDFDFD"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
@@ -136,7 +136,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
-        android:text="Amount Recieved:"
+        android:text="Amount Recieved: $"
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
@@ -187,8 +187,8 @@
 
     <TextView
         android:id="@+id/defaultRate"
-        android:layout_width="67dp"
-        android:layout_height="20dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="TextView"
         android:textColor="#FFFFFF"
@@ -205,6 +205,26 @@
         android:textColor="#FFFFFF"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
+    <TextView
+        android:id="@+id/textView25"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="%"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/defaultRate"
+        app:layout_constraintTop_toBottomOf="@+id/textView23" />
+
+    <TextView
+        android:id="@+id/textView26"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="%"
+        android:textColor="#FFFFFF"
+        app:layout_constraintStart_toEndOf="@+id/percentAccepted"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
