@@ -10,7 +10,11 @@ $paymentTypes = array();
 $startDates = array();
 $numPayments = array();
 
+<<<<<<< HEAD
 $sql ="SELECT IF(ul.userDebtor IS NULL, "Debtor", "Lender") AS lenderBorrower, l.loanID, l.loanAmount, l.interestRate, l.loanDateStart, l.paymentSchedule, l.numberPayments FROM loan AS l, userLoan as ul WHERE l.loanID = ul.loanID AND loanDateStart > CURDATE() AND (ul.userDebtor IS NULL OR ul.userCreditor IS NULL) ORDER BY loanDateStart DESC;"; 
+=======
+$sql ="SELECT IF(ul.userDebtor IS NULL, 'Debtor', 'Lender') AS lenderBorrower, l.loanID, l.loanAmount, l.interestRate, l.loanDateStart, l.paymentSchedule, l.numberPayments FROM loan AS l, userLoan as ul WHERE l.loanID = ul.loanID AND loanDateStart > CURDATE() AND (ul.userDebtor IS NULL OR ul.userCreditor IS NULL);"; 
+>>>>>>> efb9d4c079c83bd38a370c2e64637160ffbf6cfc
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
@@ -18,7 +22,7 @@ if (mysqli_num_rows($result) > 0) {
   while($row = mysqli_fetch_assoc($result)){
     array_push($borrower_lender, $row["lenderBorrower"]);
     array_push($openLoanID, $row["loanID"]);
-    array_push($amount, $row["amount"]);
+    array_push($amount, $row["loanAmount"]);
     array_push($interestRates, $row["interestRate"]);
     array_push($paymentTypes, $row["paymentSchedule"]);
     array_push($startDates, $row["loanDateStart"]);
