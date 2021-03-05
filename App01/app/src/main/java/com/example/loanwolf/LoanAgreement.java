@@ -30,11 +30,11 @@ public class LoanAgreement extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
 
-        String value= amount.getText().toString();
-        final int finalValue=Integer.parseInt(value);
+        //String value= amount.getText().toString();
+        //final int finalValue=Integer.parseInt(value);
 
-        final String rate= intView.getText().toString();
-        final int interestRate=Integer.parseInt(rate);
+        //final String rate= intView.getText().toString();
+       // final int interestRate=Integer.parseInt(rate);
 
 
 
@@ -49,6 +49,10 @@ public class LoanAgreement extends AppCompatActivity {
 
             @Override
             public void onClick(View v) {
+                Intent intent = new Intent(LoanAgreement.this, Terms.class);
+                // intent.putExtra("VALUE", finalValue);
+                // intent.putExtra("RATE", interestRate);
+                startActivity(intent);
 
                 // get selected radio button from radioGroup
                 int selectedId = radioGroup.getCheckedRadioButtonId();
@@ -81,15 +85,7 @@ public class LoanAgreement extends AppCompatActivity {
             }
         });
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(LoanAgreement.this, Terms.class);
-               // intent.putExtra("VALUE", finalValue);
-               // intent.putExtra("RATE", interestRate);
-                startActivity(intent);
-            }
-        });
+        
 
     }
 

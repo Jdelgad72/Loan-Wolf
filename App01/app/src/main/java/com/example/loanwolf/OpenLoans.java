@@ -59,9 +59,9 @@ public class OpenLoans extends AppCompatActivity {
 
                         list = (ListView) findViewById(R.id.listview);
 
-                        final ListViewAdapterUserNames adapter = new ListViewAdapterUserNames(OpenLoans.this, getOpenLoanID());
+                       // final ListViewAdapterUserNames adapter = new ListViewAdapterUserNames(OpenLoans.this, getOpenLoanID());
 
-                        list.setAdapter(adapter);
+                       // list.setAdapter(adapter);
 
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
@@ -95,8 +95,8 @@ public class OpenLoans extends AppCompatActivity {
         UserNames p;
 
         for(int i=0; i<openLoanList.size(); i++){
-            p=new OpenLoanListObject(openLoanList.get(i).getUserName(), openLoanList.get(i).getEmail());
-            openLoanList.add(p);
+         //   p=new OpenLoanListObject(openLoanList.get(i).getUserName(), openLoanList.get(i).getEmail());
+          //  openLoanList.add(p);
         }
         return openLoan;
     }
