@@ -106,6 +106,9 @@ public class Home extends AppCompatActivity {
         redirectActivity(this, Profile.class);
 
     }
+    public void WolfPack(View view) {
+        startActivity(new Intent(Home.this, WolfPack.class));
+    }
 
     public void editprofile(View view) {
         startActivity(new Intent(Home.this, EditProfile.class));

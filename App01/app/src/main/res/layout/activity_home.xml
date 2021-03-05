@@ -37,6 +37,15 @@
             android:background="@color/main_gray"
             android:textColor="@color/main_green"/>
 
+        <Button
+            android:id="@+id/buttonWolfPack"
+            android:layout_width="99dp"
+            android:layout_height="wrap_content"
+            android:onClick="WolfPack"
+            android:text="WolfPack"
+            android:background="@color/main_gray"
+            android:textColor="@color/main_green"/>
+
     </LinearLayout>
 
     <RelativeLayout
