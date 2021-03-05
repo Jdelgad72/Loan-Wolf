@@ -29,7 +29,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/looking"
-        android:layout_toRightOf="@+id/amount" />
+        android:layout_toRightOf="@+id/amount"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/interest"
@@ -44,7 +45,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/amount"
-        android:layout_toRightOf="@+id/interest" />
+        android:layout_toRightOf="@+id/interest"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/startDate"
@@ -59,7 +61,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/interest"
-        android:layout_toRightOf="@+id/startDate" />
+        android:layout_toRightOf="@+id/startDate"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/numPayments"
@@ -74,7 +77,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/startDate"
-        android:layout_toRightOf="@+id/numPayments" />
+        android:layout_toRightOf="@+id/numPayments"
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/weekMonthDaily"
@@ -89,6 +93,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/numPayments"
-        android:layout_toRightOf="@+id/weekMonthDaily" />
+        android:layout_toRightOf="@+id/weekMonthDaily"
+        android:textSize="10sp" />
 
 </RelativeLayout>

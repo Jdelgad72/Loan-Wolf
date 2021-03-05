@@ -10,7 +10,7 @@ $paymentTypes = array();
 $startDates = array();
 $numPayments = array();
 
-$sql ="SELECT IF(ul.userDebtor IS NULL, "Debtor", "Lender") AS lenderBorrower, l.loanID, l.loanAmount, l.interestRate, l.loanDateStart, l.paymentSchedule, l.numberPayments FROM loan AS l, userLoan as ul WHERE l.loanID = ul.loanID AND loanDateStart > CURDATE() AND (ul.userDebtor IS NULL OR ul.userCreditor IS NULL);"; 
+$sql ="SELECT IF(ul.userDebtor IS NULL, "Debtor", "Lender") AS lenderBorrower, l.loanID, l.loanAmount, l.interestRate, l.loanDateStart, l.paymentSchedule, l.numberPayments FROM loan AS l, userLoan as ul WHERE l.loanID = ul.loanID AND loanDateStart > CURDATE() AND (ul.userDebtor IS NULL OR ul.userCreditor IS NULL) ORDER BY loanDateStart DESC;"; 
 $result = mysqli_query($conn, $sql);
 
 if (mysqli_num_rows($result) > 0) {
