@@ -49,7 +49,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title"
         app:layout_constraintVertical_bias="0.408"
-        android:onClick="Buttonclick"/>
+        android:onClick="buttonView"/>
 
     <Button
         android:id="@+id/button10"
@@ -63,7 +63,8 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.6" />
+        app:layout_constraintVertical_bias="0.6"
+        android:onClick="buttonJoin"/>
 
     <Button
         android:id="@+id/button11"
@@ -78,6 +79,7 @@
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/title"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="1.0"
+        android:onClick="buttonCreate"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
