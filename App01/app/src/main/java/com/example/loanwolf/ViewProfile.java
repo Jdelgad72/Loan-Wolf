@@ -125,7 +125,7 @@ public class ViewProfile extends AppCompatActivity {
         btnLoan.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ViewProfile.this, ProfileResume.class);
+                Intent intent = new Intent(ViewProfile.this, LoanAgreement.class);
                 intent.putExtra("USERNAME", name);
                 intent.putExtra("EMAIL", email);
                 startActivity(intent);
