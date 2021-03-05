@@ -7,15 +7,24 @@ if(isset($_POST['searchEmail'], $_POST['requesterID'])){
   $searchEmail = $_POST['searchEmail'];
   $requesterID = $_POST['requesterID'];
 
-  //Gathers date joined and the Average Rating
-  $stmt = $conn->prepare("select userID, dateJoined, SUM(starRating)/COUNT(starRating) AS averageRating From user, review WHERE userID = userReviewing AND email=? GROUP BY userID;");
+  //Gathers date joined
+  $stmt = $conn->prepare("select dateJoined From user WHERE email=?;");
   $stmt->bind_param("s",$searchEmail);
   $stmt->execute();
-  $stmt->bind_result($id, $dateJoined, $averageRating);
+  $stmt->bind_result($dateJoined);
   $stmt->fetch(); 
   $stmt->close();
   
   $response['dateJoined'] = date("F Y", strtotime($dateJoined));
+  
+  //Gathers Average Rating.
+  $stmt1 = $conn->prepare("select userID, SUM(starRating)/COUNT(starRating) AS averageRating From user, review WHERE userID = userReviewing AND email=? GROUP BY userID;");
+  $stmt1->bind_param("s",$searchEmail);
+  $stmt1->execute();
+  $stmt1->bind_result($id, $averageRating);
+  $stmt1->fetch();
+  $stmt1->close();
+
   $response["rating"] = $averageRating;
  
   //Checks to see if the two users have had a past interaction.
