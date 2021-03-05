@@ -8,17 +8,18 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="411dp"
-        android:layout_height="49dp"
+        android:layout_width="408dp"
+        android:layout_height="50dp"
         android:background="@color/main_gray"
-        android:text="Wolf Pack"
+        android:text="Create Wolf Pack"
         android:textAlignment="center"
         android:textColor="@color/main_green"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="@+id/cardInputWidget"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.001" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
