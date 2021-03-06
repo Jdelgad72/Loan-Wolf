@@ -67,7 +67,7 @@ public class ListViewAdapterOpenLoans extends BaseAdapter implements Filterable 
         // Set the results into TextViews
         lenderBorrowerTxtView.setText(openLoans.get(position).getBorrowerLender());
         amountTxtView.setText(openLoans.get(position).getAmount());
-        interestTxtView.setText(openLoans.get(position).getInterestRate());
+        interestTxtView.setText(String.valueOf(Float.valueOf(openLoans.get(position).getInterestRate()) * 100));
         startDateTxtView.setText(openLoans.get(position).getStartDate());
         numPaymentsTxtView.setText(openLoans.get(position).getNumPayments());
         timeIntervalTxtView.setText(openLoans.get(position).getPaymentType());
