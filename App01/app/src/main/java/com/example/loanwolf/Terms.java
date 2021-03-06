@@ -5,18 +5,40 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.Toast;
 
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
+
 public class Terms extends AppCompatActivity {
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_terms);
+
+
+        //User user = SharedPrefManager.getInfo();
+        //final String id = user.getId();
     }
-    public void open(View view){
-        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
+
+    public void open(View view) {
+
+        final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Terms and conditions\n" +
                 "These terms and conditions (\"Agreement\") set forth the general terms and conditions of your use of the \"LoanWolf\" mobile application (\"Mobile Application\" or \"Service\") and any of its related products and services (collectively, \"Services\"). This Agreement is legally binding between you (\"User\", \"you\" or \"your\") and this Mobile Application developer (\"Operator\", \"we\", \"us\" or \"our\"). By accessing and using the Mobile Application and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. If you are entering into this Agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case the terms \"User\", \"you\" or \"your\" shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this Agreement, you must not accept this Agreement and may not access and use the Mobile Application and Services. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Mobile Application and Services. This terms and conditions policy was created with the help of the terms and conditions generator.\n" +
                 "\n" +
@@ -54,22 +76,94 @@ public class Terms extends AppCompatActivity {
                 "If you would like to contact us to understand more about this Agreement or wish to contact us concerning any matter relating to it, you may send an email to jdelgad@iu.edu.\n" +
                 "\n" +
                 "This document was last updated on February 19, 2021");
-                alertDialogBuilder.setPositiveButton("yes",
-                        new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface arg0, int arg1) {
-                                Toast.makeText(Terms.this,"You clicked yes button",Toast.LENGTH_LONG).show();
-                            }
-                        });
-
+        alertDialogBuilder.setPositiveButton("yes",
+                new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        Toast.makeText(Terms.this, "You clicked yes button", Toast.LENGTH_LONG).show();
+                    }
+                });
         alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
                 finish();
             }
         });
-
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
+        {
+
+
+
+            final String name = getIntent().getStringExtra("USERNAME");
+            final String email = getIntent().getStringExtra("EMAIL");
+            final String group1 = getIntent().getStringExtra("RADIO");
+            final String group2 = getIntent().getStringExtra("RADIO2");
+            final String dos = getIntent().getStringExtra("DATE");
+            final String num = getIntent().getStringExtra("PAYMENTNUM");
+            final String value = getIntent().getStringExtra("VALUE");
+            final String rate = getIntent().getStringExtra("RATE");
+
+
+
+            // send the updated info to server and validates
+            String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/loanAgreement.php";
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+
+                    try {
+                        //converting response to json object
+                        JSONObject obj = new JSONObject(response);
+
+                        //if no error in response
+                        if (!obj.getBoolean("error")) {
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            Log.d("RESPONSE1", obj.getString("message"));
+                        } else {
+                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                            Log.d("RESPONSE2", obj.getString("message"));
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Log.d("RESPONSE1", String.valueOf(e));
+                    }
+                }
+            },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            Log.d("VolleyError", String.valueOf(error));
+                        }
+                    }) {
+
+                //updated user information Sent
+                @Override
+                protected Map<String, String> getParams() {
+                    Map<String, String> params = new HashMap<>();
+                    params.put("USERNAME", name);
+                    params.put("EMAIL", email);
+                    params.put("RADIO", group1);
+                    params.put("RADIO2", group2);
+                    params.put("DATE", dos);
+                    params.put("PAYMENTNUM", num);
+                    params.put("VALUE", value);
+                    params.put("RATE", rate);
+                    return params;
+                }
+            };
+            VolleySingleton.getInstance(Terms.this).addToRequestQueue(stringRequest);
+
+        }
+
+
     }
+
+
+
 }
+
+
+
+
+

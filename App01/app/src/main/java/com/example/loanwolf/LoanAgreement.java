@@ -2,6 +2,7 @@ package com.example.loanwolf;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,6 +21,8 @@ public class LoanAgreement extends AppCompatActivity {
     private ProgressBar progressBar;
     private SeekBar seekBar;
     private EditText amount;
+    private EditText loanDate;
+    private EditText payNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,8 +30,16 @@ public class LoanAgreement extends AppCompatActivity {
         setContentView(R.layout.activity_loan_agreement);
 
         intView = (TextView) findViewById(R.id.intView);
+        amount = (EditText) findViewById(R.id.amount);
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
+        loanDate = (EditText) findViewById(R.id.loanDate);
+        payNum = (EditText) findViewById(R.id.payNum);
+
+
+        final String name = getIntent().getStringExtra("USERNAME");
+        final String email = getIntent().getStringExtra("EMAIL");
+
 
         //String value= amount.getText().toString();
         //final int finalValue=Integer.parseInt(value);
@@ -43,25 +54,37 @@ public class LoanAgreement extends AppCompatActivity {
 
 
         final RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radio);
+        final RadioGroup radiogroup2 = (RadioGroup) findViewById(R.id.radiogroup2);
         Button btnDisplay = (Button) findViewById(R.id.button2);
 
         btnDisplay.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
+                int selectedId = radioGroup.getCheckedRadioButtonId();
+                int selectedId2 = radiogroup2.getCheckedRadioButtonId();
+                // find the radiobutton by returned id
+                RadioButton radioButton = (RadioButton) findViewById(selectedId);
+                RadioButton radioButton2 = (RadioButton) findViewById(selectedId2);
+
+                Log.d("date", String.valueOf(loanDate.getText()));
+
+
+
+
                 Intent intent = new Intent(LoanAgreement.this, Terms.class);
-                // intent.putExtra("VALUE", finalValue);
-                // intent.putExtra("RATE", interestRate);
+                intent.putExtra("RADIO", String.valueOf(radioButton.getText()));
+                intent.putExtra("USERNAME", name);
+                intent.putExtra("EMAIL", email);
+                intent.putExtra("RADIO2", String.valueOf(radioButton2.getText()));
+                intent.putExtra("DATE", String.valueOf(loanDate.getText()));
+                intent.putExtra("PAYMENTNUM", String.valueOf(payNum.getText()));
+                intent.putExtra("VALUE", String.valueOf(amount.getText()));
+                intent.putExtra("RATE", String.valueOf(intView.getText()));
                 startActivity(intent);
 
                 // get selected radio button from radioGroup
-                int selectedId = radioGroup.getCheckedRadioButtonId();
 
-                // find the radiobutton by returned id
-                RadioButton radioButton = (RadioButton) findViewById(selectedId);
-
-                Toast.makeText(LoanAgreement.this,
-                        radioButton.getText(), Toast.LENGTH_SHORT).show();
 
             }
 
@@ -85,7 +108,7 @@ public class LoanAgreement extends AppCompatActivity {
             }
         });
 
-        
+
 
     }
 
