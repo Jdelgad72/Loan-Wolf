@@ -139,8 +139,8 @@ FOREIGN KEY (paymentID) REFERENCES payment(paymentID)
 ENGINE=InnoDB;
 
 CREATE TABLE userLoan (
-userDebtor INT(10) NOT NULL,
-userCreditor INT(10) NOT NULL,
+userDebtor INT(10),
+userCreditor INT(10),
 loanID INT(10) NOT NULL,
 FOREIGN KEY (userDebtor) REFERENCES user(userID),
 FOREIGN KEY (userCreditor) REFERENCES user(userID),
