@@ -45,6 +45,10 @@ public class NewReview extends AppCompatActivity {
         final String id = user.getId();
         final String email = user.getEmail();
 
+        //Get ID of users page we're on
+        final String otherID = getIntent().getStringExtra("USERNAME");
+        final String otherEmail = getIntent().getStringExtra("EMAIL");
+
         //Code so the EditText can scroll
         Review.setScroller(new Scroller(getApplicationContext()));
         Review.setVerticalScrollBarEnabled(true);
@@ -78,15 +82,7 @@ public class NewReview extends AppCompatActivity {
                     toast.show();
                     return;
                 }
-                User user = new User(
-                        id,
-                        email,
-                        Review.getText().toString().trim(),
-                        Rating.getText().toString().trim()
-                );
 
-                //storing the user in shared preferences
-                SharedPrefManager.getInstance(getApplicationContext()).userLogin(user);
                 // send the updated info to server and validates
                 String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/newReview.php";
                 StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
@@ -117,13 +113,15 @@ public class NewReview extends AppCompatActivity {
                                 Log.d("VolleyError", String.valueOf(error));
                             }
                         }) {
-                    //updated user information Sent
+                    //updated review information Sent
                     @Override
                     protected Map<String, String> getParams() {
                         Map<String, String> params = new HashMap<>();
                         params.put("id", id);
                         params.put("review", Review.getText().toString().trim());
                         params.put("rating", Rating.getText().toString().trim());
+                        params.put("otherID", otherID);
+                        params.put("otherEmail", otherEmail);
                         return params;
                     }
                 };
