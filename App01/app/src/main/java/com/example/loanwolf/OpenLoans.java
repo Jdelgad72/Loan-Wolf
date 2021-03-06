@@ -68,7 +68,7 @@ public class OpenLoans extends AppCompatActivity {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                 OpenLoanListObject send = (OpenLoanListObject) adapterView.getItemAtPosition(i);
-                                Intent intent = new Intent(OpenLoans.this, ViewProfile.class);
+                                Intent intent = new Intent(OpenLoans.this, Home.class);
                                 intent.putExtra("OPENLOANID", send.getOpenLoanID());
                                 startActivity(intent);
                             }

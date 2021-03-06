@@ -36,6 +36,7 @@ public class ViewProfile extends AppCompatActivity {
         Button profileResumeBtn = findViewById(R.id.profileResume);
         final Button viewAllReviews = findViewById(R.id.allReviewsBtn);
 
+
         final String name = getIntent().getStringExtra("USERNAME");
         final String email = getIntent().getStringExtra("EMAIL");
         User user = SharedPrefManager.getInfo();
@@ -152,6 +153,16 @@ public class ViewProfile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(ViewProfile.this, LoanAgreement.class);
+                intent.putExtra("USERNAME", name);
+                intent.putExtra("EMAIL", email);
+                startActivity(intent);
+            }
+        });
+
+        btnMakeReview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view){
+                Intent intent = new Intent(ViewProfile.this, NewReview.class);
                 intent.putExtra("USERNAME", name);
                 intent.putExtra("EMAIL", email);
                 startActivity(intent);
