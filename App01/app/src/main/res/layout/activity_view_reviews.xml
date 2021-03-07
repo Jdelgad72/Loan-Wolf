@@ -6,4 +6,17 @@
     android:layout_height="match_parent"
     tools:context=".ViewReviews">
 
+    <TextView
+        android:id="@+id/textViewEditProfile"
+        android:layout_width="414dp"
+        android:layout_height="67dp"
+        android:background="#25E65B"
+        android:text="View User Reviews"
+        android:textSize="36sp"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:ignore="MissingConstraints"
+        tools:layout_editor_absoluteY="0dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
