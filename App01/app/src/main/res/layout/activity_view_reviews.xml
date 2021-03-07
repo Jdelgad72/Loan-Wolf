@@ -7,16 +7,35 @@
     tools:context=".ViewReviews">
 
     <TextView
-        android:id="@+id/textViewEditProfile"
+        android:id="@+id/textViewViewReviews"
         android:layout_width="414dp"
         android:layout_height="67dp"
         android:background="#25E65B"
+        android:gravity="center"
         android:text="View User Reviews"
         android:textSize="36sp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
         tools:layout_editor_absoluteY="0dp" />
+
+    <Button
+        android:id="@+id/btnReturn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Return to Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/listview" />
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="408dp"
+        android:layout_height="559dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewViewReviews" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
