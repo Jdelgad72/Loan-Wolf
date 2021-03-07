@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
@@ -26,6 +27,10 @@ public class ViewReviews extends AppCompatActivity {
         ArrayList<String> arrayList=new ArrayList<>();
 
         arrayList.add("Sample Text");
+
+        //create array adapter
+        ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
+        ListView.setAdapter(arrayAdapter);
 
         //return to the profile page without changing anything
         Return.setOnClickListener(new View.OnClickListener() {
