@@ -30,7 +30,6 @@ public class EditProfile extends AppCompatActivity {
     private EditText ZIP;
     private EditText State;
     private EditText Gender;
-    private EditText Email;
     private Button Submit;
     private Button Return;
 
