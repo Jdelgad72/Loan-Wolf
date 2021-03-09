@@ -8,7 +8,7 @@
     tools:context=".Leaderboard">
 
     <TextView
-        android:id="@+id/textViewViewReviews"
+        android:id="@+id/textViewLeaderboard"
         android:layout_width="414dp"
         android:layout_height="67dp"
         android:background="#25E65B"
