@@ -50,7 +50,7 @@ public class CreateOpenLoan extends AppCompatActivity {
                 Log.d("date", String.valueOf(loanDate.getText()));
 
 
-                Intent intent = new Intent(CreateOpenLoan.this, OpenLoanTerm.class);
+                Intent intent = new Intent(CreateOpenLoan.this, OpenLoanTerms.class);
                 intent.putExtra("RADIO", String.valueOf(radioButton.getText()));
                 intent.putExtra("RADIO2", String.valueOf(radioButton2.getText()));
                 intent.putExtra("DATE", String.valueOf(loanDate.getText()));
@@ -80,5 +80,9 @@ public class CreateOpenLoan extends AppCompatActivity {
             }
         });
     }
-}
+
+    public void ClickViewOpenLoans(View view) {
+        Intent intent = new Intent(CreateOpenLoan.this, OpenLoans.class);
+        startActivity(intent);
+    }
 }

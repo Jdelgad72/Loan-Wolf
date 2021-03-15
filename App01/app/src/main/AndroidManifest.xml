@@ -10,11 +10,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-<<<<<<< HEAD
-        <activity android:name=".CreateOpenLoan"></activity>
-=======
-        <activity android:name=".Notifications"></activity>
->>>>>>> a35f73f4b5126aa1679046c1911993ab692dbd68
+        <activity android:name=".OpenLoanTerms"></activity>
+        <activity android:name=".CreateOpenLoan" />
+        <activity android:name=".Notifications" />
         <activity android:name=".Leaderboard" />
         <activity android:name=".ViewReviews" />
         <activity android:name=".Terms" />
