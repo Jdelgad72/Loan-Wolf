@@ -103,7 +103,7 @@ public class OpenLoans extends AppCompatActivity {
     }
 
     public void CreateOpenLoan(View view) {
-        Intent intent = new Intent(OpenLoans.this, Home.class);
+        Intent intent = new Intent(OpenLoans.this, CreateOpenLoan.class);
         startActivity(intent);
     }
 

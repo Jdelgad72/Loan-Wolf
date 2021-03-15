@@ -1,13 +1,10 @@
 package com.example.loanwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -20,6 +17,8 @@ import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Terms extends AppCompatActivity {
 
@@ -80,7 +79,7 @@ public class Terms extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(Terms.this, "You clicked yes button", Toast.LENGTH_LONG).show();
+                        Toast.makeText(Terms.this, "Loan Sent", Toast.LENGTH_LONG).show();
                     }
                 });
         alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
