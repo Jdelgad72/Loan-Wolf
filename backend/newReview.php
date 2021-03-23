@@ -1,21 +1,20 @@
 <?php
 require_once 'connection.php';
 $response = array();
-if(isset($_POST['id'])){
+//if(isset($_POST['id'])){
 	$id = (int)$_POST['id'];
 	$review = $_POST['review'];
 	$rating = (int)$_POST['rating'];
 	$email = $_POST['otherEmail'];
-	$stmt1 = $conn->prepare("select userID from user WHERE email = 
-?");
+	$stmt1 = $conn->prepare("select userID from user WHERE email = ?");
 	$stmt1->bind_param("s", $email);
 	$stmt1->execute();
 	$stmt1->bind_result($otherID);
 	$stmt1->fetch();
 	$stmt1->close();
-	$sql = "INSERT into review 
-(comment,starRating,reviewTime,reviewDate,userReviewing,userReviewer) 
-VALUES('$review',$rating,Current_Time(),CurDate(),$otherID,$id;";
+
+	$sql = "INSERT into review (comment,starRating,reviewTime,reviewDate,userReviewing,userReviewer) VALUES('$review',$rating,Current_Time(),CurDate(),$otherID,$id;";
+echo $sql;
 //	}
 //else{
 //	$id = (int)$_POST['id'];
@@ -28,7 +27,7 @@ if (mysql_query($conn, $sql)){
 	$response['error'] = 'false';
 	$response['message']="Review Submitted";
 	}
-else{
+/*else{
 	$response['error'] = 'true';
 	$response['message']="Error with SQL statment";
 	}
@@ -36,6 +35,6 @@ else{
 else{
 	$response['error'] = 'true';
 	$response['message']="Missing user ID";
-	}
+	}*/
 echo json_encode($response);
 ?>

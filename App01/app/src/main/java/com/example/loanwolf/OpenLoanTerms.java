@@ -2,6 +2,7 @@ package com.example.loanwolf;
 
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -20,23 +21,15 @@ import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class Terms extends AppCompatActivity {
-
-
-
+public class OpenLoanTerms extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_terms);
-
-
-        //User user = SharedPrefManager.getInfo();
-        //final String id = user.getId();
+        setContentView(R.layout.activity_open_loan_terms);
     }
 
     public void open(View view) {
-
         final AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(this);
         alertDialogBuilder.setMessage("Terms and conditions\n" +
                 "These terms and conditions (\"Agreement\") set forth the general terms and conditions of your use of the \"LoanWolf\" mobile application (\"Mobile Application\" or \"Service\") and any of its related products and services (collectively, \"Services\"). This Agreement is legally binding between you (\"User\", \"you\" or \"your\") and this Mobile Application developer (\"Operator\", \"we\", \"us\" or \"our\"). By accessing and using the Mobile Application and Services, you acknowledge that you have read, understood, and agree to be bound by the terms of this Agreement. If you are entering into this Agreement on behalf of a business or other legal entity, you represent that you have the authority to bind such entity to this Agreement, in which case the terms \"User\", \"you\" or \"your\" shall refer to such entity. If you do not have such authority, or if you do not agree with the terms of this Agreement, you must not accept this Agreement and may not access and use the Mobile Application and Services. You acknowledge that this Agreement is a contract between you and the Operator, even though it is electronic and is not physically signed by you, and it governs your use of the Mobile Application and Services. This terms and conditions policy was created with the help of the terms and conditions generator.\n" +
@@ -79,7 +72,7 @@ public class Terms extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(Terms.this, "Loan Sent", Toast.LENGTH_LONG).show();
+                        Toast.makeText(OpenLoanTerms.this, "Loan Sent", Toast.LENGTH_LONG).show();
                     }
                 });
         alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -91,9 +84,6 @@ public class Terms extends AppCompatActivity {
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
         {
-
-
-
             final String name = getIntent().getStringExtra("USERNAME");
             final String email = getIntent().getStringExtra("EMAIL");
             final String group1 = getIntent().getStringExtra("RADIO");
@@ -106,7 +96,7 @@ public class Terms extends AppCompatActivity {
 
 
             // send the updated info to server and validates
-            String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/loanAgreement.php";
+            String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createOpenLoans.php";
             StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                 @Override
                 public void onResponse(String response) {
@@ -151,18 +141,12 @@ public class Terms extends AppCompatActivity {
                     return params;
                 }
             };
-            VolleySingleton.getInstance(Terms.this).addToRequestQueue(stringRequest);
-
+            VolleySingleton.getInstance(OpenLoanTerms.this).addToRequestQueue(stringRequest);
         }
-
-
     }
 
-
-
+    public void ClickViewOpenLoans(View view) {
+        Intent intent = new Intent(OpenLoanTerms.this, OpenLoans.class);
+        startActivity(intent);
+    }
 }
-
-
-
-
-
