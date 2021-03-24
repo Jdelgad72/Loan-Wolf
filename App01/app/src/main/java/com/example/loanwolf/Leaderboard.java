@@ -8,7 +8,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -25,7 +24,6 @@ import java.util.ArrayList;
 
 public class Leaderboard extends AppCompatActivity {
 
-    private Button Return;
     private android.widget.ListView ListView;
 
     @Override
@@ -76,17 +74,17 @@ public class Leaderboard extends AppCompatActivity {
                 });
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
 
-        Return = (Button) findViewById(R.id.btnReturn);
+        //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
         ListView = (ListView) findViewById(R.id.listview);
 
         ArrayList<String> arrayList=new ArrayList<>();
 
-
-
         //create array adapter
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         ListView.setAdapter(arrayAdapter);
-
+        arrayList.add("");
         //return to the profile page without changing anything
         Return.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -97,4 +95,3 @@ public class Leaderboard extends AppCompatActivity {
     }
 }
 
-//        arrayList.add("");
