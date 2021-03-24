@@ -73,6 +73,65 @@ public class OpenLoanTerms extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
                         Toast.makeText(OpenLoanTerms.this, "Loan Sent", Toast.LENGTH_LONG).show();
+
+                        final String name = getIntent().getStringExtra("USERNAME");
+                        final String email = getIntent().getStringExtra("EMAIL");
+                        final String group1 = getIntent().getStringExtra("RADIO");
+                        final String group2 = getIntent().getStringExtra("RADIO2");
+                        final String dos = getIntent().getStringExtra("DATE");
+                        final String num = getIntent().getStringExtra("PAYMENTNUM");
+                        final String value = getIntent().getStringExtra("VALUE");
+                        final String rate = getIntent().getStringExtra("RATE");
+
+
+
+                        // send the updated info to server and validates
+                        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createOpenLoans.php";
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                try {
+                                    //converting response to json object
+                                    JSONObject obj = new JSONObject(response);
+
+                                    //if no error in response
+                                    if (!obj.getBoolean("error")) {
+                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                        Log.d("RESPONSE1", obj.getString("message"));
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                        Log.d("RESPONSE2", obj.getString("message"));
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                    Log.d("RESPONSE1", String.valueOf(e));
+                                }
+                            }
+                        },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Log.d("VolleyError", String.valueOf(error));
+                                    }
+                                }) {
+
+                            //updated user information Sent
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map<String, String> params = new HashMap<>();
+                                params.put("USERNAME", name);
+                                params.put("EMAIL", email);
+                                params.put("RADIO", group1);
+                                params.put("RADIO2", group2);
+                                params.put("DATE", dos);
+                                params.put("PAYMENTNUM", num);
+                                params.put("VALUE", value);
+                                params.put("RATE", rate);
+                                return params;
+                            }
+                        };
+                        VolleySingleton.getInstance(OpenLoanTerms.this).addToRequestQueue(stringRequest);
                     }
                 });
         alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -83,66 +142,6 @@ public class OpenLoanTerms extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-        {
-            final String name = getIntent().getStringExtra("USERNAME");
-            final String email = getIntent().getStringExtra("EMAIL");
-            final String group1 = getIntent().getStringExtra("RADIO");
-            final String group2 = getIntent().getStringExtra("RADIO2");
-            final String dos = getIntent().getStringExtra("DATE");
-            final String num = getIntent().getStringExtra("PAYMENTNUM");
-            final String value = getIntent().getStringExtra("VALUE");
-            final String rate = getIntent().getStringExtra("RATE");
-
-
-
-            // send the updated info to server and validates
-            String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createOpenLoans.php";
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-
-                    try {
-                        //converting response to json object
-                        JSONObject obj = new JSONObject(response);
-
-                        //if no error in response
-                        if (!obj.getBoolean("error")) {
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                            Log.d("RESPONSE1", obj.getString("message"));
-                        } else {
-                            Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-                            Log.d("RESPONSE2", obj.getString("message"));
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Log.d("RESPONSE1", String.valueOf(e));
-                    }
-                }
-            },
-                    new Response.ErrorListener() {
-                        @Override
-                        public void onErrorResponse(VolleyError error) {
-                            Log.d("VolleyError", String.valueOf(error));
-                        }
-                    }) {
-
-                //updated user information Sent
-                @Override
-                protected Map<String, String> getParams() {
-                    Map<String, String> params = new HashMap<>();
-                    params.put("USERNAME", name);
-                    params.put("EMAIL", email);
-                    params.put("RADIO", group1);
-                    params.put("RADIO2", group2);
-                    params.put("DATE", dos);
-                    params.put("PAYMENTNUM", num);
-                    params.put("VALUE", value);
-                    params.put("RATE", rate);
-                    return params;
-                }
-            };
-            VolleySingleton.getInstance(OpenLoanTerms.this).addToRequestQueue(stringRequest);
-        }
     }
 
     public void ClickViewOpenLoans(View view) {
