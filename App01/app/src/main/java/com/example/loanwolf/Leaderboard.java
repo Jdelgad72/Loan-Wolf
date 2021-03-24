@@ -85,13 +85,6 @@ public class Leaderboard extends AppCompatActivity {
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         ListView.setAdapter(arrayAdapter);
         arrayList.add("");
-        //return to the profile page without changing anything
-        Return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(Leaderboard.this, ViewProfile.class));
-            }
-        });
     }
 }
 
