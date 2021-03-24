@@ -6,16 +6,15 @@ if(isset($_POST['id'])){
 	$review = $_POST['review'];
 	$rating = (int)$_POST['rating'];
 	$email = $_POST['otherEmail'];
-	$stmt1 = $conn->prepare("select userID from user WHERE email = 
-?");
+	$stmt1 = $conn->prepare("select userID from user WHERE email = ?");
 	$stmt1->bind_param("s", $email);
 	$stmt1->execute();
 	$stmt1->bind_result($otherID);
 	$stmt1->fetch();
 	$stmt1->close();
-	$sql = "INSERT into review 
-(comment,starRating,reviewTime,reviewDate,userReviewing,userReviewer) 
-VALUES('$review',$rating,Current_Time(),CurDate(),$otherID,$id;";
+
+	$sql = "INSERT into review (comment,starRating,reviewTime,reviewDate,userReviewing,userReviewer) VALUES('$review',$rating,Current_Time(),CurDate(),$otherID,$id);";
+
 //	}
 //else{
 //	$id = (int)$_POST['id'];
@@ -24,7 +23,7 @@ VALUES('$review',$rating,Current_Time(),CurDate(),$otherID,$id;";
 //	$sql = "UPDATE review SET comment='$review', StarRating='$rating' 
 //WHERE userID = $id;";	
 //	}
-if (mysql_query($conn, $sql)){
+if (mysqli_query($conn, $sql)){
 	$response['error'] = 'false';
 	$response['message']="Review Submitted";
 	}
