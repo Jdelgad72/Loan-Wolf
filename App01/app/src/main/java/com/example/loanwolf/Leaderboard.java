@@ -26,7 +26,7 @@ public class Leaderboard extends AppCompatActivity {
 
         ArrayList<String> arrayList=new ArrayList<>();
 
-        arrayList.add("Sample Text");
+
 
         //create array adapter
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
@@ -41,3 +41,5 @@ public class Leaderboard extends AppCompatActivity {
         });
     }
 }
+
+//        arrayList.add("");
