@@ -15,23 +15,15 @@ if(isset($_POST['id'])){
 
 	$sql = "INSERT into review (comment,starRating,reviewTime,reviewDate,userReviewing,userReviewer) VALUES('$review',$rating,Current_Time(),CurDate(),$otherID,$id);";
 
-//	}
-//else{
-//	$id = (int)$_POST['id'];
-//	$review = $_POST['review'];
-//	$rating = $_POST['rating'];
-//	$sql = "UPDATE review SET comment='$review', StarRating='$rating' 
-//WHERE userID = $id;";	
-//	}
 if (mysqli_query($conn, $sql)){
 	$response['error'] = 'false';
 	$response['message']="Review Submitted";
 	}
-else{
+/*else{
 	$response['error'] = 'true';
 	$response['message']="Error with SQL statment";
 	}
-}
+}*/
 else{
 	$response['error'] = 'true';
 	$response['message']="Missing user ID";

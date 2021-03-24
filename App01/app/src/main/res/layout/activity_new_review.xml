@@ -27,8 +27,9 @@
         android:layout_marginTop="29dp"
         android:background="#25E65B"
         android:text="Write a Review"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEditProfile"
-        tools:layout_editor_absoluteX="49dp"
         tools:ignore="MissingConstraints" />
 
     <EditText
@@ -36,16 +37,17 @@
         android:layout_width="316dp"
         android:layout_height="158dp"
         android:layout_marginTop="25dp"
+        android:background="#DCDCDC"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text=""
-        android:background="#DCDCDC"
-        app:layout_constraintTop_toBottomOf="@+id/textView2"
-        tools:layout_editor_absoluteX="44dp"
-        tools:ignore="MissingConstraints"
-        android:minLines="1"
         android:maxLines="6"
-        android:scrollbars="vertical"/>
+        android:minLines="1"
+        android:scrollbars="vertical"
+        android:text=""
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView3"
@@ -54,51 +56,60 @@
         android:layout_marginTop="32dp"
         android:background="#25E65B"
         android:text="Rate the User"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editReview"
-        tools:layout_editor_absoluteX="49dp"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnReturn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="245dp"
+        android:layout_marginTop="240dp"
         android:background="#25E65B"
         android:text="Return To Profile"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.172"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRating"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="36dp" />
+        tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="245dp"
+        android:layout_marginTop="240dp"
         android:background="#25E65B"
         android:text="Submit"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRating"
-        tools:ignore="MissingConstraints"
-        tools:layout_editor_absoluteX="280dp" />
+        tools:ignore="MissingConstraints" />
 
     <EditText
         android:id="@+id/editRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="22dp"
         android:background="#DCDCDC"
         android:ems="10"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="49dp"
-        tools:layout_editor_absoluteY="401dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView11"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/textView11"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please use whole numbers 1 - 5"
-        tools:layout_editor_absoluteX="48dp"
-        tools:layout_editor_absoluteY="360dp"
+        android:layout_marginTop="10dp"
         android:background="#25E65B"
+        android:text="Please use whole numbers 1 - 5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
