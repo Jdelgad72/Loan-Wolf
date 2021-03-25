@@ -74,16 +74,16 @@ public class OpenLoanTerms extends AppCompatActivity {
                     public void onClick(DialogInterface arg0, int arg1) {
                         Toast.makeText(OpenLoanTerms.this, "Loan Sent", Toast.LENGTH_LONG).show();
 
-                        final String name = getIntent().getStringExtra("USERNAME");
-                        final String email = getIntent().getStringExtra("EMAIL");
-                        final String group1 = getIntent().getStringExtra("RADIO");
-                        final String group2 = getIntent().getStringExtra("RADIO2");
-                        final String dos = getIntent().getStringExtra("DATE");
+                        User user = SharedPrefManager.getInfo();
+                        final String id = user.getId();
+                        final String borrowOrLend = getIntent().getStringExtra("RADIO");
+                        final String paymentInterval = getIntent().getStringExtra("RADIO2");
+                        final String startDate = getIntent().getStringExtra("DATE");
                         final String num = getIntent().getStringExtra("PAYMENTNUM");
                         final String value = getIntent().getStringExtra("VALUE");
-                        final String rate = getIntent().getStringExtra("RATE");
+                        final String rate = String.valueOf(Float.parseFloat(getIntent().getStringExtra("RATE"))/100);
 
-
+                        Log.d("FAKENESS", rate);
 
                         // send the updated info to server and validates
                         String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createOpenLoans.php";
@@ -120,11 +120,10 @@ public class OpenLoanTerms extends AppCompatActivity {
                             @Override
                             protected Map<String, String> getParams() {
                                 Map<String, String> params = new HashMap<>();
-                                params.put("USERNAME", name);
-                                params.put("EMAIL", email);
-                                params.put("RADIO", group1);
-                                params.put("RADIO2", group2);
-                                params.put("DATE", dos);
+                                params.put("ID", id);
+                                params.put("borrowOrLend", borrowOrLend);
+                                params.put("paymentInterval", paymentInterval);
+                                params.put("STARTDATE", startDate);
                                 params.put("PAYMENTNUM", num);
                                 params.put("VALUE", value);
                                 params.put("RATE", rate);

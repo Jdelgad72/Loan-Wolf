@@ -2,7 +2,6 @@ package com.example.loanwolf;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -47,9 +46,6 @@ public class CreateOpenLoan extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
                 RadioButton radioButton2 = (RadioButton) findViewById(selectedId2);
 
-                Log.d("date", String.valueOf(loanDate.getText()));
-
-
                 Intent intent = new Intent(CreateOpenLoan.this, OpenLoanTerms.class);
                 intent.putExtra("RADIO", String.valueOf(radioButton.getText()));
                 intent.putExtra("RADIO2", String.valueOf(radioButton2.getText()));
@@ -59,7 +55,6 @@ public class CreateOpenLoan extends AppCompatActivity {
                 intent.putExtra("RATE", String.valueOf(intView.getText()));
                 startActivity(intent);
             }
-
         });
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
