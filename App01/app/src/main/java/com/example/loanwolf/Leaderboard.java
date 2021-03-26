@@ -50,12 +50,12 @@ public class Leaderboard extends AppCompatActivity {
                         JSONArray email = obj.getJSONArray("email");
                         JSONArray starRating = obj.getJSONArray("starRating");
 
-                        list = (ListView) findViewById(R.id.listview);
+                        //list = (ListView) findViewById(R.id.listview);
 
-                        final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(Leaderboard.this, getOpenLoanID());
+                        //final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(Leaderboard.this, getOpenLoanID());
 
 
-                        list.setAdapter(adapter);
+                        //list.setAdapter(adapter);
 
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
