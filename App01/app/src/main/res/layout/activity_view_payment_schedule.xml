@@ -80,7 +80,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="448dp"
         android:background="@color/main_green"
-        android:text="Monthly"
+        android:text="Monthly 03/25/21"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.006"
@@ -132,7 +132,7 @@
         android:layout_height="38dp"
         android:layout_marginTop="272dp"
         android:background="@color/main_green"
-        android:text="Friday"
+        android:text="Friday 03/20/21"
         android:textAlignment="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.006"
@@ -349,6 +349,34 @@
 
     <TextView
         android:id="@+id/textView42"
+        android:layout_width="392dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="408dp"
+        android:text="Monthly Payments"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.49"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView57"
+        android:layout_width="392dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="60dp"
+        android:text="Weekly/Daily Payments"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="@+id/title"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView56"
         android:layout_width="195dp"
         android:layout_height="39dp"
         android:layout_marginTop="364dp"
