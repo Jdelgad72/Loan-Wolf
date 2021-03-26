@@ -8,11 +8,11 @@
 
     <TextView
         android:id="@+id/title"
-        android:layout_width="408dp"
-        android:layout_height="50dp"
+        android:layout_width="406dp"
+        android:layout_height="48dp"
+        android:background="@color/main_green"
         android:text="Payment Schedule"
         android:textAlignment="center"
-        android:background="@color/main_green"
         android:textColor="@color/main_gray"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -20,6 +20,110 @@
         app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.001" />
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/Monday"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="96dp"
+        android:background="#BAB8B8"
+        android:text="Monday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday5"
+        android:layout_width="80dp"
+        android:layout_height="41dp"
+        android:layout_marginTop="316dp"
+        android:background="#BAB8B8"
+        android:text="Saturday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday2"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="184dp"
+        android:background="#BAB8B8"
+        android:text="Wednesday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday6"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="364dp"
+        android:background="#BAB8B8"
+        android:text="Sunday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday7"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="448dp"
+        android:background="#BAB8B8"
+        android:text="Monthly"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday3"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="228dp"
+        android:background="#BAB8B8"
+        android:text="Thursday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday4"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="272dp"
+        android:background="@color/main_green"
+        android:text="Friday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/monday"
+        android:layout_width="80dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="140dp"
+        android:background="#BAB8B8"
+        android:text="Tuesday"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.006"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
