@@ -12,8 +12,7 @@ import android.widget.Toast;
 public class Report extends AppCompatActivity {
     EditText et;
     Button btn;
-    final String name = getIntent().getStringExtra("USERNAME");
-    final String email = getIntent().getStringExtra("EMAIL");
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +34,6 @@ public class Report extends AppCompatActivity {
             }
         });
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view){
-                Intent intent = new Intent(Report.this, ViewProfile.class);
-                intent.putExtra("USERNAME", name);
-                intent.putExtra("EMAIL", email);
-                startActivity(intent);
-            }
-        });
 
     }
 }
