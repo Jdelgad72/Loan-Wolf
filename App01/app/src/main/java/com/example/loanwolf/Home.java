@@ -125,7 +125,7 @@ public class Home extends AppCompatActivity {
 
     public void ClickViewPayments(View view){
         //redirect activity to dashboard
-        redirectActivity(this, Home.class);
+        redirectActivity(this, ViewPaymentSchedule.class);
     }
 
     public void ClickViewPortfolio(View view){
@@ -137,6 +137,7 @@ public class Home extends AppCompatActivity {
         //Logout of App
         SharedPrefManager.getInstance(this).logout();
     }
+
 
     private static void redirectActivity(Activity activity, Class aClass){
         //Initialize intent
@@ -158,6 +159,8 @@ public class Home extends AppCompatActivity {
         redirectActivity(this, Profile.class);
 
     }
+   // public void ViewPaymentSchedule(View view) { startActivity(new Intent(Home.this, ViewPaymentSchedule.class));
+   // }
     public void WolfPack(View view) {
         startActivity(new Intent(Home.this, WolfPack.class));
     }
