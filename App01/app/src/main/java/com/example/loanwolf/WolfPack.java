@@ -21,6 +21,6 @@ public class WolfPack extends AppCompatActivity {
         startActivity(new Intent(WolfPack.this, JoinWolfPack.class));
     }
     public void buttonCreate(View view) {
-        startActivity(new Intent(WolfPack.this, CreateWolfPack.class));
+        startActivity(new Intent(WolfPack.this, wolfPackOptions.class));
     }
 }

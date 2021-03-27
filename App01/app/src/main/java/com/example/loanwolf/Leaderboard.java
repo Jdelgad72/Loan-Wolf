@@ -53,6 +53,12 @@ public class Leaderboard extends AppCompatActivity {
 
 
                   //      list.setAdapter(adapter);
+                        //list = (ListView) findViewById(R.id.listview);
+
+                        //final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(Leaderboard.this, getOpenLoanID());
+
+
+                        //list.setAdapter(adapter);
 
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();

@@ -4,48 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
-    android:foregroundTint="#FFFFFF"
-    tools:context=".CreateOpenLoan">
-
-    <LinearLayout
-        android:id="@+id/linearLayoutMenu"
-        android:layout_width="match_parent"
-        android:layout_height="68dp"
-        android:background="@color/main_green"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:contentDescription="Back Button"
-            android:onClick="ClickViewOpenLoans"
-            android:src="@drawable/ic_back" />
-
-        <TextView
-            android:id="@+id/TextView1"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Open Loan"
-            android:textAlignment="center"
-            android:textColor="#636363"
-            android:textSize="24sp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+    tools:context=".wolfPackOptions">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/nextpage"
         android:layout_width="112dp"
         android:layout_height="58dp"
         android:background="#25E65B"
-        android:text="Create Loan Agreement"
+        android:onClick="nextpage"
+        android:text="Create Loan Agreement/ Invite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -59,10 +26,10 @@
         android:layout_height="83dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.063"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.195">
+        app:layout_constraintVertical_bias="0.066">
 
         <RadioButton
             android:id="@+id/radioButton"
@@ -196,7 +163,7 @@
         android:id="@+id/textView34"
         android:layout_width="170dp"
         android:layout_height="43dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="12dp"
         android:layout_marginTop="8dp"
         android:text="Choose whether you want to borrow or lend:"
         app:layout_constraintStart_toStartOf="parent"
