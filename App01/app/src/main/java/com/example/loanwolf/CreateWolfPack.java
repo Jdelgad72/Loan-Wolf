@@ -24,7 +24,7 @@ public class CreateWolfPack extends AppCompatActivity {
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("Sam Jaworski") || username.getText().toString().equals("Justin Delgado") || username.getText().toString().equals("Felipe Garcilazo")) {
+                if (username.getText().toString().equals("Sam Jaworski") || username.getText().toString().equals("sam jaworski") || username.getText().toString().equals("Justin Delgado") || username.getText().toString().equals("justin delgado") || username.getText().toString().equals("Felipe Garcilazo") || username.getText().toString().equals("felipe garcilazo")) {
                     Toast.makeText(CreateWolfPack.this, "Invitation Sent", Toast.LENGTH_SHORT).show();
                 } else{
                     Toast.makeText(CreateWolfPack.this, "User not found", Toast.LENGTH_LONG).show();
