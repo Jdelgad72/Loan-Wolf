@@ -28,12 +28,19 @@ public class Report extends AppCompatActivity {
                 if(et.getText().toString().isEmpty() || et.getText().toString()==null) {
                     Toast.makeText(getApplicationContext(), "User Reported", Toast.LENGTH_LONG).show();
                 }else {
-                    Toast.makeText(getApplicationContext(), "Report Unsuccessful", Toast.LENGTH_LONG).show();
+                    Toast.makeText(getApplicationContext(), "Report Successful", Toast.LENGTH_LONG).show();
 
                 }
             }
         });
 
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Report.this, ViewProfile.class);
 
+                startActivity(intent);
+            }
+        });
     }
 }

@@ -23,10 +23,11 @@
     <ListView
         android:id="@+id/listview"
         android:layout_width="408dp"
-        android:layout_height="559dp"
+        android:layout_height="662dp"
         android:layout_marginTop="5dp"
+        android:background="#DCDCDC"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:background="#DCDCDC"
         app:layout_constraintTop_toBottomOf="@+id/textViewViewReviews" />
 </androidx.constraintlayout.widget.ConstraintLayout>
