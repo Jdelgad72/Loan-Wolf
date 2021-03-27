@@ -7,11 +7,12 @@
     tools:context=".wolfPackOptions">
 
     <Button
-        android:id="@+id/button2"
+        android:id="@+id/nextpage"
         android:layout_width="112dp"
         android:layout_height="58dp"
         android:background="#25E65B"
-        android:text="Create Loan Agreement"
+        android:onClick="nextpage"
+        android:text="Create Loan Agreement/ Invite"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"

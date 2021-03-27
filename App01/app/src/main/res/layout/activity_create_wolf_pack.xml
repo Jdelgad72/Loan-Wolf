@@ -23,9 +23,11 @@
         app:layout_constraintVertical_bias="0.001" />
 
     <Button
-        android:id="@+id/button8"
+        android:id="@+id/finished"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@color/main_gray"
+        android:textColor="@color/main_green"
         android:text="Create"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -49,11 +51,11 @@
         app:layout_constraintVertical_bias="0.471" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName2"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
-        android:hint="Username"
+        android:hint="Name"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -63,10 +65,12 @@
         app:layout_constraintVertical_bias="0.577" />
 
     <Button
-        android:id="@+id/button15"
+        android:id="@+id/invite"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Invite"
+        android:background="@color/main_gray"
+        android:textColor="@color/main_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.879"

@@ -13,7 +13,7 @@ public class wolfPackOptions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_wolf_pack_options);
     }
-    public void buttonCreate(View view) {
+    public void nextpage(View view) {
         startActivity(new Intent(wolfPackOptions.this, CreateWolfPack.class));
     }
 }
