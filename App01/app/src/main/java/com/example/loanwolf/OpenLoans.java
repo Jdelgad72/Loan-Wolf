@@ -68,8 +68,14 @@ public class OpenLoans extends AppCompatActivity {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                 OpenLoanListObject send = (OpenLoanListObject) adapterView.getItemAtPosition(i);
-                                Intent intent = new Intent(OpenLoans.this, Home.class);
+                                Intent intent = new Intent(OpenLoans.this, OpenLoansAccept.class);
                                 intent.putExtra("OPENLOANID", send.getOpenLoanID());
+                                intent.putExtra("borrowerLender", send.getBorrowerLender());
+                                intent.putExtra("amount", send.getAmount());
+                                intent.putExtra("interestRate", send.getInterestRate());
+                                intent.putExtra("paymentType", send.getPaymentType());
+                                intent.putExtra("startDate", send.getStartDate());
+                                intent.putExtra("numPayments", send.getNumPayments());
                                 startActivity(intent);
                             }
                         });

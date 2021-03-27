@@ -1,12 +1,7 @@
 package com.example.loanwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -21,6 +16,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class Leaderboard extends AppCompatActivity {
 
@@ -50,12 +47,12 @@ public class Leaderboard extends AppCompatActivity {
                         JSONArray email = obj.getJSONArray("email");
                         JSONArray starRating = obj.getJSONArray("starRating");
 
-                        list = (ListView) findViewById(R.id.listview);
+//                        list = (ListView) findViewById(R.id.listview);
 
-                        final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(Leaderboard.this, getOpenLoanID());
+                       // final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(Leaderboard.this, getOpenLoanID());
 
 
-                        list.setAdapter(adapter);
+                  //      list.setAdapter(adapter);
 
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
