@@ -15,6 +15,7 @@ public class CreateWolfPack extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_create_wolf_pack);
+
         username = (EditText) findViewById(R.id.username);
         invite = (Button) findViewById(R.id.invite);
         finished = (Button) findViewById(R.id.finished);
@@ -22,19 +23,9 @@ public class CreateWolfPack extends AppCompatActivity {
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.equals("Justin Delgado")){
+                if (username.getText().toString().equals("Fname") || username.getText().toString().equals("Justin Delgado")) {
                     Toast.makeText(CreateWolfPack.this, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                }
-                if (invite.equals("Sam Jaworski")){
-                    Toast.makeText(CreateWolfPack.this, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                }
-                if (invite.equals("Felipe Garcilazo")){
-                    Toast.makeText(CreateWolfPack.this, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                }
-                if (invite.equals("Test Test")){
-                    Toast.makeText(CreateWolfPack.this, "Invitation Sent", Toast.LENGTH_SHORT).show();
-                }
-                else{
+                } else{
                     Toast.makeText(CreateWolfPack.this, "User not found", Toast.LENGTH_LONG).show();
                 }
             }
