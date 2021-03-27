@@ -84,6 +84,12 @@ public class Leaderboard extends AppCompatActivity {
 
         ArrayList<String> arrayList=new ArrayList<>();
 
+        arrayList.add("Diego Lugo");
+        arrayList.add("Justin Delgado");
+        arrayList.add("test1");
+        arrayList.add("Felipe Garcilazo");
+        arrayList.add("test2");
+        
         //create array adapter
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         ListView.setAdapter(arrayAdapter);
