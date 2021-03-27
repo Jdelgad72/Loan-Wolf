@@ -2,6 +2,7 @@ package com.example.loanwolf;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -23,11 +24,17 @@ public class CreateWolfPack extends AppCompatActivity {
         invite.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (username.getText().toString().equals("Fname") || username.getText().toString().equals("Justin Delgado")) {
+                if (username.getText().toString().equals("Sam Jaworski") || username.getText().toString().equals("Justin Delgado") || username.getText().toString().equals("Felipe Garcilazo")) {
                     Toast.makeText(CreateWolfPack.this, "Invitation Sent", Toast.LENGTH_SHORT).show();
                 } else{
                     Toast.makeText(CreateWolfPack.this, "User not found", Toast.LENGTH_LONG).show();
                 }
+            }
+        });
+        finished.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(CreateWolfPack.this, Terms.class));
             }
         });
     }
