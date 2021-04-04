@@ -2,12 +2,14 @@ package com.example.loanwolf;
 
 public class MessageListObject {
     private String name;
+    private String email;
     private String message;
     private String date;
     private String time;
 
-    public MessageListObject(String name, String message, String date, String time){
+    public MessageListObject(String name, String email, String message, String date, String time){
         this.name = name;
+        this.email = email;
         this.message = message;
         this.date = date;
         this.time = time;
@@ -15,6 +17,10 @@ public class MessageListObject {
 
     public String getName() {
         return this.name;
+    }
+
+    public String getEmail() {
+        return this.email;
     }
 
     public String getMessage() {

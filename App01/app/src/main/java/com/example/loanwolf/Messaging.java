@@ -18,6 +18,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -25,12 +27,15 @@ public class Messaging extends AppCompatActivity {
 
     // Declare Variables
     ListView list;
-    ArrayList<OpenLoanListObject> openLoanList = new ArrayList<OpenLoanListObject>();
+    ArrayList<MessageListObject> messageList = new ArrayList<MessageListObject>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messaging);
+
+        User user = SharedPrefManager.getInfo();
+        final String id = user.getId();
 
         // send String to server and find name matches from server
         String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/messages.php";
@@ -45,37 +50,29 @@ public class Messaging extends AppCompatActivity {
                     if (!obj.getBoolean("error")) {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
-                        JSONArray borrowerLender = obj.getJSONArray("borrowerLender");
-                        JSONArray openLoanIDArray = obj.getJSONArray("openLoanID");
-                        JSONArray amountArray = obj.getJSONArray("amount");
-                        JSONArray interestRateArray = obj.getJSONArray("interestRate");
-                        JSONArray paymentTypeArray = obj.getJSONArray("paymentType");//weekly, monthly, or daily.
-                        JSONArray startDateArray = obj.getJSONArray("startDate");
-                        JSONArray numPaymentsArray = obj.getJSONArray("numPayments");
+                        JSONArray names = obj.getJSONArray("names");
+                        JSONArray emails = obj.getJSONArray("emails");
+                        JSONArray messages = obj.getJSONArray("messages");
+                        JSONArray dates = obj.getJSONArray("dates");
+                        JSONArray times = obj.getJSONArray("times");
 
-                        for (int i = 0; i<borrowerLender.length(); i++) {
-                            openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
+                        for (int i = 0; i<names.length(); i++) {
+                            messageList.add(new MessageListObject(names.getString(i), emails.getString(i), messages.getString(i), dates.getString(i), times.getString(i)));
                         }
 
                         list = (ListView) findViewById(R.id.listview);
 
-                        final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(OpenLoans.this, getOpenLoanID());
-
+                        final ListViewAdapterMessages adapter = new ListViewAdapterMessages(Messaging.this, getMessage());
 
                         list.setAdapter(adapter);
 
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                OpenLoanListObject send = (OpenLoanListObject) adapterView.getItemAtPosition(i);
-                                Intent intent = new Intent(OpenLoans.this, OpenLoansAccept.class);
-                                intent.putExtra("OPENLOANID", send.getOpenLoanID());
-                                intent.putExtra("borrowerLender", send.getBorrowerLender());
-                                intent.putExtra("amount", send.getAmount());
-                                intent.putExtra("interestRate", send.getInterestRate());
-                                intent.putExtra("paymentType", send.getPaymentType());
-                                intent.putExtra("startDate", send.getStartDate());
-                                intent.putExtra("numPayments", send.getNumPayments());
+                                MessageListObject send = (MessageListObject) adapterView.getItemAtPosition(i);
+                                Intent intent = new Intent(Messaging.this, Conversation.class);
+                                intent.putExtra("name", send.getName());
+                                intent.putExtra("email", send.getEmail());
                                 startActivity(intent);
                             }
                         });
@@ -93,19 +90,28 @@ public class Messaging extends AppCompatActivity {
                     public void onErrorResponse(VolleyError error) {
                         Log.d("VolleyError", String.valueOf(error));
                     }
-                });
+                }){
+
+            //ID Token Sent
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("ID", id);
+                return params;
+            }
+        };
         VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
     }
 
-    private ArrayList<OpenLoanListObject> getOpenLoanID(){
-        ArrayList<OpenLoanListObject> openLoan = new ArrayList<OpenLoanListObject>();
-        OpenLoanListObject p;
+    private ArrayList<MessageListObject> getMessage(){
+        ArrayList<MessageListObject> messages = new ArrayList<MessageListObject>();
+        MessageListObject p;
 
-        for(int i=0; i<openLoanList.size(); i++){
-            p=new OpenLoanListObject(openLoanList.get(i).getBorrowerLender(), openLoanList.get(i).getOpenLoanID(), openLoanList.get(i).getAmount(), openLoanList.get(i).getInterestRate(), openLoanList.get(i).getPaymentType(), openLoanList.get(i).getStartDate(), openLoanList.get(i).getNumPayments());
-            openLoan.add(p);
+        for(int i=0; i<messageList.size(); i++){
+            p=new MessageListObject(messageList.get(i).getName(), messageList.get(i).getEmail(), messageList.get(i).getMessage(), messageList.get(i).getDate(), messageList.get(i).getTime());
+            messages.add(p);
         }
-        return openLoan;
+        return messages;
     }
 
     public void ClickHome(View view) {

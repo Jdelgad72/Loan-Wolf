@@ -4,11 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.BaseAdapter;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListViewAdapterMessages {
+public class ListViewAdapterMessages extends BaseAdapter implements Filterable {
 
     // Declare Variables
     Context mContext;
@@ -51,6 +54,11 @@ public class ListViewAdapterMessages {
         dateTxtView.setText(messages.get(position).getDate());
         timeTxtView.setText(messages.get(position).getTime());
         return view;
+    }
+
+    @Override
+    public Filter getFilter() {
+        return null;
     }
 }
 
