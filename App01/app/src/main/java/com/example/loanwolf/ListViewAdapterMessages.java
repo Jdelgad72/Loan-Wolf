@@ -5,13 +5,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import java.util.ArrayList;
 
-public class ListViewAdapterMessages extends BaseAdapter implements Filterable {
+public class ListViewAdapterMessages extends BaseAdapter{
 
     // Declare Variables
     Context mContext;
@@ -47,18 +45,22 @@ public class ListViewAdapterMessages extends BaseAdapter implements Filterable {
         TextView messageTxtView = view.findViewById(R.id.message);
         TextView dateTxtView = view.findViewById(R.id.date);
         TextView timeTxtView = view.findViewById(R.id.time);
+        TextView statusTxtView = view.findViewById(R.id.status);
+
 
         // Set the results into TextViews
         nameTxtView.setText(messages.get(position).getName());
         messageTxtView.setText(messages.get(position).getMessage());
         dateTxtView.setText(messages.get(position).getDate());
         timeTxtView.setText(messages.get(position).getTime());
-        return view;
-    }
+        statusTxtView.setText(messages.get(position).getStatus());
 
-    @Override
-    public Filter getFilter() {
-        return null;
+        /*if(messages.get(position).getStatus().equals("Sender")){
+            RelativeLayout.LayoutParams layoutParams =(RelativeLayout.LayoutParams) view.getLayoutParams();
+            layoutParams.addRule(RelativeLayout.ALIGN_PARENT_RIGHT); //ALIGN_PARENT_RIGHT / LEFT etc.
+            view.setLayoutParams(layoutParams);
+        }*/
+        return view;
     }
 }
 

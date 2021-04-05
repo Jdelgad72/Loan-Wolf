@@ -4,13 +4,15 @@ public class MessageListObject {
     private String name;
     private String email;
     private String message;
+    private String status;
     private String date;
     private String time;
 
-    public MessageListObject(String name, String email, String message, String date, String time){
+    public MessageListObject(String name, String email, String message, String status, String date, String time){
         this.name = name;
         this.email = email;
         this.message = message;
+        this.status = status;
         this.date = date;
         this.time = time;
     }
@@ -25,6 +27,10 @@ public class MessageListObject {
 
     public String getMessage() {
         return this.message;
+    }
+
+    public String getStatus() {
+        return this.status;
     }
 
     public String getDate() {

@@ -57,7 +57,7 @@ public class Messaging extends AppCompatActivity {
                         JSONArray times = obj.getJSONArray("times");
 
                         for (int i = 0; i<names.length(); i++) {
-                            messageList.add(new MessageListObject(names.getString(i), emails.getString(i), messages.getString(i), dates.getString(i), times.getString(i)));
+                            messageList.add(new MessageListObject(names.getString(i), emails.getString(i), messages.getString(i), "", dates.getString(i), times.getString(i)));
                         }
 
                         list = (ListView) findViewById(R.id.listview);
@@ -108,7 +108,7 @@ public class Messaging extends AppCompatActivity {
         MessageListObject p;
 
         for(int i=0; i<messageList.size(); i++){
-            p=new MessageListObject(messageList.get(i).getName(), messageList.get(i).getEmail(), messageList.get(i).getMessage(), messageList.get(i).getDate(), messageList.get(i).getTime());
+            p=new MessageListObject(messageList.get(i).getName(), messageList.get(i).getEmail(), messageList.get(i).getMessage(), messageList.get(i).getStatus(), messageList.get(i).getDate(), messageList.get(i).getTime());
             messages.add(p);
         }
         return messages;
