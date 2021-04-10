@@ -54,6 +54,62 @@ public class EditProfile extends AppCompatActivity {
         final String id = user.getId();
         final String email = user.getEmail();
 
+        // retrieves the info of the user
+        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/editProfile.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+
+                try {
+                    //converting response to json object
+                    JSONObject obj = new JSONObject(response);
+
+                    //if no error in response
+                    if (!obj.getBoolean("error")) {
+                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                        Log.d("RESPONSE1", obj.getString("message"));
+
+                        String firstResponse = obj.getString("first");
+                        String lastResponse = obj.getString("last");
+                        String dobResponse = obj.getString("dob");
+                        String addressResponse = obj.getString("address");
+                        String zipResponse = obj.getString("zip");
+                        String stateResponse = obj.getString("state");
+                        String genderResponse = obj.getString("gender");
+
+                        First.setText(firstResponse);
+                        Last.setText(lastResponse);
+                        DOB.setText(dobResponse);
+                        Address.setText(addressResponse);
+                        ZIP.setText(zipResponse);
+                        State.setText(stateResponse);
+                        Gender.setText(genderResponse);
+                    } else {
+                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                        Log.d("RESPONSE2", obj.getString("message"));
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("RESPONSE1", String.valueOf(e));
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", String.valueOf(error));
+                    }
+                }) {
+            //updated user information Sent
+            @Override
+            protected Map<String, String> getParams() {
+                Map<String, String> params = new HashMap<>();
+                params.put("id", id);
+                return params;
+            }
+        };
+        VolleySingleton.getInstance(EditProfile.this).addToRequestQueue(stringRequest);
+
         //return to the profile page without changing anything
         Return.setOnClickListener(new View.OnClickListener() {
             @Override

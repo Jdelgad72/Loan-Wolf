@@ -6,4 +6,79 @@
     android:layout_height="match_parent"
     tools:context=".notificationTest">
 
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="413dp"
+        android:layout_height="52dp"
+        android:background="@color/main_green"
+        android:text="View Payment Schedule"
+        android:textAlignment="center"
+        android:textColor="@color/main_gray"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textView8"
+        android:layout_width="315dp"
+        android:layout_height="92dp"
+        android:text="View your active loans here."
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title"
+        app:layout_constraintVertical_bias="0.176" />
+
+    <Button
+        android:id="@+id/button9"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/main_gray"
+        android:onClick="buttonDaily"
+        android:text="Daily"
+        android:textColor="@color/main_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/title"
+        app:layout_constraintVertical_bias="0.499" />
+
+    <Button
+        android:id="@+id/button10"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/main_gray"
+        android:onClick="buttonWeekly"
+        android:text="Weekly"
+        android:textColor="@color/main_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.638" />
+
+    <Button
+        android:id="@+id/buttonCreate"
+        android:layout_width="200dp"
+        android:layout_height="50dp"
+        android:background="@color/main_gray"
+        android:onClick="buttonMonthly"
+        android:text="Monthly"
+        android:textColor="@color/main_green"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.784" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
