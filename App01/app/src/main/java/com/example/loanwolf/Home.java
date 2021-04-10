@@ -204,7 +204,7 @@ public class Home extends AppCompatActivity {
 
     public void ClickViewPayments(View view){
         //redirect activity to dashboard
-        redirectActivity(this, ViewPaymentSchedule.class);
+        redirectActivity(this, notificationTest.class);
     }
 
     public void ClickViewPortfolio(View view){
@@ -233,7 +233,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void OpenLoans(View view) {
-        startActivity(new Intent(Home.this, OpenLoans.class));
+        startActivity(new Intent(Home.this, OpenLoansN.class));
     }
 
     public void editprofile(View view) {
