@@ -61,7 +61,6 @@ public class OpenLoans extends AppCompatActivity {
 
                         final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(OpenLoans.this, getOpenLoanID());
 
-
                        list.setAdapter(adapter);
 
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {

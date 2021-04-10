@@ -112,15 +112,13 @@ public class Home extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
     }
-/*
-    public void ClickHome(View view){
-        //Recreate activity
-        recreate();
-    }
-*/
 
     public void ClickSearch(View view){
         redirectActivity(this, Search.class);
+    }
+
+    public void ClickMessages(View view){
+        redirectActivity(this, Messaging.class);
     }
 
     public void ClickViewPayments(View view){
@@ -137,7 +135,6 @@ public class Home extends AppCompatActivity {
         //Logout of App
         SharedPrefManager.getInstance(this).logout();
     }
-
 
     private static void redirectActivity(Activity activity, Class aClass){
         //Initialize intent
@@ -159,8 +156,7 @@ public class Home extends AppCompatActivity {
         redirectActivity(this, Profile.class);
 
     }
-   // public void ViewPaymentSchedule(View view) { startActivity(new Intent(Home.this, ViewPaymentSchedule.class));
-   // }
+
     public void WolfPack(View view) {
         startActivity(new Intent(Home.this, WolfPack.class));
     }

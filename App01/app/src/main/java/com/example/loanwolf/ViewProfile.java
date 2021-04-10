@@ -189,4 +189,13 @@ public class ViewProfile extends AppCompatActivity {
         //start activity
         activity.startActivity(intent);
     }
+
+    public void MessageButton(View view) {
+        final String name = getIntent().getStringExtra("USERNAME");
+        final String email = getIntent().getStringExtra("EMAIL");
+        Intent intent = new Intent(ViewProfile.this, Conversation.class);
+        intent.putExtra("name", name);
+        intent.putExtra("email", email);
+        startActivity(intent);
+    }
 }
