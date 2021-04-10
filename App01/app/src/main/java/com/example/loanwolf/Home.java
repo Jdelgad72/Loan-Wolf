@@ -123,7 +123,7 @@ public class Home extends AppCompatActivity {
 
     public void ClickViewPayments(View view){
         //redirect activity to dashboard
-        redirectActivity(this, ViewPaymentSchedule.class);
+        redirectActivity(this, notificationTest.class);
     }
 
     public void ClickViewPortfolio(View view){
