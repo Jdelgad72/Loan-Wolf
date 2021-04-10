@@ -3,6 +3,9 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.loanwolf">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,8 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpenLoansAccept"></activity>
-        <activity android:name=".wolfPackOptions"></activity>
+        <activity android:name=".OpenLoansN"></activity>
+        <activity android:name=".OpenLoansAccept" />
+        <activity android:name=".wolfPackOptions" />
         <activity android:name=".ViewPaymentSchedule" />
         <activity android:name=".Report" />
         <activity android:name=".OpenLoanTerms" />
@@ -46,8 +50,5 @@
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-permission android:name="android.permission.INTERNET" />
 
 </manifest>

@@ -130,7 +130,7 @@ public class Home extends AppCompatActivity {
 
     public void ClickViewPortfolio(View view){
         //redirect activity to about us
-        redirectActivity(this, Home.class);
+        redirectActivity(this, Leaderboard.class);
     }
 
     public void ClickLogout(View view){
