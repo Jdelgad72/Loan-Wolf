@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".OpenLoansN"></activity>
+        <activity android:name=".notificationTest"></activity>
+        <activity android:name=".OpenLoansN" />
         <activity android:name=".OpenLoansAccept" />
         <activity android:name=".wolfPackOptions" />
         <activity android:name=".ViewPaymentSchedule" />
