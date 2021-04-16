@@ -233,7 +233,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void OpenLoans(View view) {
-        startActivity(new Intent(Home.this, OpenLoansN.class));
+        startActivity(new Intent(Home.this, OpenLoans.class));
     }
 
     public void editprofile(View view) {
