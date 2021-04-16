@@ -34,7 +34,8 @@ public class Home extends AppCompatActivity {
     DrawerLayout drawerLayout;
     ListView list;
     ArrayList<LeaderboardListObject> leaderboardArrayList = new ArrayList<LeaderboardListObject>();
-
+    ListView list2;
+    ArrayList<NotificationListObject> notificationArrayList = new ArrayList<NotificationListObject>();
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -49,6 +50,7 @@ public class Home extends AppCompatActivity {
         //Sets textviews specific to user details
         titleTextView.setText("Home");
         final User user = SharedPrefManager.getInfo();
+
         emailTextView.setText(user.getEmail());
         nameTextView.setText(user.getFirstName() + ' ' + user.getLastName());
 
@@ -66,8 +68,6 @@ public class Home extends AppCompatActivity {
 
                     //if no error in response
                     if (!obj.getBoolean("error")) {
-                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
-
                         JSONArray name_array = obj.getJSONArray("names");
                         JSONArray email_array = obj.getJSONArray("emails");
                         JSONArray ratings_array = obj.getJSONArray("ratings");
@@ -122,8 +122,25 @@ public class Home extends AppCompatActivity {
                     if (!obj.getBoolean("error")) {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
 
+                        JSONArray messages_array = obj.getJSONArray("messages");
+                        JSONArray type_array = obj.getJSONArray("type");
 
+                        for (int i = 0; i<messages_array.length(); i++) {
+                            notificationArrayList.add(new NotificationListObject(messages_array.getString(i), type_array.getString(i)));
+                        }
 
+                        list2 = (ListView) findViewById(R.id.notificationslist);
+
+                        final ListViewAdapterNotifications adapter2 = new ListViewAdapterNotifications(Home.this, getNotifications());
+
+                        list2.setAdapter(adapter2);
+
+                        list2.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+
+                            }
+                        });
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                     }
@@ -143,7 +160,7 @@ public class Home extends AppCompatActivity {
             @Override
             protected Map<String, String> getParams() {
                 Map<String, String> params = new HashMap<>();
-                params.put("ID", user.getId());
+                params.put("id", user.getId());
                 return params;
             }
         };
@@ -159,6 +176,17 @@ public class Home extends AppCompatActivity {
             leaderboard.add(p);
         }
         return leaderboard;
+    }
+
+    private ArrayList<NotificationListObject> getNotifications(){
+        ArrayList<NotificationListObject> notification = new ArrayList<NotificationListObject>();
+        NotificationListObject p;
+
+        for(int i=0; i<notificationArrayList.size(); i++){
+            p=new NotificationListObject(notificationArrayList.get(i).getMessage(), notificationArrayList.get(i).getType());
+            notification.add(p);
+        }
+        return notification;
     }
 
     private static void redirectActivity(Activity activity, Class aClass){
@@ -233,7 +261,7 @@ public class Home extends AppCompatActivity {
     }
 
     public void OpenLoans(View view) {
-        startActivity(new Intent(Home.this, OpenLoansN.class));
+        startActivity(new Intent(Home.this, OpenLoans.class));
     }
 
     public void editprofile(View view) {

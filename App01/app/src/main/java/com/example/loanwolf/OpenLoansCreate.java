@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CreateOpenLoan extends AppCompatActivity {
+public class OpenLoansCreate extends AppCompatActivity {
     private TextView intView;
     private ProgressBar progressBar;
     private SeekBar seekBar;
@@ -46,7 +46,7 @@ public class CreateOpenLoan extends AppCompatActivity {
                 RadioButton radioButton = (RadioButton) findViewById(selectedId);
                 RadioButton radioButton2 = (RadioButton) findViewById(selectedId2);
 
-                Intent intent = new Intent(CreateOpenLoan.this, OpenLoanTerms.class);
+                Intent intent = new Intent(OpenLoansCreate.this, OpenLoanTerms.class);
                 intent.putExtra("RADIO", String.valueOf(radioButton.getText()));
                 intent.putExtra("RADIO2", String.valueOf(radioButton2.getText()));
                 intent.putExtra("DATE", String.valueOf(loanDate.getText()));
@@ -77,7 +77,7 @@ public class CreateOpenLoan extends AppCompatActivity {
     }
 
     public void ClickViewOpenLoans(View view) {
-        Intent intent = new Intent(CreateOpenLoan.this, OpenLoans.class);
+        Intent intent = new Intent(OpenLoansCreate.this, OpenLoans.class);
         startActivity(intent);
     }
 }

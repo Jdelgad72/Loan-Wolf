@@ -4,9 +4,21 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -17,7 +29,6 @@ public class OpenLoansAccept extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_open_loans_accept);
 
-        final String openloanid = getIntent().getStringExtra("OPENLOANID");
         final String borrowerLender = getIntent().getStringExtra("borrowerLender");
         final String amount = getIntent().getStringExtra("amount");
         final String interestRate = getIntent().getStringExtra("interestRate");
@@ -89,9 +100,72 @@ public class OpenLoansAccept extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(OpenLoansAccept.this, "Accepted Loan Contract. Successfully initiated loan.", Toast.LENGTH_LONG).show();
+                        Toast.makeText(OpenLoansAccept.this, "Loan Accepted", Toast.LENGTH_LONG).show();
+
+                        User user = SharedPrefManager.getInfo();
+                        final String id = user.getId();
+                        final String openloanid = getIntent().getStringExtra("OPENLOANID");
+                        final String borrowerLender = getIntent().getStringExtra("borrowerLender");
+                        final String amount = getIntent().getStringExtra("amount");
+                        final String interestRate = getIntent().getStringExtra("interestRate");
+                        final String paymentType = getIntent().getStringExtra("paymentType");
+                        final String startDate = getIntent().getStringExtra("startDate");
+                        final String numPayments = getIntent().getStringExtra("numPayments");
+
+                        // send the updated info to server and validates
+                        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/acceptOpenLoans.php";
+                        StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
+                            @Override
+                            public void onResponse(String response) {
+
+                                try {
+                                    //converting response to json object
+                                    JSONObject obj = new JSONObject(response);
+
+                                    //if no error in response
+                                    if (!obj.getBoolean("error")) {
+                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    }
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        },
+                                new Response.ErrorListener() {
+                                    @Override
+                                    public void onErrorResponse(VolleyError error) {
+                                        Log.d("VolleyError", String.valueOf(error));
+                                    }
+                                }) {
+
+                            //updated user information Sent
+                            @Override
+                            protected Map<String, String> getParams() {
+                                Map<String, String> params = new HashMap<>();
+                                params.put("ID", id);
+                                params.put("openloanid", openloanid);
+                                params.put("borrowerLender", borrowerLender);
+                                params.put("amount", amount);
+                                params.put("interestRate", interestRate);
+                                params.put("paymentType", paymentType);
+                                params.put("startDate", startDate);
+                                params.put("numPayments", numPayments);
+                                return params;
+                            }
+                        };
+                        VolleySingleton.getInstance(OpenLoansAccept.this).addToRequestQueue(stringRequest);
                     }
                 });
+        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                finish();
+            }
+        });
         alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

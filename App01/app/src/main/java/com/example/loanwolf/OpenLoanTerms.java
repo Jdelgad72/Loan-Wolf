@@ -83,8 +83,6 @@ public class OpenLoanTerms extends AppCompatActivity {
                         final String value = getIntent().getStringExtra("VALUE");
                         final String rate = String.valueOf(Float.parseFloat(getIntent().getStringExtra("RATE"))/100);
 
-                        Log.d("FAKENESS", rate);
-
                         // send the updated info to server and validates
                         String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createOpenLoans.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {

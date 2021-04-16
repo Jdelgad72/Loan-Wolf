@@ -22,7 +22,7 @@
         <activity android:name=".ViewPaymentSchedule" />
         <activity android:name=".Report" />
         <activity android:name=".OpenLoanTerms" />
-        <activity android:name=".CreateOpenLoan" />
+        <activity android:name=".OpenLoansCreate" />
         <activity android:name=".Notifications" />
         <activity android:name=".Leaderboard" />
         <activity android:name=".ViewReviews" />

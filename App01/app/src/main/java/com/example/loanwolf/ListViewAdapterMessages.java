@@ -41,11 +41,11 @@ public class ListViewAdapterMessages extends BaseAdapter{
             view = inflater.inflate(R.layout.list_view_messages, null);
         }
 
-        TextView nameTxtView = view.findViewById(R.id.name);
+        TextView nameTxtView = view.findViewById(R.id.textView);
         TextView messageTxtView = view.findViewById(R.id.message);
         TextView dateTxtView = view.findViewById(R.id.date);
         TextView timeTxtView = view.findViewById(R.id.time);
-        TextView statusTxtView = view.findViewById(R.id.status);
+        TextView statusTxtView = view.findViewById(R.id.type);
 
 
         // Set the results into TextViews
