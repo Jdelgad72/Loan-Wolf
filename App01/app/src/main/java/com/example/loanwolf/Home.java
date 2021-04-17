@@ -73,7 +73,7 @@ public class Home extends AppCompatActivity {
                         JSONArray ratings_array = obj.getJSONArray("ratings");
 
                         for (int i = 0; i<name_array.length(); i++) {
-                            leaderboardArrayList.add(new LeaderboardListObject(String.valueOf(i+1), name_array.getString(i), email_array.getString(i), ratings_array.getString(i)));
+                            leaderboardArrayList.add(new LeaderboardListObject(String.valueOf(i+1), name_array.getString(i), email_array.getString(i), ratings_array.getString(i).substring(0, 3)));
                         }
 
                         list = (ListView) findViewById(R.id.leaderboardsList);
@@ -226,6 +226,10 @@ public class Home extends AppCompatActivity {
         redirectActivity(this, Search.class);
     }
 
+    public void ClickLoanWolfAccount(View view){
+        redirectActivity(this, Profile.class);
+    }
+
     public void ClickMessages(View view){
         redirectActivity(this, Messaging.class);
     }
@@ -233,11 +237,6 @@ public class Home extends AppCompatActivity {
     public void ClickViewPayments(View view){
         //redirect activity to dashboard
         redirectActivity(this, notificationTest.class);
-    }
-
-    public void ClickViewPortfolio(View view){
-        //redirect activity to about us
-        redirectActivity(this, Leaderboard.class);
     }
 
     public void ClickLogout(View view){
@@ -250,10 +249,6 @@ public class Home extends AppCompatActivity {
         super.onPause();
         //Close drawer
         closeDrawer(drawerLayout);
-    }
-
-    public void Buttonclick(View view) {
-        redirectActivity(this, Profile.class);
     }
 
     public void WolfPack(View view) {

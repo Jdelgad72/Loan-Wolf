@@ -54,7 +54,7 @@ public class OpenLoans extends AppCompatActivity {
                         JSONArray numPaymentsArray = obj.getJSONArray("numPayments");
 
                         for (int i = 0; i<borrowerLender.length(); i++) {
-                            openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
+                                openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
                         }
 
                         list = (ListView) findViewById(R.id.listview);
