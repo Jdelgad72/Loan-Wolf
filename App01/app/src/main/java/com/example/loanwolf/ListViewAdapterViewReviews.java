@@ -13,10 +13,10 @@ public class ListViewAdapterViewReviews extends BaseAdapter {
 
     // Declare Variables
     Context mContext;
-    ArrayList<LeaderboardListObject> ViewReviews;
-    ArrayList<LeaderboardListObject> filterList;
+    ArrayList<ViewReviewsListObject> ViewReviews;
+    ArrayList<ViewReviewsListObject> filterList;
 
-    public ListViewAdapterViewReviews(Context context, ArrayList<LeaderboardListObject> viewreviews) {
+    public ListViewAdapterViewReviews(Context context, ArrayList<ViewReviewsListObject> viewreviews) {
         mContext = context;
         this.ViewReviews = viewreviews;
         this.filterList = viewreviews;
@@ -45,9 +45,9 @@ public class ListViewAdapterViewReviews extends BaseAdapter {
         TextView comment = view.findViewById(R.id.TextView4);
 
         // Set the results into TextViews
-        name.setText(ViewReviews.get(position).getrank());
-        rating.setText(ViewReviews.get(position).getname());
-        comment.setText(ViewReviews.get(position).getemail());
+        name.setText(ViewReviews.get(position).name());
+        rating.setText(ViewReviews.get(position).getrating());
+        comment.setText(ViewReviews.get(position).getcomment());
         return view;
     }
 }

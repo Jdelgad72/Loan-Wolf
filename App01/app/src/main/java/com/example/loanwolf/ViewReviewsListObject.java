@@ -1,11 +1,11 @@
 package com.example.loanwolf;
 
-public class NewReviewsListObject {
+public class ViewReviewsListObject {
     private String name;
     private String rating;
     private String comment;
 
-    public NewReviewsListObject(String name, String rating, String comment) {
+    public ViewReviewsListObject(String name, String rating, String comment) {
         this.name = name;
         this.rating = rating;
         this.comment = comment;
