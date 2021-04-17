@@ -13,7 +13,6 @@ import java.util.ArrayList;
 
 public class ViewReviews extends AppCompatActivity {
 
-    private Button Return;
     private ListView ListView;
 
     @Override
@@ -21,7 +20,6 @@ public class ViewReviews extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_reviews);
 
-        Return = (Button) findViewById(R.id.btnReturn);
         ListView = (ListView) findViewById(R.id.listview);
 
         ArrayList<String> arrayList=new ArrayList<>();
@@ -31,13 +29,6 @@ public class ViewReviews extends AppCompatActivity {
         //create array adapter
         ArrayAdapter arrayAdapter=new ArrayAdapter(this, android.R.layout.simple_list_item_1,arrayList);
         ListView.setAdapter(arrayAdapter);
-
-        //return to the profile page without changing anything
-        Return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(ViewReviews.this, ViewProfile.class));
-            }
-        });
+        
     }
 }
