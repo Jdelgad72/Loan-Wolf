@@ -26,7 +26,6 @@ public class NewReview extends AppCompatActivity {
 
     private EditText Review;
     private EditText Rating;
-    private Button Return;
     private Button Submit;
 
     @Override
@@ -37,7 +36,6 @@ public class NewReview extends AppCompatActivity {
         //Get widgets from XML
         Review = (EditText) findViewById(R.id.editReview);
         Rating = (EditText) findViewById(R.id.editRating);
-        Return = (Button) findViewById(R.id.btnReturn);
         Submit = (Button) findViewById(R.id.btnSubmit);
 
         //get ID
@@ -55,13 +53,6 @@ public class NewReview extends AppCompatActivity {
         Review.setMinLines(1);
         Review.setMaxLines(6);
 
-        //Code for a return button
-        Return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(NewReview.this, Profile.class));
-            }
-        });
         //Code for a submit button
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override
