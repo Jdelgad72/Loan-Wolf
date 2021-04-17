@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
+    android:background="#c8c8c8"
     android:foregroundTint="#FFFFFF"
     tools:context=".CreateOpenLoan">
 
@@ -12,7 +12,7 @@
         android:id="@+id/linearLayoutMenu"
         android:layout_width="match_parent"
         android:layout_height="68dp"
-        android:background="@color/main_green"
+        android:background="#5dbb63"
         android:gravity="center_vertical"
         android:orientation="horizontal"
         android:padding="12dp"
@@ -44,7 +44,7 @@
         android:id="@+id/button2"
         android:layout_width="112dp"
         android:layout_height="58dp"
-        android:background="#25E65B"
+        android:background="#5dbb63"
         android:text="Create Loan Agreement"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

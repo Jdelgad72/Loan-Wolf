@@ -22,6 +22,7 @@
         android:id="@+id/profileResume"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@color/main_green"
         android:text="View More"
@@ -32,7 +33,7 @@
         android:id="@+id/textView14"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Profile Resume"
         android:textColor="#FFFFFF"
@@ -69,10 +70,11 @@
         android:id="@+id/imageView4"
         android:layout_width="64dp"
         android:layout_height="48dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
+        android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView10"
-        tools:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
     <ImageView
         android:id="@+id/imageView3"
@@ -82,7 +84,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/reviewerName"
-        tools:srcCompat="@drawable/ic_star" />
+        android:src="@drawable/ic_star" />
 
     <LinearLayout
         android:id="@+id/linearLayoutMenu"
@@ -118,11 +120,12 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="110dp"
+        android:layout_width="100dp"
         android:layout_height="130dp"
+        android:layout_marginStart="5dp"
+        android:src="@drawable/ic_baseline_person_24"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayoutMenu"
-        tools:srcCompat="@drawable/ic_launcher_foreground" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayoutMenu" />
 
     <Button
         android:id="@+id/messageBtn"
@@ -151,7 +154,7 @@
         android:id="@+id/loanBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
+        android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:background="@color/main_green"
         android:text="Begin Loan"
@@ -200,7 +203,7 @@
         android:layout_marginTop="5dp"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView7"
-        tools:srcCompat="@drawable/ic_star" />
+        android:src="@drawable/ic_star" />
 
     <TextView
         android:id="@+id/ratingTxtView"
@@ -230,7 +233,7 @@
         android:id="@+id/textView10"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Reviews"
         android:textColor="#FFFFFF"
@@ -254,7 +257,7 @@
         android:id="@+id/commentTxtView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="Comment"
         android:textColor="#FFFFFF"
@@ -265,6 +268,7 @@
         android:id="@+id/allReviewsBtn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
         android:background="@color/main_green"
         android:text="View All Reviews"
@@ -275,7 +279,7 @@
         android:id="@+id/textView15"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="User has a "
         android:textColor="#FFFFFF"
@@ -308,7 +312,7 @@
         android:id="@+id/textView18"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="Out of "
         android:textColor="#FFFFFF"
