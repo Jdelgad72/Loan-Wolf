@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
-    android:layout_height="fill_parent">
+    android:layout_height="fill_parent"
+    android:background="#c8c8c8">
 
     <LinearLayout
         android:id="@+id/linearLayoutMenu"
@@ -26,7 +27,7 @@
             android:layout_weight="1"
             android:text=" View Current Open Loans"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="#28231d"
             android:textSize="24sp"
             android:textStyle="bold" />
 

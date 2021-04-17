@@ -5,6 +5,7 @@
     <color name="blue_grey_700">#455A64</color>
     <color name="blue_grey_800">#37474F</color>
     <color name="blue_grey_900">#263238</color>
-    <color name="main_green">#25e65b</color>
-    <color name="main_gray">#525151</color>
+    <color name="main_green">#5dbb63</color>
+    <color name="main_gray">#c8c8c8</color>
+    <color name="title_color">#28231d</color>
 </resources>
