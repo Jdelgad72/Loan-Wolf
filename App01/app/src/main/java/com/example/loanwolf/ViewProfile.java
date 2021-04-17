@@ -108,7 +108,7 @@ public class ViewProfile extends AppCompatActivity {
                             ratingTxtView.setText("No Ratings.");
                             outOfFive1.setVisibility(View.INVISIBLE);
                         }else{
-                            ratingTxtView.setText(obj.getString("rating"));
+                            ratingTxtView.setText(obj.getString("rating").substring(0, 3));
                         }
 
                         dateTxtView.setText(obj.getString("dateJoined"));

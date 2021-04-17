@@ -1,5 +1,6 @@
 package com.example.loanwolf;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -9,7 +10,11 @@ import android.widget.Filter;
 import android.widget.Filterable;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ListViewAdapterOpenLoans extends BaseAdapter implements Filterable {
 
@@ -68,7 +73,15 @@ public class ListViewAdapterOpenLoans extends BaseAdapter implements Filterable 
         lenderBorrowerTxtView.setText(openLoans.get(position).getBorrowerLender());
         amountTxtView.setText(openLoans.get(position).getAmount());
         interestTxtView.setText(String.valueOf(Float.valueOf(openLoans.get(position).getInterestRate()) * 100));
-        startDateTxtView.setText(openLoans.get(position).getStartDate());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateInString = openLoans.get(position).getStartDate();
+        try {
+            Date date = formatter.parse(dateInString);
+            @SuppressLint("SimpleDateFormat") DateFormat out = new SimpleDateFormat("MMM dd, yyyy");
+            startDateTxtView.setText(out.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         numPaymentsTxtView.setText(openLoans.get(position).getNumPayments());
         timeIntervalTxtView.setText(openLoans.get(position).getPaymentType());
         return view;

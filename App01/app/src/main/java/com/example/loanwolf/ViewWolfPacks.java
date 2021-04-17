@@ -4,7 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
+
+import com.android.volley.Request;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class ViewWolfPacks extends AppCompatActivity {
 
@@ -12,11 +25,72 @@ public class ViewWolfPacks extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_wolf_packs);
+
+        // send String to server and find name matches from server
+        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/openLoanList.php";
+        StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
+            @Override
+            public void onResponse(String response) {
+                try {
+                    //converting response to json object
+                    JSONObject obj = new JSONObject(response);
+
+                    //if no error in response
+                    if (!obj.getBoolean("error")) {
+                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+
+                        JSONArray borrowerLender = obj.getJSONArray("borrowerLender");
+                        JSONArray openLoanIDArray = obj.getJSONArray("openLoanID");
+                        JSONArray amountArray = obj.getJSONArray("amount");
+                        JSONArray interestRateArray = obj.getJSONArray("interestRate");
+                        JSONArray paymentTypeArray = obj.getJSONArray("paymentType");//weekly, monthly, or daily.
+                        JSONArray startDateArray = obj.getJSONArray("startDate");
+                        JSONArray numPaymentsArray = obj.getJSONArray("numPayments");
+
+                        for (int i = 0; i<borrowerLender.length(); i++) {
+                            openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
+                        }
+
+                        list = (ListView) findViewById(R.id.listview);
+
+                        final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(OpenLoans.this, getOpenLoanID());
+
+                        list.setAdapter(adapter);
+
+                        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                                OpenLoanListObject send = (OpenLoanListObject) adapterView.getItemAtPosition(i);
+                                Intent intent = new Intent(OpenLoans.this, OpenLoansAccept.class);
+                                intent.putExtra("OPENLOANID", send.getOpenLoanID());
+                                intent.putExtra("borrowerLender", send.getBorrowerLender());
+                                intent.putExtra("amount", send.getAmount());
+                                intent.putExtra("interestRate", send.getInterestRate());
+                                intent.putExtra("paymentType", send.getPaymentType());
+                                intent.putExtra("startDate", send.getStartDate());
+                                intent.putExtra("numPayments", send.getNumPayments());
+                                startActivity(intent);
+                            }
+                        });
+                    } else {
+                        Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
+                    }
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                    Log.d("RESPONSE1", String.valueOf(e));
+                }
+            }
+        },
+                new Response.ErrorListener() {
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+                        Log.d("VolleyError", String.valueOf(error));
+                    }
+                });
+        VolleySingleton.getInstance(this).addToRequestQueue(stringRequest);
+
     }
-    public void buttonView01(View view) {
-        startActivity(new Intent(ViewWolfPacks.this, WolfPackInfo.class));
-    }
-    public void buttonView02(View view) {
-        startActivity(new Intent(ViewWolfPacks.this, WolfPackInfo.class));
-    }
+
+
+
 }

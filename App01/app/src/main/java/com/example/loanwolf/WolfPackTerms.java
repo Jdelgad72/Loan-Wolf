@@ -1,8 +1,9 @@
 package com.example.loanwolf;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import android.app.AlertDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -19,14 +20,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-public class OpenLoanTerms extends AppCompatActivity {
+public class WolfPackTerms extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_open_loan_terms);
+        setContentView(R.layout.activity_wolf_pack_terms);
     }
 
     public void open(View view) {
@@ -72,7 +71,7 @@ public class OpenLoanTerms extends AppCompatActivity {
                 new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface arg0, int arg1) {
-                        Toast.makeText(OpenLoanTerms.this, "Loan Sent", Toast.LENGTH_LONG).show();
+                        Toast.makeText(WolfPackTerms.this, "Loan Sent", Toast.LENGTH_LONG).show();
 
                         User user = SharedPrefManager.getInfo();
                         final String id = user.getId();
@@ -83,8 +82,10 @@ public class OpenLoanTerms extends AppCompatActivity {
                         final String value = getIntent().getStringExtra("VALUE");
                         final String rate = String.valueOf(Float.parseFloat(getIntent().getStringExtra("RATE"))/100);
 
+                        Log.d("FAKENESS", rate);
+
                         // send the updated info to server and validates
-                        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createOpenLoans.php";
+                        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/createWolfPack.php";
                         StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
                             @Override
                             public void onResponse(String response) {
@@ -128,7 +129,7 @@ public class OpenLoanTerms extends AppCompatActivity {
                                 return params;
                             }
                         };
-                        VolleySingleton.getInstance(OpenLoanTerms.this).addToRequestQueue(stringRequest);
+                        VolleySingleton.getInstance(WolfPackTerms.this).addToRequestQueue(stringRequest);
                     }
                 });
         alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
@@ -139,10 +140,5 @@ public class OpenLoanTerms extends AppCompatActivity {
         });
         AlertDialog alertDialog = alertDialogBuilder.create();
         alertDialog.show();
-    }
-
-    public void ClickViewOpenLoans(View view) {
-        Intent intent = new Intent(OpenLoanTerms.this, OpenLoans.class);
-        startActivity(intent);
     }
 }

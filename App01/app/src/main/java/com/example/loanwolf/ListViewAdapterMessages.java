@@ -1,5 +1,6 @@
 package com.example.loanwolf;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,7 +8,11 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class ListViewAdapterMessages extends BaseAdapter{
 
@@ -41,17 +46,25 @@ public class ListViewAdapterMessages extends BaseAdapter{
             view = inflater.inflate(R.layout.list_view_messages, null);
         }
 
-        TextView nameTxtView = view.findViewById(R.id.name);
+        TextView nameTxtView = view.findViewById(R.id.textView);
         TextView messageTxtView = view.findViewById(R.id.message);
         TextView dateTxtView = view.findViewById(R.id.date);
         TextView timeTxtView = view.findViewById(R.id.time);
-        TextView statusTxtView = view.findViewById(R.id.status);
+        TextView statusTxtView = view.findViewById(R.id.type);
 
 
         // Set the results into TextViews
         nameTxtView.setText(messages.get(position).getName());
         messageTxtView.setText(messages.get(position).getMessage());
-        dateTxtView.setText(messages.get(position).getDate());
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String dateInString = messages.get(position).getDate();
+        try {
+            Date date = formatter.parse(dateInString);
+            @SuppressLint("SimpleDateFormat") DateFormat out = new SimpleDateFormat("MMM dd, yyyy");
+            dateTxtView.setText(out.format(date));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         timeTxtView.setText(messages.get(position).getTime());
         statusTxtView.setText(messages.get(position).getStatus());
 

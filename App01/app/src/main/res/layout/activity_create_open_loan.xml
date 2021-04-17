@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#525151"
     android:foregroundTint="#FFFFFF"
-    tools:context=".CreateOpenLoan">
+    tools:context=".OpenLoansCreate">
 
     <LinearLayout
         android:id="@+id/linearLayoutMenu"

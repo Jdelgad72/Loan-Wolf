@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <item name="status" type="id" />
+    <item name="type" type="id" />
     <item name="sign_in_button" type="id" />
     <item name="sign_out_button" type="id" />
     <item name="disconnect_button" type="id" />
