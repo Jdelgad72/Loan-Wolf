@@ -1,15 +1,11 @@
 package com.example.loanwolf;
 
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AlertDialog;
-import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -20,11 +16,17 @@ import com.stripe.android.model.ConfirmPaymentIntentParams;
 import com.stripe.android.model.PaymentIntent;
 import com.stripe.android.model.PaymentMethodCreateParams;
 import com.stripe.android.view.CardInputWidget;
+
 import java.io.IOException;
 import java.lang.ref.WeakReference;
 import java.lang.reflect.Type;
 import java.util.Map;
 import java.util.Objects;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.appcompat.app.AppCompatActivity;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.MediaType;
@@ -58,6 +60,8 @@ public class test01 extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_test01);
+
+
         // Configure the SDK with your Stripe publishable key so it can make requests to Stripe
         stripe = new Stripe(
                 getApplicationContext(),
@@ -65,15 +69,25 @@ public class test01 extends AppCompatActivity {
         );
         startCheckout();
     }
+
     private void startCheckout() {
+        final String amount = getIntent().getStringExtra("amount");
+        final String balance = getIntent().getStringExtra("balance");
+        final User user = SharedPrefManager.getInfo();
+
         // Create a PaymentIntent by calling the server's endpoint.
         MediaType mediaType = MediaType.get("application/json; charset=utf-8");
-        String json = "{"
-                + "'currency':'usd',"
-                + "'items':["
-                + "{'id':'photo_subscription'}"
-                + "]"
-                + "}";
+        String json = '{'
+                + "\"currency\":\"usd\","
+                + "\"amount\":\""
+                + amount
+                + "\","
+                +"\"id\":\""
+                + user.getId()
+                + "\","
+                + "\"balance\":\""
+                + balance
+                + "\"}";
         RequestBody body = RequestBody.create(json, mediaType);
         Request request = new Request.Builder()
                 .url(BACKEND_URL + "create.php")
@@ -81,6 +95,7 @@ public class test01 extends AppCompatActivity {
                 .build();
         httpClient.newCall(request)
                 .enqueue(new PayCallback(this));
+
         // Hook up the pay button to the card widget and stripe instance
         Button payButton = findViewById(R.id.payButton);
         payButton.setOnClickListener(new View.OnClickListener() {

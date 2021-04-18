@@ -1,26 +1,12 @@
 package com.example.loanwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.android.volley.Request;
-import com.android.volley.Response;
-import com.android.volley.VolleyError;
-import com.android.volley.toolbox.StringRequest;
-
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.math.BigDecimal;
-import java.util.HashMap;
-import java.util.Map;
+import androidx.appcompat.app.AppCompatActivity;
 
 public class depositWithdraw extends AppCompatActivity {
     Button button0, button01, button02, button03, button04, button05, button06, button07, button08, button09, buttonDeposit, buttonWithdraw, buttonPeriod, buttonClear, buttonBack;
@@ -30,7 +16,6 @@ public class depositWithdraw extends AppCompatActivity {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
 
         setContentView(R.layout.activity_deposit_withdraw);
 
@@ -50,6 +35,8 @@ public class depositWithdraw extends AppCompatActivity {
         buttonClear = findViewById(R.id.buttonClear);
         message = findViewById(R.id.message);
         workspace = findViewById(R.id.workspace);
+
+        final String balance = getIntent().getStringExtra("balance");
         /*Buttons to let user input/edit values they want to withdraw or deposit from 0 to 9 along with a decimal.*/
         button0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -139,7 +126,11 @@ public class depositWithdraw extends AppCompatActivity {
         buttonDeposit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(depositWithdraw.this, test01.class));
+                String amount = workspace.getText().toString();
+                Intent intent = new Intent(depositWithdraw.this, test01.class);
+                intent.putExtra("amount", amount);
+                intent.putExtra("balance", balance);
+                startActivity(intent);
             }
         });
         buttonWithdraw.setOnClickListener(new View.OnClickListener() {
@@ -161,7 +152,6 @@ public class depositWithdraw extends AppCompatActivity {
                 startActivity(new Intent(depositWithdraw.this, Profile.class));
             }
         });
-
     }
 
     public void onCancel(int requestCode) {

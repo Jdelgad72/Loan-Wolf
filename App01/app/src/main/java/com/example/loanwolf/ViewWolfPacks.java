@@ -1,13 +1,7 @@
 package com.example.loanwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.Toast;
 
 import com.android.volley.Request;
@@ -18,6 +12,8 @@ import com.android.volley.toolbox.StringRequest;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewWolfPacks extends AppCompatActivity {
 
@@ -47,17 +43,17 @@ public class ViewWolfPacks extends AppCompatActivity {
                         JSONArray startDateArray = obj.getJSONArray("startDate");
                         JSONArray numPaymentsArray = obj.getJSONArray("numPayments");
 
-                        for (int i = 0; i<borrowerLender.length(); i++) {
-                            openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
+                     /*   for (int i = 0; i<borrowerLender.length(); i++) {
+                           // openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
                         }
 
-                        list = (ListView) findViewById(R.id.listview);
+                       // list = (ListView) findViewById(R.id.listview);
 
                         final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(OpenLoans.this, getOpenLoanID());
 
-                        list.setAdapter(adapter);
+                        //list.setAdapter(adapter);
 
-                        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                        //list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                                 OpenLoanListObject send = (OpenLoanListObject) adapterView.getItemAtPosition(i);
@@ -71,7 +67,7 @@ public class ViewWolfPacks extends AppCompatActivity {
                                 intent.putExtra("numPayments", send.getNumPayments());
                                 startActivity(intent);
                             }
-                        });
+                        });*/
                     } else {
                         Toast.makeText(getApplicationContext(), obj.getString("message"), Toast.LENGTH_SHORT).show();
                     }
