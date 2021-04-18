@@ -5,13 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".NewReview"
-    android:background="#525151">
+    android:background="@color/main_gray">
 
     <TextView
         android:id="@+id/textViewEditProfile"
         android:layout_width="414dp"
         android:layout_height="67dp"
-        android:background="#25E65B"
+        android:background="@color/main_green"
         android:gravity="center"
         android:text="Leave a Review"
         android:textSize="36sp"
@@ -22,11 +22,12 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="29dp"
-        android:background="#25E65B"
+        android:layout_width="135dp"
+        android:layout_height="32dp"
+        android:layout_marginTop="36dp"
         android:text="Write a Review"
+        android:textColor="@color/title_color"
+        android:textSize="20sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewEditProfile"
@@ -37,7 +38,6 @@
         android:layout_width="316dp"
         android:layout_height="158dp"
         android:layout_marginTop="25dp"
-        android:background="#DCDCDC"
         android:ems="10"
         android:inputType="textPersonName"
         android:maxLines="6"
@@ -47,6 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:background="#FFFFFF"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -54,50 +55,37 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
-        android:background="#25E65B"
         android:text="Rate the User"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        android:textColor="@color/title_color"
         app:layout_constraintTop_toBottomOf="@+id/editReview"
-        tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnReturn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
-        android:background="#25E65B"
-        android:text="Return To Profile"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.172"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editRating"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="240dp"
-        android:background="#25E65B"
+        android:layout_marginTop="148dp"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.854"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editRating"
-        tools:ignore="MissingConstraints" />
+        tools:ignore="MissingConstraints"
+        android:background="@color/main_green"/>
 
     <EditText
         android:id="@+id/editRating"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="22dp"
-        android:background="#DCDCDC"
         android:ems="10"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView11"
+        android:background="#FFFFFF"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -105,9 +93,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:background="#25E65B"
         android:text="Please use whole numbers 1 - 5"
         app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
         tools:ignore="MissingConstraints" />

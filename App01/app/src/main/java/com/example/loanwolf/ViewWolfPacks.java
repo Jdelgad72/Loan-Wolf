@@ -1,7 +1,5 @@
 package com.example.loanwolf;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -9,6 +7,8 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -19,15 +19,22 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
+
 public class ViewWolfPacks extends AppCompatActivity {
+
+    ListView list;
+    ArrayList<WolfPackListObject> wolfPackList = new ArrayList<WolfPackListObject>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_wolf_packs);
 
+
         // send String to server and find name matches from server
-        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/openLoanList.php";
+        String postUrl = "https://cgi.sice.indiana.edu/~team21/team-21/backend/wolfPackList.php";
         StringRequest stringRequest = new StringRequest(Request.Method.POST, postUrl, new Response.Listener<String>() {
             @Override
             public void onResponse(String response) {
@@ -47,21 +54,21 @@ public class ViewWolfPacks extends AppCompatActivity {
                         JSONArray startDateArray = obj.getJSONArray("startDate");
                         JSONArray numPaymentsArray = obj.getJSONArray("numPayments");
 
-                        for (int i = 0; i<borrowerLender.length(); i++) {
-                            openLoanList.add(new OpenLoanListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
+                        for (int i = 0; i < borrowerLender.length(); i++) {
+                            wolfPackList.add(new WolfPackListObject(borrowerLender.getString(i), openLoanIDArray.getString(i), amountArray.getString(i), interestRateArray.getString(i), paymentTypeArray.getString(i), startDateArray.getString(i), numPaymentsArray.getString(i)));
                         }
 
                         list = (ListView) findViewById(R.id.listview);
 
-                        final ListViewAdapterOpenLoans adapter = new ListViewAdapterOpenLoans(OpenLoans.this, getOpenLoanID());
+                        final ListViewAdapterWolfPack adapter = new ListViewAdapterWolfPack(ViewWolfPacks.this, getOpenLoanID());
 
                         list.setAdapter(adapter);
 
                         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                             @Override
                             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                                OpenLoanListObject send = (OpenLoanListObject) adapterView.getItemAtPosition(i);
-                                Intent intent = new Intent(OpenLoans.this, OpenLoansAccept.class);
+                                WolfPackListObject send = (WolfPackListObject) adapterView.getItemAtPosition(i);
+                                Intent intent = new Intent(ViewWolfPacks.this, WolfPackAccept.class);
                                 intent.putExtra("OPENLOANID", send.getOpenLoanID());
                                 intent.putExtra("borrowerLender", send.getBorrowerLender());
                                 intent.putExtra("amount", send.getAmount());
@@ -91,6 +98,16 @@ public class ViewWolfPacks extends AppCompatActivity {
 
     }
 
+    private ArrayList<WolfPackListObject> getOpenLoanID(){
+        ArrayList<WolfPackListObject> openLoan = new ArrayList<WolfPackListObject>();
+        WolfPackListObject p;
+
+        for(int i=0; i<wolfPackList.size(); i++){
+            p=new WolfPackListObject(wolfPackList.get(i).getBorrowerLender(), wolfPackList.get(i).getOpenLoanID(), wolfPackList.get(i).getAmount(), wolfPackList.get(i).getInterestRate(), wolfPackList.get(i).getPaymentType(), wolfPackList.get(i).getStartDate(), wolfPackList.get(i).getNumPayments());
+            openLoan.add(p);
+        }
+        return openLoan;
+    }
 
 
 }

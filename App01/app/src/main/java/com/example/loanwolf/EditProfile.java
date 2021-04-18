@@ -31,7 +31,6 @@ public class EditProfile extends AppCompatActivity {
     private EditText State;
     private EditText Gender;
     private Button Submit;
-    private Button Return;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +46,6 @@ public class EditProfile extends AppCompatActivity {
         Gender = (EditText) findViewById(R.id.editTextGender);
         //Email = (EditText) findViewById(R.id.editTextEmail);
         Submit = (Button) findViewById(R.id.btnSubmit);
-        Return = (Button) findViewById(R.id.btnReturn);
 
         //get ID
         User user = SharedPrefManager.getInfo();
@@ -109,14 +107,6 @@ public class EditProfile extends AppCompatActivity {
             }
         };
         VolleySingleton.getInstance(EditProfile.this).addToRequestQueue(stringRequest);
-
-        //return to the profile page without changing anything
-        Return.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(EditProfile.this, Home.class));
-            }
-        });
 
         Submit.setOnClickListener(new View.OnClickListener() {
             @Override

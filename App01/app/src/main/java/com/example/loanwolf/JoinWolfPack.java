@@ -14,6 +14,6 @@ public class JoinWolfPack extends AppCompatActivity {
         setContentView(R.layout.activity_join_wolf_pack);
     }
     public void buttonJoinWP(View view) {
-        startActivity(new Intent(JoinWolfPack.this, ViewWolfPacks.class));
+        startActivity(new Intent(JoinWolfPack.this, Home.class));
     }
 }

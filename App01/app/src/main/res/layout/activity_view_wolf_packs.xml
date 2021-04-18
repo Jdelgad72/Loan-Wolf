@@ -25,9 +25,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text=" View Open WolfPacks"
+            android:text=" View WolfPacks"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="24sp"
             android:textStyle="bold" />
 

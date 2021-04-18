@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".ViewWeeklySchedule">
 
     <View
@@ -25,7 +26,7 @@
         android:background="@color/main_green"
         android:text="Weekly Payment Schedule"
         android:textAlignment="center"
-        android:textColor="@color/main_gray"
+        android:textColor="@color/title_color"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -38,7 +39,7 @@
         android:id="@+id/textView61"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Start Date: 2021-04-12"
+        android:text="Start Date: 2021-04-14"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EditProfile"
-    android:background="#525151">
+    android:background="@color/main_gray"
+    tools:context=".EditProfile">
 
     <EditText
         android:id="@+id/editTextFirstName"
@@ -102,10 +102,10 @@
         android:id="@+id/textViewEditProfile"
         android:layout_width="414dp"
         android:layout_height="67dp"
-        android:background="#25E65B"
+        android:background="@color/main_green"
+        android:gravity="center"
         android:text="Edit Your Profile"
         android:textSize="36sp"
-        android:gravity="center"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         tools:ignore="MissingConstraints"
@@ -115,12 +115,12 @@
         android:id="@+id/txtFirst"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="85dp"
         android:layout_marginTop="100dp"
-        android:background="#25E65B"
+        android:layout_marginEnd="47dp"
+        android:background="@color/main_green"
         android:text="First Name:"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.102"
+        app:layout_constraintEnd_toStartOf="@+id/editTextFirstName"
+        app:layout_constraintHorizontal_bias="0.421"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:ignore="MissingConstraints" />
@@ -130,10 +130,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="#25E65B"
+        android:layout_marginEnd="48dp"
+        android:background="@color/main_green"
         android:text="Last Name:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextLastName"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtFirst"
-        tools:layout_editor_absoluteX="27dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -141,11 +143,12 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:layout_marginEnd="85dp"
+        android:layout_marginEnd="36dp"
+        android:background="@color/main_green"
         android:text="Date Of Birth:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextDOB"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtLast"
-        tools:layout_editor_absoluteX="27dp"
-        android:background="#25E65B"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -153,10 +156,13 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="#25E65B"
+        android:layout_marginEnd="32dp"
+        android:background="@color/main_green"
         android:text="Street Address:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextAddress"
+        app:layout_constraintHorizontal_bias="0.714"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtDOB"
-        tools:layout_editor_absoluteX="27dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
@@ -164,55 +170,53 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:background="#25E65B"
+        android:layout_marginEnd="60dp"
+        android:background="@color/main_green"
         android:text="Zip Code:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextZIP"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtAddress"
-        tools:layout_editor_absoluteX="27dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/txtGender"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="#25E65B"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="68dp"
+        android:background="@color/main_green"
         android:text="Gender:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextGender"
+        app:layout_constraintHorizontal_bias="0.4"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtState"
-        tools:layout_editor_absoluteX="27dp"
         tools:ignore="MissingConstraints" />
 
     <TextView
         android:id="@+id/txtState"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
-        android:background="#25E65B"
+        android:layout_marginTop="44dp"
+        android:layout_marginEnd="72dp"
+        android:background="@color/main_green"
         android:text="State:"
+        app:layout_constraintEnd_toStartOf="@+id/editTextState"
+        app:layout_constraintHorizontal_bias="0.408"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/txtZIP"
-        tools:layout_editor_absoluteX="27dp"
         tools:ignore="MissingConstraints" />
 
     <Button
         android:id="@+id/btnSubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="89dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/main_green"
         android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.755"
+        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextGender"
         tools:ignore="MissingConstraints" />
-
-    <Button
-        android:id="@+id/btnReturn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="89dp"
-        android:text="Return to Home"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.24"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextGender" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
