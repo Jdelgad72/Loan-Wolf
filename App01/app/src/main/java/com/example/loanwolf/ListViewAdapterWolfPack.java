@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import android.widget.Filter;
 import android.widget.TextView;
 
 import java.text.DateFormat;
@@ -43,6 +42,7 @@ public class ListViewAdapterWolfPack extends BaseAdapter {
         return wolfPack.indexOf(getItem(position));
     }
 
+    @SuppressLint("SetTextI18n")
     public View getView(final int position, View view, ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) mContext.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 
@@ -58,7 +58,7 @@ public class ListViewAdapterWolfPack extends BaseAdapter {
         TextView timeIntervalTxtView = view.findViewById(R.id.TextView7);
 
         // Set the results into TextViews
-        lenderBorrowerTxtView.setText(wolfPack.get(position).getBorrowerLender());
+        lenderBorrowerTxtView.setText(wolfPack.get(position).getBorrowerLender()+"s");
         amountTxtView.setText(wolfPack.get(position).getAmount());
         interestTxtView.setText(String.valueOf(Float.valueOf(wolfPack.get(position).getInterestRate()) * 100));
         @SuppressLint("SimpleDateFormat") SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
