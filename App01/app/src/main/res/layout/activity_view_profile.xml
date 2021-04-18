@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
+    android:background="@color/main_gray"
     tools:context=".ViewProfile">
 
     <Button
@@ -36,7 +36,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Profile Resume"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -49,7 +49,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="0"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView3"
@@ -62,7 +62,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="5dp"
         android:text="/5"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/recentRatingTxtView"
         app:layout_constraintTop_toBottomOf="@+id/reviewerName" />
 
@@ -112,7 +112,7 @@
             android:layout_weight="1"
             android:text="Person Name"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="30sp"
             android:textStyle="bold" />
 
@@ -168,7 +168,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Member Since:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/loanBtn" />
@@ -179,7 +179,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="5dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView4"
         app:layout_constraintTop_toTopOf="@+id/textView4" />
 
@@ -190,7 +190,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Ratings:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView"
         app:layout_constraintTop_toBottomOf="@+id/textView4" />
@@ -212,7 +212,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="0"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textSize="18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toEndOf="@+id/imageView2"
@@ -225,7 +225,7 @@
         android:layout_marginStart="1dp"
         android:layout_marginTop="5dp"
         android:text="/5"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/ratingTxtView"
         app:layout_constraintTop_toBottomOf="@+id/textView7" />
 
@@ -236,7 +236,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="20dp"
         android:text="Reviews"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -249,7 +249,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Reviewer Name"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/imageView4"
         app:layout_constraintTop_toBottomOf="@+id/textView10" />
 
@@ -260,7 +260,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="Comment"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView4" />
 
@@ -282,7 +282,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="User has a "
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -293,7 +293,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="#F3EFEF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView15"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -304,7 +304,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="% Default Rate."
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/numberStat"
         app:layout_constraintTop_toBottomOf="@+id/textView14" />
 
@@ -315,7 +315,7 @@
         android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:text="Out of "
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -326,7 +326,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView18"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 
@@ -337,7 +337,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Payments."
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/numberLoans"
         app:layout_constraintTop_toBottomOf="@+id/textView15" />
 

@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".Conversation">
 
     <LinearLayout
@@ -31,7 +32,7 @@
             android:layout_weight="1"
             android:text="Person Name"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -44,6 +45,7 @@
         android:layout_marginEnd="4dp"
         android:ems="10"
         android:hint="Enter Message"
+        android:textColor="@color/title_color"
         android:inputType="textPersonName"
         android:layout_below="@id/linearLayoutMenu"
         android:gravity = "bottom" />
