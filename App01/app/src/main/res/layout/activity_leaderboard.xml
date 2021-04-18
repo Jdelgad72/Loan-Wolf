@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
+    android:background="@color/main_gray"
     tools:context=".Leaderboard">
 
     <TextView
         android:id="@+id/textViewLeaderboard"
         android:layout_width="414dp"
         android:layout_height="67dp"
-        android:background="#25E65B"
+        android:background="@color/main_green"
         android:gravity="center"
+        android:textColor="@color/title_color"
         android:text="User Rank Leaderboard"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,12 +23,11 @@
 
     <ListView
         android:id="@+id/listview"
-        android:layout_width="408dp"
-        android:layout_height="662dp"
-        android:layout_marginTop="5dp"
-        android:background="#DCDCDC"
+        android:layout_width="382dp"
+        android:layout_height="620dp"
+        android:background="@color/main_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewViewReviews" />
+        app:layout_constraintTop_toBottomOf="@+id/textViewLeaderboard" />
 </androidx.constraintlayout.widget.ConstraintLayout>

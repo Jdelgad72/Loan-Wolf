@@ -49,15 +49,10 @@ NULL);";
     if(mysqli_query($conn, $sql)){
 
       //Gets the loanID of the loan just inserted.
-      $stmt2 = $conn->prepare("SELECT loanID FROM loan WHERE creditorSignature = ? ORDER BY dateSent DESC, timeSent DESC LIMIT 1;");
-      $stmt2->bind_param("s", $name);
-      $stmt2->execute();
-      $stmt2->bind_result($loanID);
-      $stmt2->fetch();
-      $stmt2->close();
+	$last_id= mysqli_insert_id($conn);
      
       //Inserts a row into the userloan table.
-      $sql2 = "INSERT INTO userLoan(userDebtor, userCreditor, loanID) VALUES (NULL, $id, $loanID);";
+      $sql2 = "INSERT INTO userLoan(userDebtor, userCreditor, loanID) VALUES (1, $id, $last_id);";
       if(mysqli_query($conn, $sql2)){
         $response['error'] = false;
         $response['message'] = "Successfully added the open loan";
@@ -72,29 +67,24 @@ NULL);";
     if(mysqli_query($conn, $sql)){
 
       //Gets the loanID of the loan just inserted.
-      $stmt2 = $conn->prepare("SELECT loanID FROM loan WHERE debtorSignature = ? ORDER BY dateSent DESC, timeSent DESC LIMIT 1;");
-      $stmt2->bind_param("s", $name);
-      $stmt2->execute();
-      $stmt2->bind_result($loanID);
-      $stmt2->fetch();
-      $stmt2->close();
+      $last_id= mysqli_insert_id($conn);
 
       //Inserts a row into the userloan table.
-      $sql2 = "INSERT INTO userLoan(userDebtor, userCreditor, loanID) VALUES ($id, NULL, $loanID);";
+      $sql2 = "INSERT INTO userLoan(userDebtor, userCreditor, loanID) VALUES ($id, 1, $last_id);";
       if(mysqli_query($conn, $sql2)){
         $response['error'] = false;
         $response['message'] = "Successfully added the open loan";
       }
     }
   }
-$last_id= mysqli_insert_id($conn);
+
 //Inserts a row into the wolfPack table.	
 $sql = "INSERT INTO
 wolfPack(loanID) VALUES ($last_id);";
 	if(mysqli_query($conn, $sql)){
 		$response['error'] = false;
 		$response['message'] = "Succesfully added the wolfpack";
-}else{
+}}else{
   $response['error']=true;
   $response['message']='Missing Values.';
 }

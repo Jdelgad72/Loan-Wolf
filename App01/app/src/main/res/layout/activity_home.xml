@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/main_gray"
     android:id="@+id/drawer_layout"
     tools:context=".Home">
 
@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:onClick="LeaderboardText"
             android:text="Leaderboards"
+            android:textColor="@color/title_color"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -43,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Notifications"
+            android:textColor="@color/title_color"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />

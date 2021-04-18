@@ -13,6 +13,7 @@
         android:layout_height="67dp"
         android:background="@color/main_green"
         android:gravity="center"
+        android:textColor="@color/title_color"
         android:text="Leave a Review"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"

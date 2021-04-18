@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/main_gray"
-    tools:context=".OpenLoansAccept">
+    tools:context=".WolfPackAccept"
+    android:background="@color/main_gray">
 
     <LinearLayout
         android:id="@+id/linearLayoutMenu"
@@ -31,7 +31,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Accept Open Loan"
+            android:text="Accept WolfPack Loan"
             android:textAlignment="center"
             android:textColor="@color/title_color"
             android:textSize="24sp"
@@ -148,7 +148,6 @@
         android:layout_centerHorizontal="true"
         android:text="Do you agree with to accept this Open Loan?"
         android:textAlignment="center"
-        android:textColor="@color/title_color"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -180,8 +179,8 @@
         android:layout_alignStart="@+id/imageView"
         android:layout_alignEnd="@+id/textView2"
         android:onClick="open"
-        android:background="@color/main_green"
         android:text="View Terms and Conditions"
+        android:background="@color/main_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

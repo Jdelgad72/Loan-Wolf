@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
+    android:background="@color/main_gray"
     android:foregroundTint="#FFFFFF"
     tools:context=".LoanAgreement">
 
@@ -23,9 +23,11 @@
         android:layout_width="match_parent"
         android:layout_height="68dp"
         android:background="@color/main_green"
-        android:gravity="center_vertical"
-        android:orientation="horizontal"
-        android:padding="12dp"
+        android:gravity="center"
+        android:text="Contract"
+        android:textColor="@color/title_color"
+        android:textSize="36sp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -54,7 +56,7 @@
         android:id="@+id/button2"
         android:layout_width="112dp"
         android:layout_height="58dp"
-        android:background="#25E65B"
+        android:background="@color/main_green"
         android:text="Create Loan Agreement"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

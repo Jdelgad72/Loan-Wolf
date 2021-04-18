@@ -13,7 +13,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".WolfPackTerms"></activity>
+        <activity android:name=".WolfPackAccept"></activity>
+        <activity android:name=".WolfPackTerms" />
         <activity android:name=".ViewMonthlySchedule" />
         <activity android:name=".ViewWeeklySchedule" />
         <activity android:name=".notificationTest" />
