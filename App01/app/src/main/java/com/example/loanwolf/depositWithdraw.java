@@ -139,11 +139,14 @@ public class depositWithdraw extends AppCompatActivity {
                 startActivity(new Intent(depositWithdraw.this, test01.class));
             }
         });
-        /*Button for user to go back to the profile screen*/
-        backButton();
     }
 
-    private void backButton() {
+    public void onCancel(int requestCode) {
+        // Use this to handle a canceled activity, if the given requestCode is important.
+        // You may want to use this callback to hide loading indicators, and prepare your UI for input
+    }
+
+    public void backButton(View view) {
         buttonBack = findViewById(R.id.buttonBack);
 
         buttonBack.setOnClickListener(new View.OnClickListener() {
@@ -152,11 +155,6 @@ public class depositWithdraw extends AppCompatActivity {
                 startActivity(new Intent(depositWithdraw.this, Profile.class));
             }
         });
-    }
-
-    public void onCancel(int requestCode) {
-        // Use this to handle a canceled activity, if the given requestCode is important.
-        // You may want to use this callback to hide loading indicators, and prepare your UI for input
     }
 
     /*
