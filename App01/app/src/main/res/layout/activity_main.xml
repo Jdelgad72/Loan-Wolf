@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#525151"
+    android:background="@color/main_gray"
     android:weightSum="4"
     tools:context=".MainActivity">
 
@@ -13,10 +13,10 @@
         android:id="@+id/title_text"
         android:layout_width="408dp"
         android:layout_height="68dp"
-        android:background="#25E65B"
+        android:background="@color/main_green"
         android:gravity="center"
         android:text="@string/title_text"
-        android:textColor="@color/main_gray"
+        android:textColor="@color/title_color"
         android:textSize="36sp"
 
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,7 +28,7 @@
         android:layout_width="408dp"
         android:layout_height="121dp"
         android:layout_weight="1"
-        android:background="#25E65B"
+        android:background="@color/main_green"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent">
@@ -49,7 +49,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:backgroundTint="#525151"
+                android:backgroundTint="@color/title_color"
                 android:text="@string/sign_out"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
 
@@ -58,7 +58,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:backgroundTint="#525151"
+                android:backgroundTint="@color/title_color"
                 android:text="@string/disconnect"
                 android:theme="@style/ThemeOverlay.MyDarkButton" />
         </LinearLayout>

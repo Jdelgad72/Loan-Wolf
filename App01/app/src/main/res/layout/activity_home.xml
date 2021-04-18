@@ -23,6 +23,7 @@
             android:layout_height="wrap_content"
             android:onClick="LeaderboardText"
             android:text="Leaderboards"
+            android:textColor="@color/title_color"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />
@@ -43,6 +44,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Notifications"
+            android:textColor="@color/title_color"
             android:textAlignment="center"
             android:textSize="30sp"
             android:textStyle="bold" />

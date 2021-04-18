@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".OpenLoansAccept">
 
     <LinearLayout
@@ -32,7 +33,7 @@
             android:layout_weight="1"
             android:text="Accept Open Loan"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="24sp"
             android:textStyle="bold" />
 
@@ -147,6 +148,7 @@
         android:layout_centerHorizontal="true"
         android:text="Do you agree with to accept this Open Loan?"
         android:textAlignment="center"
+        android:textColor="@color/title_color"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -178,6 +180,7 @@
         android:layout_alignStart="@+id/imageView"
         android:layout_alignEnd="@+id/textView2"
         android:onClick="open"
+        android:background="@color/main_green"
         android:text="View Terms and Conditions"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

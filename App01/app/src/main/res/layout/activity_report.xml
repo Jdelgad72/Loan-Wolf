@@ -5,13 +5,15 @@
     android:id="@+id/infoUser2"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".Report">
 
     <TextView
         android:id="@+id/textViewEditProfile"
         android:layout_width="414dp"
         android:layout_height="67dp"
-        android:background="#25E65B"
+        android:background="@color/main_green"
+        android:textColor="@color/title_color"
         android:gravity="center"
         android:text="Report User"
         android:textSize="36sp"
@@ -99,6 +101,7 @@
         android:id="@+id/editTextTextMultiLine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="#ffffff"
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
@@ -113,7 +116,7 @@
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:backgroundTint="#25E65B"
+        android:background="@color/main_green"
         android:text="Submit"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

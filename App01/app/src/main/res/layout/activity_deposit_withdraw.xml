@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".depositWithdraw">
 
 
@@ -11,10 +12,10 @@
         android:id="@+id/transactions"
         android:layout_width="413dp"
         android:layout_height="47dp"
-        android:background="@color/main_gray"
+        android:background="@color/main_green"
         android:text="Transaction"
         android:textAlignment="center"
-        android:textColor="@color/main_green"
+        android:textColor="@color/title_color"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -44,25 +45,25 @@
                 android:id="@+id/button01"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="1"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button02"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="2"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button03"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="3"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
         </TableRow>
 
         <TableRow
@@ -73,25 +74,25 @@
                 android:id="@+id/button04"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="4"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button05"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="5"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button06"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="6"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
         </TableRow>
 
         <TableRow
@@ -102,25 +103,25 @@
                 android:id="@+id/button07"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="7"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button08"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="8"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button09"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="9"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
         </TableRow>
 
         <TableRow
@@ -131,25 +132,25 @@
                 android:id="@+id/buttonDeposit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="Deposit"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/button0"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="0"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/buttonWithdarw"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="Withdraw"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
         </TableRow>
 
@@ -161,24 +162,24 @@
                 android:id="@+id/buttonBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="back"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
             <Button
                 android:id="@+id/buttonPeriod"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="."
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
             <Button
                 android:id="@+id/buttonClear"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@color/main_gray"
+                android:background="@color/main_green"
                 android:text="Clear"
-                android:textColor="@color/main_green" />
+                android:textColor="@color/title_color" />
 
         </TableRow>
 
@@ -192,6 +193,7 @@
         android:layout_width="135dp"
         android:layout_height="30dp"
         android:textAlignment="textEnd"
+        android:background="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
@@ -204,6 +206,7 @@
         android:layout_width="135dp"
         android:layout_height="30dp"
         android:textAlignment="textEnd"
+        android:background="#ffffff"
         app:layout_constraintBottom_toTopOf="@+id/tableLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.502"
