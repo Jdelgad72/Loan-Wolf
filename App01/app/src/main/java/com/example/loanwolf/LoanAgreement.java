@@ -11,7 +11,6 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,7 +30,6 @@ public class LoanAgreement extends AppCompatActivity {
 
         intView = (TextView) findViewById(R.id.intView);
         amount = (EditText) findViewById(R.id.amount);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         loanDate = (EditText) findViewById(R.id.loanDate);
         payNum = (EditText) findViewById(R.id.payNum);
@@ -93,7 +91,6 @@ public class LoanAgreement extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressBar.setProgress(progress);
                 intView.setText("" + progress + "");
             }
 
@@ -113,4 +110,6 @@ public class LoanAgreement extends AppCompatActivity {
     }
 
 
+    public void ClickHome(View view) {
+    }
 }

@@ -4,16 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".JoinWolfPack">
 
     <TextView
         android:id="@+id/title"
         android:layout_width="408dp"
         android:layout_height="50dp"
-        android:background="@color/main_gray"
-        android:text="Join Wolf Pack"
+        android:background="@color/main_green"
+        android:text="Joinv1 Wolf Pack"
         android:textAlignment="center"
-        android:textColor="@color/main_green"
+        android:textColor="@color/title_color"
         android:textSize="30sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -23,51 +24,5 @@
         app:layout_constraintVertical_bias="0.001" />
 
     <!--  android:onClick="buttonDeclineWP"git -->
-
-    <TextView
-        android:id="@+id/infoUser"
-        android:layout_width="127dp"
-        android:layout_height="44dp"
-        android:text="Users"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.14"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
-
-    <TextView
-        android:id="@+id/infoUser4"
-        android:layout_width="127dp"
-        android:layout_height="44dp"
-        android:text="Options"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.83"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.17" />
-
-    <TextView
-        android:id="@+id/textView26"
-        android:layout_width="204dp"
-        android:layout_height="47dp"
-        android:text="There are currently no Wolf Packs to join."
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.295" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#525151"
+    android:background="@color/main_gray"
     tools:context=".ProfileResume">
 
     <TextView
@@ -14,7 +14,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Default Rate:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -25,7 +25,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Percentage of Loans Accepted:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -36,7 +36,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Amount Sent: $"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -65,7 +65,7 @@
             android:layout_weight="1"
             android:text="Person Name"
             android:textAlignment="textEnd"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -76,7 +76,7 @@
             android:layout_weight="1"
             android:text=" Resume"
             android:textAlignment="gravity"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -89,7 +89,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:text="Lender Resume"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -102,7 +102,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:text="Debtor Resume"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +115,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:text="Number of Loans Sent:"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -126,7 +126,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:text="Number of Loans Payments Made:"
-        android:textColor="#FDFDFD"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -137,7 +137,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="Amount Recieved: $"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -148,7 +148,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="10dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView19"
         app:layout_constraintTop_toBottomOf="@+id/textView12" />
 
@@ -159,7 +159,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView20"
         app:layout_constraintTop_toBottomOf="@+id/textView19" />
 
@@ -170,7 +170,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView21"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
@@ -181,7 +181,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="20dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView22"
         app:layout_constraintTop_toBottomOf="@+id/textView16" />
 
@@ -191,7 +191,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView24"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -202,7 +202,7 @@
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
         android:text="TextView"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/textView23"
         app:layout_constraintTop_toBottomOf="@+id/textView22" />
 
@@ -212,7 +212,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="%"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/defaultRate"
         app:layout_constraintTop_toBottomOf="@+id/textView23" />
 
@@ -222,7 +222,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
         android:text="%"
-        android:textColor="#FFFFFF"
+        android:textColor="@color/title_color"
         app:layout_constraintStart_toEndOf="@+id/percentAccepted"
         app:layout_constraintTop_toBottomOf="@+id/textView20" />
 

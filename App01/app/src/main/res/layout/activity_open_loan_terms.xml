@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/main_gray"
     tools:context=".OpenLoanTerms">
 
     <LinearLayout
@@ -32,7 +33,7 @@
             android:layout_weight="1"
             android:text="Open Loan Terms and Conditions"
             android:textAlignment="center"
-            android:textColor="#636363"
+            android:textColor="@color/title_color"
             android:textSize="18sp"
             android:textStyle="bold" />
 
@@ -46,6 +47,7 @@
         android:layout_centerHorizontal="true"
         android:text="Do you agree with the Terms and Conditions?"
         android:textAlignment="center"
+        android:textColor="@color/title_color"
         android:textSize="35dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -75,6 +77,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView"
         android:layout_alignStart="@+id/imageView"
+        android:background="@color/main_green"
         android:layout_alignEnd="@+id/textView2"
         android:onClick="open"
         android:text="View Terms and Conditions"

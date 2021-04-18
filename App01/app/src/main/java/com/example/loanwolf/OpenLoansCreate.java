@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
@@ -15,7 +14,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class OpenLoansCreate extends AppCompatActivity {
     private TextView intView;
-    private ProgressBar progressBar;
     private SeekBar seekBar;
     private EditText amount;
     private EditText loanDate;
@@ -28,7 +26,6 @@ public class OpenLoansCreate extends AppCompatActivity {
 
         intView = (TextView) findViewById(R.id.intView);
         amount = (EditText) findViewById(R.id.amount);
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
         seekBar = (SeekBar) findViewById(R.id.seekBar);
         loanDate = (EditText) findViewById(R.id.loanDate);
         payNum = (EditText) findViewById(R.id.payNum);
@@ -60,7 +57,6 @@ public class OpenLoansCreate extends AppCompatActivity {
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                progressBar.setProgress(progress);
                 intView.setText("" + progress + "");
             }
 
