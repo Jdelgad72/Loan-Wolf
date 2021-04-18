@@ -45,7 +45,11 @@ public class ListViewAdapterViewReviews extends BaseAdapter {
         TextView comment = view.findViewById(R.id.TextView4);
 
         // Set the results into TextViews
+<<<<<<< HEAD
+//*        name.setText(ViewReviews.get(position).name());
+=======
 //        name.setText(ViewReviews.get(position).name());
+>>>>>>> 90a4f834c6974bba18e19b8882b0b6f789763c1a
         rating.setText(ViewReviews.get(position).getrating());
         comment.setText(ViewReviews.get(position).getcomment());
         return view;
