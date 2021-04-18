@@ -15,7 +15,8 @@ if(isset($_POST['id'])){
 
     while($row = mysqli_fetch_assoc($result)){
       array_push($ids, $row["loanID"]);
-      array_push($messages, "The loan of $".(string)$row["loanAmount"]." with the interest Rate of ".(string)((float)$row["interestRate"]*100)."% has successfully been initiated. The loan will begin on ".$row["loanDateStart"].".");
+      $dates = date("F d, Y", strtotime($row["loanDateStart"]));
+      array_push($messages, "The loan of $".(string)$row["loanAmount"]." with the interest Rate of ".(string)((float)$row["interestRate"]*100)."% has successfully been initiated. The loan will begin on ".$dates.".");
       array_push($type, "Loan Success");
     }
 
