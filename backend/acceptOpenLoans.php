@@ -58,7 +58,7 @@ if(isset($_POST['ID'], $_POST['openloanid'], $_POST["borrowerLender"], $_POST['a
   $stmt5->close();
 
   //Inserts entry into userPayment table
-  $stmt6 = $conn->prepare("INSERT INTO userPayment(userDebtor,userCreditor, paymentID, fromTo) VALUES(?, ?, ?, 0);");
+  $stmt6 = $conn->prepare("INSERT INTO userPayment(userDebtor,userCreditor, paymentID, fromTo) VALUES(?, ?, ?, 1);");
   if($borrowerLender == "Debtor"){
     $stmt6->bind_param("iii", $id, $id2, $last_id);
   }else{
