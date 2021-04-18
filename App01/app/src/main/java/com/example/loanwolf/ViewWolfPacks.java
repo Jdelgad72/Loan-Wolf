@@ -1,14 +1,12 @@
 package com.example.loanwolf;
 
-<<<<<<< HEAD
-=======
 import android.content.Intent;
->>>>>>> 93f04d6782b2807a0927365cf3058ffa3f46803c
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ListView;
 import android.widget.Toast;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.Request;
 import com.android.volley.Response;
@@ -19,12 +17,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-<<<<<<< HEAD
-import androidx.appcompat.app.AppCompatActivity;
-=======
 import java.util.ArrayList;
 
->>>>>>> 93f04d6782b2807a0927365cf3058ffa3f46803c
+import androidx.appcompat.app.AppCompatActivity;
 
 public class ViewWolfPacks extends AppCompatActivity {
 
